@@ -9,15 +9,14 @@ INSERT INTO `Position` (`PositionId`, `PositionName`, `PositionDescription`, `Pa
             (5, 'Marketing Assistant', 'Provides support to the Marketing', 'Hourly', '90'),
             (7, 'Assistant', 'Works in any number of areas', 'Hourly', '90'),
             (4, 'Finance Clerk', 'Provides support to the Finance Hourly', 'Hourly', '90'),
-            (13, 'Social Media Coordinator', 'Manages content across social', 'Yearly', '90'),
+            (13, 'Soпоcial Media Coordinator', 'Manages content across social', 'Yearly', '90'),
             (21, 'Finance Manager', ' Responsible for the financial', 'Yearly', '90'),
             (10, 'Volunteer Coordinator', 'Coordinates recruitment', 'Yearly', '90'),
             (16, 'IT Manager', 'Oversees the planning and coordination', 'Yearly', '90'),
             (23, 'Workforce Manager', 'Workforce Manager', 'Yearly', '90'),
             (14, 'Operations Manager', 'Oversees all logistical aspects', 'Yearly', '90'),
             (20, 'HR Manager', 'Manages the recruitment', 'Yearly', '90'),
-            (9, 'CEO', 'Chief Executive Officer', 'Yearly', '90'),
-            (19, 'Administrative Manager', 'Oversees the administrative force', 'Yearly', '90');
+            (9, 'CEO', 'Chief Executive Officer', 'Yearly', '90');
 
 INSERT INTO `Staff` (`First_name`, `LastName`, `DateOfBirth`, `Gender`, `Positionid`, `Email`, `Comments`) VALUES
             ('LAKISHA', 'TOMBLIN', '1961-08-06 00:00:00', 'Female', 2, 'l_tomblin@nnl.com', 'no comments'),
@@ -271,7 +270,3 @@ INSERT INTO `Staff` (`First_name`, `LastName`, `DateOfBirth`, `Gender`, `Positio
             ('SUSIE', 'CARDONA' , '1986-03-11 00:00:00', 'Female', 7, 'susie_cardona@yahoo.com', 'no comments'),
             ('ALEXANDRIA', 'SMALLS' , '1980-05-17 00:00:00', 'Female', 6, 'alexandria.smalls@hotmail.com', 'no comments'),
             ('DESMOND', 'STONE' , '1991-03-28 00:00:00', 'Male', 20, '7d_stone@gmail.com', 'no comments');
-
-INSERT INTO `Timesheet` (`Staffid`, `StartDateTime`, `EndDateTime`, `PayAmount`) VALUES
-            ()
-

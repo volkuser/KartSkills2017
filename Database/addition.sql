@@ -32,7 +32,7 @@ CREATE TABLE `Staff` (
 --
 -- Структура таблицы `Timesheet`
 --
-CREATE TABLE ` Timesheet`(
+CREATE TABLE `Timesheet`(
     `Timesheetid` integer NOT NULL,
     `Staffid` integer NOT NULL,
     `StartDateTime` datetime,

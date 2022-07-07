@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/addition.sql" dialect="MariaDB" />
+    <file url="file://$PROJECT_DIR$/creating.sql" dialect="MariaDB" />
+    <file url="file://$PROJECT_DIR$/data-import/staff-import.sql" dialect="MariaDB" />
+    <file url="file://$PROJECT_DIR$/data-import/timesheet-import.sql" dialect="MariaDB" />
+    <file url="file://$PROJECT_DIR$/kart-skills-2017-database-mysql.sql" dialect="MariaDB" />
+  </component>
+</project>
