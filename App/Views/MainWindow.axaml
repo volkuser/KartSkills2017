@@ -1,0 +1,38 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:App.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:reactiveUi="http://reactiveui.net"
+        xmlns:pages="clr-namespace:App.Views.Pages"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="App.Views.MainWindow"
+        Icon="/Assets/Images/checkered-flag-sports-tool.ico"
+        Title="Kart Skills 2017"
+        WindowStartupLocation="CenterScreen"
+        Height="600" Width="1000"
+        MinHeight="600" MinWidth="1000">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="6.5*"/>
+            <RowDefinition Height="0.5*"/>
+        </Grid.RowDefinitions>
+        
+        <reactiveUi:RoutedViewHost Grid.Row="0" Router="{Binding Router}">
+            <reactiveUi:RoutedViewHost.DefaultContent>
+                <pages:MainMenuPage />
+            </reactiveUi:RoutedViewHost.DefaultContent>
+        </reactiveUi:RoutedViewHost>
+        
+        <!--timer-->
+        <Rectangle Grid.Row="1" Fill="{StaticResource Gray}"/>
+        <TextBlock Grid.Row="1" TextAlignment="Center" FontSize="20"
+                   Text="{Binding DisplayTimer}"/>
+    </Grid>
+
+</Window>

@@ -1,0 +1,46 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:App"
+             x:Class="App.App">
+    <Application.DataTemplates>
+        <local:ViewLocator/>
+    </Application.DataTemplates>
+
+    <Application.Resources>
+        <!--fonts-->
+        <FontFamily x:Key="TitleFontFamily">Open Sans Semibold
+        </FontFamily>
+        <FontFamily x:Key="MainFontFamily">Open Sans Light
+        </FontFamily>
+        <FontFamily x:Key="AlternativeFontFamily">Arial
+        </FontFamily>
+        
+        <!--colors-->
+        <!--main colors-->
+        <SolidColorBrush x:Key="BrazilianGreen" Color="#00903E"/>
+        <SolidColorBrush x:Key="BrazilianYellow" Color="#FDC100"/>
+        <SolidColorBrush x:Key="BrazilianBlue" Color="#241D70"/>
+        <!--secondary colors-->
+        <SolidColorBrush x:Key="White" Color="#FFFFFF"/>
+        <SolidColorBrush x:Key="LightGray" Color="#EBEBEB"/>
+        <SolidColorBrush x:Key="Gray" Color="#B4B4B4"/>
+        <SolidColorBrush x:Key="DarkGray" Color="#505050"/>
+        <SolidColorBrush x:Key="Black" Color="#000000"/>
+    </Application.Resources>
+    
+    <Application.Styles>
+        <FluentTheme Mode="Light"/>
+        
+        <Style Selector="TextBlock">
+            <Setter Property="Foreground"
+                    Value="{StaticResource Black}"/>
+            <Setter Property="FontFamily" 
+                    Value="{StaticResource MainFontFamily}"/>
+        </Style>
+        <Style Selector="TextBlock.h1">
+            <Setter Property="FontFamily"
+                    Value="{StaticResource TitleFontFamily}"/>
+            <Setter Property="FontSize" Value="36"/>
+        </Style>
+    </Application.Styles>
+</Application>
