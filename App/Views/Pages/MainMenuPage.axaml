@@ -2,8 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             x:Class="App.Views.Pages.MainMenuPage">
+             mc:Ignorable="d" x:Class="App.Views.Pages.MainMenuPage">
     
     <UserControl.Resources>
         <ImageBrush x:Key="ImgMoney" Source="/Assets/Images/Dengi.png" Stretch="Uniform"/>
@@ -11,58 +10,40 @@
         <ImageBrush x:Key="ImgKey" Source="/Assets/Images/Klyuch.png" Stretch="Uniform"/>
         <ImageBrush x:Key="ImgHelmet" Source="/Assets/Images/Shlem.png" Stretch="Uniform"/>
     </UserControl.Resources>
-    
-    <Grid>
+        
+    <Grid x:Name="WorkPlace"
+          Background="{StaticResource White}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="5.5*"/>
-        </Grid.RowDefinitions>
-        
-        <Grid x:Name="MainInfo" Grid.Row="0"
-              Background="{StaticResource Gray}">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <TextBlock Text="Kart Skills 2017" Grid.Row="0"
-                       Classes="h1" TextAlignment="Center" VerticalAlignment="Center"/>
-            <TextBlock Text="Москва, Россия 20 июня 2017" Grid.Row="1"
-                       FontSize="24" TextAlignment="Center" VerticalAlignment="Center"/>
-        </Grid>
-        
-        <Grid x:Name="WorkPlace" Grid.Row="1"
-              Background="{StaticResource White}">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>    
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Button Grid.Row="0" Grid.Column="0" x:Name="BtnRiderRegistration"
-                    HorizontalAlignment="Center" VerticalAlignment="Bottom"
-                    Height="150" Width="150" Background="{DynamicResource ImgHelmet}"/>
-            <TextBlock Grid.Row="1" Grid.Column="0" Text="Регистрация гонщика"
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>    
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Button Grid.Row="0" Grid.Column="0" x:Name="BtnRiderRegistration"
+                HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                Height="150" Width="150" Background="{DynamicResource ImgHelmet}"/>
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Регистрация гонщика"
+                   TextAlignment="Center" VerticalAlignment="Top"/>
+        <Button Grid.Row="0" Grid.Column="1" x:Name="BtnSponsorRegistration"
+                Command="{Binding OnClickOpnSponsorOfRacersPage}"
+                HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                Height="150" Width="150" Background="{DynamicResource ImgMoney}">
+        </Button>
+            <TextBlock Grid.Row="1" Grid.Column="1" Text="Регистрация спонсора"
                        TextAlignment="Center" VerticalAlignment="Top"/>
-            <Button Grid.Row="0" Grid.Column="1" x:Name="BtnSponsorRegistration"
-                    HorizontalAlignment="Center" VerticalAlignment="Bottom"
-                    Height="150" Width="150" Background="{DynamicResource ImgMoney}">
-            </Button>
-                <TextBlock Grid.Row="1" Grid.Column="1" Text="Регистрация спонсора"
-                           TextAlignment="Center" VerticalAlignment="Top"/>
-            <Button Grid.Row="0" Grid.Column="2" x:Name="BtnAboutEvent"
-                    HorizontalAlignment="Center" VerticalAlignment="Bottom"
-                    Height="150" Width="150" Background="{DynamicResource ImgInformation}"/>
-            <TextBlock Grid.Row="1" Grid.Column="2" Text="О событии"
-                       TextAlignment="Center" VerticalAlignment="Top"/>
-            <Button Grid.Row="0" Grid.Column="3" x:Name="BtnLogin"
-                    HorizontalAlignment="Center" VerticalAlignment="Bottom"
-                    Height="150" Width="150" Background="{DynamicResource ImgKey}"/>
-            <TextBlock Grid.Row="1" Grid.Column="3" Text="Вход в систему"
-                       TextAlignment="Center" VerticalAlignment="Top"/>
-        </Grid>
+        <Button Grid.Row="0" Grid.Column="2" x:Name="BtnAboutEvent"
+                HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                Height="150" Width="150" Background="{DynamicResource ImgInformation}"/>
+        <TextBlock Grid.Row="1" Grid.Column="2" Text="О событии"
+                   TextAlignment="Center" VerticalAlignment="Top"/>
+        <Button Grid.Row="0" Grid.Column="3" x:Name="BtnLogin"
+                HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                Height="150" Width="150" Background="{DynamicResource ImgKey}"/>
+        <TextBlock Grid.Row="1" Grid.Column="3" Text="Вход в систему"
+                   TextAlignment="Center" VerticalAlignment="Top"/>
     </Grid>
 </UserControl>

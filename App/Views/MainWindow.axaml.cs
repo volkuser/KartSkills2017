@@ -1,14 +1,19 @@
-using Avalonia.Controls;
+using App.ViewModels;
+using Avalonia.Markup.Xaml;
+using Avalonia.ReactiveUI;
 using PropertyChanged;
+using ReactiveUI;
 
-namespace App.Views
+namespace App.Views;
+
+[DoNotNotify]
+public partial class MainWindow : ReactiveWindow<MainWindowViewModel>
 {
-    [DoNotNotify]
-    public partial class MainWindow : Window
+    public MainWindow()
     {
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
+        this.WhenActivated(_ => { });
+        AvaloniaXamlLoader.Load(this);
+
+        Program.BtnBack = BtnBack;
     }
 }

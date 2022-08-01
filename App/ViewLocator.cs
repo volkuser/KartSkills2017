@@ -7,7 +7,7 @@ using ReactiveUI;
 
 namespace App
 {
-    public class ViewLocator : IDataTemplate, IViewLocator
+    public class ViewLocator : IDataTemplate
     {
         public IControl Build(object data)
         {
@@ -26,11 +26,5 @@ namespace App
         {
             return data is ViewModelBase;
         }
-        
-        public IViewFor ResolveView<T>(T viewModel, string? contract = null) => viewModel switch
-        {
-            MainMenuPageViewModel context => new MainMenuPage { DataContext = context },
-            _ => throw new ArgumentOutOfRangeException(nameof(viewModel))
-        };
     }
 }

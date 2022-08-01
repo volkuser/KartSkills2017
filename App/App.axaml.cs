@@ -1,9 +1,11 @@
 using Avalonia;
-using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using App.ViewModels;
 using App.Views;
+using App.Views.Pages;
 using PropertyChanged;
+using ReactiveUI;
+using Splat;
 
 namespace App
 {
@@ -17,14 +19,13 @@ namespace App
 
         public override void OnFrameworkInitializationCompleted()
         {
-            if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
-            {
-                desktop.MainWindow = new MainWindow
-                {
-                    DataContext = new MainWindowViewModel(),
-                };
-            }
+            Locator.CurrentMutable.RegisterConstant<IScreen>(new MainWindowViewModel());
+            Locator.CurrentMutable.Register<IViewFor<MainMenuPageViewModel>>(() => new MainMenuPage());
+            Locator.CurrentMutable.Register<IViewFor<SponsorOfRacersPageViewModel>>(() 
+                => new SponsorOfRacersPage());
 
+            new MainWindow { DataContext = Locator.Current.GetService<IScreen>() }.Show();
+            
             base.OnFrameworkInitializationCompleted();
         }
     }

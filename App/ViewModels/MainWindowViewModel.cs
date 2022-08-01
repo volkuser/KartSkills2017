@@ -1,16 +1,36 @@
 ﻿using System;
+using System.Runtime.Serialization;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using ReactiveUI;
 
 namespace App.ViewModels
 {
-    public class MainWindowViewModel : ReactiveObject, IScreen
+    [DataContract]
+    public class MainWindowViewModel : ReactiveObject, IScreen, IPageNavigation
     {
-        public RoutingState Router { get; } = new();
+        private RoutingState _router = new();
+        //private IByMainWindow Container;
+
+        // commands
+        private ICommand OnClickBack { get; set; }
         
+        // properties of element on view
+        public bool VisibleBtnBack { get; set; }
+        // 2 - not true (1), not false (0)
+        public byte[] Visibility { get; set; } = new byte[2] { 2, 2 };
+
+        // other
         private string? _displayTimer;
-        
-        public string? DisplayTimer
+
+        [DataMember]
+        public RoutingState Router
+        {
+            get => _router;
+            set => this.RaiseAndSetIfChanged(ref _router, value);
+        }
+
+        private string? DisplayTimer
         {
             get
             {
@@ -47,7 +67,55 @@ namespace App.ViewModels
 
         public MainWindowViewModel()
         {
-            Router.Navigate.Execute(new MainMenuPageViewModel(this));
+            OpnMainMenuPage();
+
+            OnClickBack = ReactiveCommand.Create(Back);
+        }
+
+        public void OpnMainMenuPage()
+        {
+            MainMenuPageViewModel mainMenuPageViewModel = new MainMenuPageViewModel(this);
+            Router.Navigate.Execute(mainMenuPageViewModel);
+            SetVisibleBtnBack(mainMenuPageViewModel.VisibleBtnBack);
+            SetVisibilityBtnBack(Visibility, mainMenuPageViewModel.VisibleBtnBack);
+        }
+
+        public void OpnSponsorOfRacersPage()
+        {
+            SponsorOfRacersPageViewModel sponsorOfRacersPageViewModel = new SponsorOfRacersPageViewModel(this);
+            Router.Navigate.Execute(sponsorOfRacersPageViewModel);
+            SetVisibleBtnBack(sponsorOfRacersPageViewModel.VisibleBtnBack);
+            SetVisibilityBtnBack(Visibility, sponsorOfRacersPageViewModel.VisibleBtnBack);
+        }
+
+        public void Back()
+        {
+            Router.NavigateBack.Execute();
+            SetVisibleBtnBack(GetLastVisibleBtnBack(Visibility));
+        }
+
+        public void SetVisibleBtnBack(bool visible)
+        {
+            VisibleBtnBack = visible; 
+        }
+
+        public void SetVisibilityBtnBack(byte[] visibility, bool visible)
+        {
+            byte byteVisible = (byte) (visible ? 1 : 0);
+            if (visibility[0] == 2) visibility[0] = byteVisible;
+            else if (visibility[1] == 2) visibility[1] = byteVisible;
+            else
+            {
+                byte buf = visibility[1];
+                visibility[0] = buf;
+                visibility[1] = byteVisible;
+            }
+        }
+        public bool GetLastVisibleBtnBack(byte[] visibility)
+        {
+            bool visible = visibility[0] == 1;
+            SetVisibilityBtnBack(Visibility, visible);
+            return visible;
         }
     }
 }
