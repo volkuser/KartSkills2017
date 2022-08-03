@@ -4,10 +4,11 @@ using Splat;
 
 namespace App.ViewModels;
 
-public class MainMenuPageViewModel : ViewModelBase, IRoutableViewModel/*, IByMainWindow*/
+public class MainMenuPageViewModel : ViewModelBase, IRoutableViewModel
 {
     public string UrlPathSegment => "/mainMenu";
     public IScreen HostScreen { get; }
+    
     public bool VisibleBtnBack { get; } = false;
 
     private ICommand OnClickOpnSponsorOfRacersPage { get; set; }

@@ -28,15 +28,15 @@
                 <ColumnDefinition Width="0.5*"/>
             </Grid.ColumnDefinitions>
             
-            <Button x:Name="BtnBack" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0"
+            <Button Grid.Row="0" Grid.RowSpan="2" Grid.Column="0"
                     Command="{Binding OnClickBack}" Content="Назад" FontSize="25"
-                    Background="{DynamicResource LightGray}" IsVisible="{Binding VisibleBtnBack}"
-                    HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    IsVisible="{Binding VisibleBtnBack}"
+                    HorizontalAlignment="Center" VerticalAlignment="Center" />
             
-            <TextBlock Text="Kart Skills 2017" Grid.Row="0" Grid.Column="1"
-                       Classes="h1" TextAlignment="Center" VerticalAlignment="Center"/>
-            <TextBlock Text="Москва, Россия 20 июня 2017" Grid.Row="1" Grid.Column="1"
-                       FontSize="24" TextAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Text="Kart Skills 2017" Grid.Row="0" Grid.Column="1" Classes="h1"
+                       HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <TextBlock Text="Москва, Россия 20 июня 2017" Grid.Row="1" Grid.Column="1" FontSize="24"
+                       HorizontalAlignment="Center" VerticalAlignment="Center" />
         </Grid>
         
         <!--pages-->

@@ -10,15 +10,14 @@ namespace App.ViewModels
     public class MainWindowViewModel : ReactiveObject, IScreen, IPageNavigation
     {
         private RoutingState _router = new();
-        //private IByMainWindow Container;
 
         // commands
         private ICommand OnClickBack { get; set; }
         
         // properties of element on view
-        public bool VisibleBtnBack { get; set; }
+        private bool VisibleBtnBack { get; set; }
         // 2 - not true (1), not false (0)
-        public byte[] Visibility { get; set; } = new byte[2] { 2, 2 };
+        private byte[] Visibility { get; set; } = new byte[2] { 2, 2 };
 
         // other
         private string? _displayTimer;
@@ -84,7 +83,7 @@ namespace App.ViewModels
         {
             SponsorOfRacersPageViewModel sponsorOfRacersPageViewModel = new SponsorOfRacersPageViewModel(this);
             Router.Navigate.Execute(sponsorOfRacersPageViewModel);
-            SetVisibleBtnBack(sponsorOfRacersPageViewModel.VisibleBtnBack);
+            SetVisibleBtnBack(sponsorOfRacersPageViewModel.VisibleBtnBack); 
             SetVisibilityBtnBack(Visibility, sponsorOfRacersPageViewModel.VisibleBtnBack);
         }
 
@@ -94,12 +93,12 @@ namespace App.ViewModels
             SetVisibleBtnBack(GetLastVisibleBtnBack(Visibility));
         }
 
-        public void SetVisibleBtnBack(bool visible)
+        private void SetVisibleBtnBack(bool visible)
         {
             VisibleBtnBack = visible; 
         }
 
-        public void SetVisibilityBtnBack(byte[] visibility, bool visible)
+        private void SetVisibilityBtnBack(byte[] visibility, bool visible)
         {
             byte byteVisible = (byte) (visible ? 1 : 0);
             if (visibility[0] == 2) visibility[0] = byteVisible;
@@ -111,7 +110,7 @@ namespace App.ViewModels
                 visibility[1] = byteVisible;
             }
         }
-        public bool GetLastVisibleBtnBack(byte[] visibility)
+        private bool GetLastVisibleBtnBack(byte[] visibility)
         {
             bool visible = visibility[0] == 1;
             SetVisibilityBtnBack(Visibility, visible);

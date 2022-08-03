@@ -3,6 +3,9 @@ using Avalonia.Markup.Xaml;
 using App.ViewModels;
 using App.Views;
 using App.Views.Pages;
+using Avalonia.Controls;
+using Avalonia.Media;
+using Avalonia.Styling;
 using PropertyChanged;
 using ReactiveUI;
 using Splat;
@@ -21,8 +24,7 @@ namespace App
         {
             Locator.CurrentMutable.RegisterConstant<IScreen>(new MainWindowViewModel());
             Locator.CurrentMutable.Register<IViewFor<MainMenuPageViewModel>>(() => new MainMenuPage());
-            Locator.CurrentMutable.Register<IViewFor<SponsorOfRacersPageViewModel>>(() 
-                => new SponsorOfRacersPage());
+            Locator.CurrentMutable.Register<IViewFor<SponsorOfRacersPageViewModel>>(() => new SponsorOfRacersPage());
 
             new MainWindow { DataContext = Locator.Current.GetService<IScreen>() }.Show();
             

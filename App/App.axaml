@@ -30,17 +30,28 @@
     
     <Application.Styles>
         <FluentTheme Mode="Light"/>
-        
-        <Style Selector="TextBlock">
-            <Setter Property="Foreground"
+        <Style Selector="TextBlock, TextBox, ComboBox, Button">
+            <Setter Property="TextBlock.Foreground"
                     Value="{StaticResource Black}"/>
-            <Setter Property="FontFamily" 
+            <Setter Property="TextBlock.FontFamily" 
                     Value="{StaticResource MainFontFamily}"/>
         </Style>
+        
         <Style Selector="TextBlock.h1">
             <Setter Property="FontFamily"
                     Value="{StaticResource TitleFontFamily}"/>
             <Setter Property="FontSize" Value="36"/>
+        </Style>
+        <Style Selector="TextBlock.h2">
+            <Setter Property="FontSize" Value="30"/>
+        </Style>
+        <Style Selector="TextBlock.h3">
+            <Setter Property="FontSize" Value="26"/>
+        </Style>
+        
+        <Style Selector="Button">
+            <Setter Property="Background" Value="{StaticResource LightGray}"/>
+            <Setter Property="FontSize" Value="25"/>
         </Style>
     </Application.Styles>
 </Application>
