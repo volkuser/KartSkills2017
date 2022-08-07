@@ -26,7 +26,7 @@ namespace App.ViewModels
         public RoutingState Router
         {
             get => _router;
-            set => this.RaiseAndSetIfChanged(ref _router, value);
+            set => _router = value;
         }
 
         private string? DisplayTimer
@@ -66,6 +66,7 @@ namespace App.ViewModels
 
         public MainWindowViewModel()
         {
+            Singleton.getInstance();
             OpnMainMenuPage();
 
             OnClickBack = ReactiveCommand.Create(Back);

@@ -1,8 +1,8 @@
-﻿using System;
-using ReactiveUI;
+﻿using ReactiveUI;
 
-namespace App.ViewModels
+namespace App.ViewModels;
+
+public class ViewModelBase : ReactiveObject
 {
-    public class ViewModelBase : ReactiveObject
-    { }
+    
 }
