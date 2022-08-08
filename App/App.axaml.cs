@@ -24,7 +24,10 @@ namespace App
         {
             Locator.CurrentMutable.RegisterConstant<IScreen>(new MainWindowViewModel());
             Locator.CurrentMutable.Register<IViewFor<MainMenuPageViewModel>>(() => new MainMenuPage());
-            Locator.CurrentMutable.Register<IViewFor<SponsorOfRacersPageViewModel>>(() => new SponsorOfRacersPage());
+            Locator.CurrentMutable.Register<IViewFor<SponsorOfRacersPageViewModel>>(() 
+                => new SponsorOfRacersPage());
+            Locator.CurrentMutable.Register<IViewFor<ConfirmationOfSponsorshipPageViewModel>>(() 
+                => new ConfirmationOfSponsorshipPage());
 
             new MainWindow { DataContext = Locator.Current.GetService<IScreen>() }.Show();
             

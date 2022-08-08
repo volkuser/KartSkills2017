@@ -2,6 +2,7 @@
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using App.Models;
 using ReactiveUI;
 
 namespace App.ViewModels
@@ -66,7 +67,7 @@ namespace App.ViewModels
 
         public MainWindowViewModel()
         {
-            Singleton.getInstance();
+            Singleton.GetInstance();
             OpnMainMenuPage();
 
             OnClickBack = ReactiveCommand.Create(Back);
@@ -86,6 +87,15 @@ namespace App.ViewModels
             Router.Navigate.Execute(sponsorOfRacersPageViewModel);
             SetVisibleBtnBack(sponsorOfRacersPageViewModel.VisibleBtnBack); 
             SetVisibilityBtnBack(Visibility, sponsorOfRacersPageViewModel.VisibleBtnBack);
+        }
+
+        public void OpnConfirmationOfSponsorshipPage(string amountInDollars, Racer racer, string nameOfFund)
+        {
+            ConfirmationOfSponsorshipPageViewModel confirmationOfSponsorshipPageViewModel 
+                = new ConfirmationOfSponsorshipPageViewModel(this, amountInDollars, racer, nameOfFund);
+            Router.Navigate.Execute(confirmationOfSponsorshipPageViewModel);
+            SetVisibleBtnBack(confirmationOfSponsorshipPageViewModel.VisibleBtnBack); 
+            SetVisibilityBtnBack(Visibility, confirmationOfSponsorshipPageViewModel.VisibleBtnBack);
         }
 
         public void Back()

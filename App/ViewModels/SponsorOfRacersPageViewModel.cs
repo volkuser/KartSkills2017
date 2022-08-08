@@ -74,17 +74,17 @@ public class SponsorOfRacersPageViewModel : ViewModelBase, IRoutableViewModel
         set => _amountInDollars = value;
     }
 
-    public SponsorOfRacersPageViewModel(IPageNavigation container, IScreen? screen = null)
+    public SponsorOfRacersPageViewModel(IPageNavigation? container, IScreen? screen = null)
     {
         HostScreen = screen ?? Locator.Current.GetService<IScreen>();
-        Db = Singleton.getInstance();
+        Db = Singleton.GetInstance();
 
         Racers = new(Db.Racers);
 
         OnClickAmountPlus = ReactiveCommand.Create(() => { AmountInInt += 10; });
         OnClickAmountMinus = ReactiveCommand.Create(() => { if (AmountInInt > 10) AmountInInt -= 10; });
         OnClickPay = ReactiveCommand.Create(() => Pay(Card, CardNumber, ExpireDateMonth, 
-            ExpireDateYear, CVC, Db, YourName, AmountInInt));
+            ExpireDateYear, CVC, Db, YourName, AmountInInt, container, AmountInDollars, Racer, NameOfFund));
         OnClickCancel = ReactiveCommand.Create(() => Cancel(container));
     }
 
@@ -100,26 +100,35 @@ public class SponsorOfRacersPageViewModel : ViewModelBase, IRoutableViewModel
     }
 
     private void Pay(string cardOwner, string cardNumber, string expireDateMonth, string expireDateYear, string cvc, 
-        ApplicationContext db, string sponsorName, int amount)
+        ApplicationContext db, string sponsorName, int amount, IPageNavigation container, string amointInDollars,
+        Racer racer, string nameOfFund)
     {
-        string message = "Данные карты не валидны!";
+        /*string message = "Данные карты не валидны!";*/
+        bool add = false;
         try
         {
             int cvcInInt = Int32.Parse(cvc);
             int expireDateMonthInInt = Int32.Parse(expireDateMonth);
             int expireDateYearInInt = Int32.Parse(expireDateYear);
             Card card = new Card(cardOwner, cardNumber, expireDateMonthInInt, expireDateYearInInt, cvcInInt);
-            if (card.IsValid()) message = "Спасибо за спонсорство!";
-        } catch (Exception e) { }
+            if (card.IsValid()) /*message = "Спасибо за спонсорство!";*/
+                add = true;
+        } catch (Exception e) { /*ignored*/ }
 
-        Sponsorship sponsorship = new Sponsorship();
-        sponsorship.SponsorName = sponsorName;
-        sponsorship.Amount = amount;
-        db.Sponsorships.Add(sponsorship);
-        db.SaveChanges();
+        if (add)
+        {
+            Sponsorship sponsorship = new Sponsorship
+            {
+                SponsorName = sponsorName,
+                Amount = amount
+            };
+            db.Sponsorships?.Add(sponsorship);
+            db.SaveChanges();
+            container.OpnConfirmationOfSponsorshipPage(amointInDollars, racer, nameOfFund);
+        }
         
-        var messageBox = MessageBox.Avalonia.MessageBoxManager
+        /*var messageBox = MessageBox.Avalonia.MessageBoxManager
             .GetMessageBoxStandardWindow("Спонсорство", message);
-        messageBox.Show();
+        messageBox.Show();*/
     }
 }    

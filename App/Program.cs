@@ -6,7 +6,7 @@ using Avalonia.Controls;
 namespace App
 {
     class Program
-    {
+    { 
         public static Button BtnBack;
         
         [STAThread]

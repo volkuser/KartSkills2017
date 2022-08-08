@@ -17,6 +17,6 @@ public class MainMenuPageViewModel : ViewModelBase, IRoutableViewModel
     {
         HostScreen = screen ?? Locator.Current.GetService<IScreen>();
         
-        OnClickOpnSponsorOfRacersPage = ReactiveCommand.Create(() => container?.OpnSponsorOfRacersPage());
+        OnClickOpnSponsorOfRacersPage = ReactiveCommand.Create(() => container.OpnSponsorOfRacersPage());
     }
 }

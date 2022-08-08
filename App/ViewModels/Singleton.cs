@@ -2,14 +2,12 @@ using App.Models;
 
 namespace App.ViewModels;
 
-public class Singleton
+public static class Singleton
 {
-    private static ApplicationContext? instance;
+    private static ApplicationContext? _instance;
     
-    public static ApplicationContext getInstance()
+    public static ApplicationContext GetInstance()
     {
-        if (instance == null)
-            instance = new ApplicationContext();
-        return instance;
+        return _instance ??= new ApplicationContext();
     }
 }
