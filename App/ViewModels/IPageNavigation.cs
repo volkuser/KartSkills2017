@@ -7,6 +7,7 @@ public interface IPageNavigation
     public void OpnMainMenuPage();
     public void OpnSponsorOfRacersPage();
     public void OpnConfirmationOfSponsorshipPage(string amountInDollars, Racer racer, string nameOfFund);
+    public void OpnDetailedInformationPage();
 
     public void Back();
 }

@@ -36,6 +36,7 @@
             <TextBlock Grid.Row="1" Grid.Column="1" Text="Регистрация спонсора"
                        TextAlignment="Center" VerticalAlignment="Top"/>
         <Button Grid.Row="0" Grid.Column="2" x:Name="BtnAboutEvent"
+                Command="{Binding OnClickOpnDetailedInformationPage}"
                 HorizontalAlignment="Center" VerticalAlignment="Bottom"
                 Height="150" Width="150" Background="{DynamicResource ImgInformation}"/>
         <TextBlock Grid.Row="1" Grid.Column="2" Text="О событии"

@@ -98,6 +98,14 @@ namespace App.ViewModels
             SetVisibilityBtnBack(Visibility, confirmationOfSponsorshipPageViewModel.VisibleBtnBack);
         }
 
+        public void OpnDetailedInformationPage()
+        {
+            DetailedInformationPageViewModel detailedInformationPageViewModel = new DetailedInformationPageViewModel(this);
+            Router.Navigate.Execute(detailedInformationPageViewModel);
+            SetVisibleBtnBack(detailedInformationPageViewModel.VisibleBtnBack); 
+            SetVisibilityBtnBack(Visibility, detailedInformationPageViewModel.VisibleBtnBack);
+        }
+
         public void Back()
         {
             Router.NavigateBack.Execute();

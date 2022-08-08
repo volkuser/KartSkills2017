@@ -28,6 +28,8 @@ namespace App
                 => new SponsorOfRacersPage());
             Locator.CurrentMutable.Register<IViewFor<ConfirmationOfSponsorshipPageViewModel>>(() 
                 => new ConfirmationOfSponsorshipPage());
+            Locator.CurrentMutable.Register<IViewFor<DetailedInformationPageViewModel>>(() 
+                => new DetailedInformationPage());
 
             new MainWindow { DataContext = Locator.Current.GetService<IScreen>() }.Show();
             

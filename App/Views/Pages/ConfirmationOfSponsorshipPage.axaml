@@ -12,7 +12,7 @@
             <RowDefinition Height="2*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" FontSize="24"
+        <TextBlock Grid.Row="0" Classes="h3"
                    HorizontalAlignment="Center" VerticalAlignment="Center">
             Спасибо за спонсорскую поддержку!</TextBlock>
         <TextBlock Grid.Row="1" Text="{Binding ViewOfRacer}" FontSize="32"
