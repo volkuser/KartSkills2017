@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -17,8 +18,7 @@ namespace App.ViewModels
         
         // properties of element on view
         private bool VisibleBtnBack { get; set; }
-        // 2 - not true (1), not false (0)
-        private byte[] Visibility { get; set; } = new byte[2] { 2, 2 };
+        private List<bool> VisibilityHistory { get; set; } = new();
 
         // other
         private string? _displayTimer;
@@ -75,65 +75,60 @@ namespace App.ViewModels
 
         public void OpnMainMenuPage()
         {
-            MainMenuPageViewModel mainMenuPageViewModel = new MainMenuPageViewModel(this);
-            Router.Navigate.Execute(mainMenuPageViewModel);
-            SetVisibleBtnBack(mainMenuPageViewModel.VisibleBtnBack);
-            SetVisibilityBtnBack(Visibility, mainMenuPageViewModel.VisibleBtnBack);
+            MainMenuPageViewModel viewModel = new MainMenuPageViewModel(this);
+            Router.Navigate.Execute(viewModel);
+            AdditionForHistory(viewModel.VisibleBtnBack);
         }
 
         public void OpnSponsorOfRacersPage()
         {
-            SponsorOfRacersPageViewModel sponsorOfRacersPageViewModel = new SponsorOfRacersPageViewModel(this);
-            Router.Navigate.Execute(sponsorOfRacersPageViewModel);
-            SetVisibleBtnBack(sponsorOfRacersPageViewModel.VisibleBtnBack); 
-            SetVisibilityBtnBack(Visibility, sponsorOfRacersPageViewModel.VisibleBtnBack);
+            SponsorOfRacersPageViewModel viewModel = new SponsorOfRacersPageViewModel(this);
+            Router.Navigate.Execute(viewModel);
+            AdditionForHistory(viewModel.VisibleBtnBack);
         }
 
         public void OpnConfirmationOfSponsorshipPage(string amountInDollars, Racer racer, string nameOfFund)
         {
-            ConfirmationOfSponsorshipPageViewModel confirmationOfSponsorshipPageViewModel 
+            ConfirmationOfSponsorshipPageViewModel viewModel 
                 = new ConfirmationOfSponsorshipPageViewModel(this, amountInDollars, racer, nameOfFund);
-            Router.Navigate.Execute(confirmationOfSponsorshipPageViewModel);
-            SetVisibleBtnBack(confirmationOfSponsorshipPageViewModel.VisibleBtnBack); 
-            SetVisibilityBtnBack(Visibility, confirmationOfSponsorshipPageViewModel.VisibleBtnBack);
+            Router.Navigate.Execute(viewModel);
+            AdditionForHistory(viewModel.VisibleBtnBack);
         }
 
         public void OpnDetailedInformationPage()
         {
-            DetailedInformationPageViewModel detailedInformationPageViewModel = new DetailedInformationPageViewModel(this);
-            Router.Navigate.Execute(detailedInformationPageViewModel);
-            SetVisibleBtnBack(detailedInformationPageViewModel.VisibleBtnBack); 
-            SetVisibilityBtnBack(Visibility, detailedInformationPageViewModel.VisibleBtnBack);
+            DetailedInformationPageViewModel viewModel 
+                = new DetailedInformationPageViewModel(this);
+            Router.Navigate.Execute(viewModel);
+            AdditionForHistory(viewModel.VisibleBtnBack);
         }
+        
+        public void OpnCharityListPage()
+        {
+            CharityListPageViewModel viewModel = new CharityListPageViewModel(this);
+            Router.Navigate.Execute(viewModel);
+            AdditionForHistory(viewModel.VisibleBtnBack);
+        } 
 
         public void Back()
         {
             Router.NavigateBack.Execute();
-            SetVisibleBtnBack(GetLastVisibleBtnBack(Visibility));
+            SetVisibleBtnBack(GetLastHistory());
         }
 
+        private void AdditionForHistory(bool visible)
+        {
+            VisibilityHistory.Add(visible);
+            SetVisibleBtnBack(visible);
+        }
+        private bool GetLastHistory()
+        {
+            VisibilityHistory.RemoveAt(VisibilityHistory.Count - 1);
+            return VisibilityHistory[^1];
+        }
         private void SetVisibleBtnBack(bool visible)
         {
             VisibleBtnBack = visible; 
-        }
-
-        private void SetVisibilityBtnBack(byte[] visibility, bool visible)
-        {
-            byte byteVisible = (byte) (visible ? 1 : 0);
-            if (visibility[0] == 2) visibility[0] = byteVisible;
-            else if (visibility[1] == 2) visibility[1] = byteVisible;
-            else
-            {
-                byte buf = visibility[1];
-                visibility[0] = buf;
-                visibility[1] = byteVisible;
-            }
-        }
-        private bool GetLastVisibleBtnBack(byte[] visibility)
-        {
-            bool visible = visibility[0] == 1;
-            SetVisibilityBtnBack(Visibility, visible);
-            return visible;
         }
     }
 }

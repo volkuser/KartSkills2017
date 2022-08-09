@@ -30,6 +30,8 @@ namespace App
                 => new ConfirmationOfSponsorshipPage());
             Locator.CurrentMutable.Register<IViewFor<DetailedInformationPageViewModel>>(() 
                 => new DetailedInformationPage());
+            Locator.CurrentMutable.Register<IViewFor<CharityListPageViewModel>>(() 
+                => new CharityListPage());
 
             new MainWindow { DataContext = Locator.Current.GetService<IScreen>() }.Show();
             

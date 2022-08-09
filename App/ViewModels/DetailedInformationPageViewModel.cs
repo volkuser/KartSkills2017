@@ -6,7 +6,7 @@ namespace App.ViewModels;
 
 public class DetailedInformationPageViewModel : ViewModelBase, IRoutableViewModel
 {
-    public string UrlPathSegment => "/confirmationOfSponsorship";
+    public string UrlPathSegment => "/detailedInformation";
     public IScreen HostScreen { get; }
     
     public bool VisibleBtnBack { get; } = true;
@@ -19,5 +19,6 @@ public class DetailedInformationPageViewModel : ViewModelBase, IRoutableViewMode
     {
         HostScreen = screen ?? Locator.Current.GetService<IScreen>();
 
+        OnClickBtnListOfCharities = ReactiveCommand.Create(() => container.OpnCharityListPage());
     }
 }

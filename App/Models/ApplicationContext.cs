@@ -9,15 +9,17 @@ public sealed class ApplicationContext : DbContext
     public DbSet<Country>? Countries { get; set; }
     public DbSet<Sponsorship>? Sponsorships { get; set; }
     public DbSet<Racer>? Racers { get; set; }
+    public DbSet<Charity>? Charities { get; set; }
     
-    public ApplicationContext()
-    {
-        Database.EnsureCreated();
-    }
+    public ApplicationContext() { }
+    
+    public ApplicationContext(DbContextOptions<ApplicationContext> options)
+        : base(options) { }
     
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseMySql("server=localhost;user=root;password=iuh;database=KartSkills2017;", 
-            new MySqlServerVersion(new Version(15, 1)));
+        if (!optionsBuilder.IsConfigured)
+            optionsBuilder.UseMySql("server=localhost;user=root;password=iuh;database=KartSkills2017;", 
+                new MySqlServerVersion(new Version(15, 1)));
     }
 }
