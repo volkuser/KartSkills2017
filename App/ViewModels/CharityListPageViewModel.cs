@@ -30,7 +30,11 @@ public class CharityListPageViewModel : ViewModelBase, IRoutableViewModel
     {
         foreach (var charity in charities)
         {
-            string fileName = "/Assets/Images/CharityLogos/" + charity.Charity_Logo;
+            string fileName;
+            if (charity.Charity_Logo.Equals("Red-Cross.png"))
+                fileName = "/Assets/Images/CharityLogos/the-red-cross-logo.png";
+            else
+                fileName = "/Assets/Images/CharityLogos/" + charity.Charity_Logo;
             charity.FullCharity_Logo = fileName;
         }
     }

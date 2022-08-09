@@ -11,14 +11,14 @@ public class MainMenuPageViewModel : ViewModelBase, IRoutableViewModel
     
     public bool VisibleBtnBack { get; } = false;
 
-    private ICommand OnClickOpnSponsorOfRacersPage { get; set; }
-    private ICommand OnClickOpnDetailedInformationPage { get; set; }
+    private ICommand OnClickBtnSponsorOfRacersPage { get; set; }
+    private ICommand OnClickBtnDetailedInformationPage { get; set; }
 
     public MainMenuPageViewModel(IPageNavigation container, IScreen? screen = null)
     {
         HostScreen = screen ?? Locator.Current.GetService<IScreen>();
         
-        OnClickOpnSponsorOfRacersPage = ReactiveCommand.Create(() => container.OpnSponsorOfRacersPage());
-        OnClickOpnDetailedInformationPage = ReactiveCommand.Create(() => container.OpnDetailedInformationPage());
+        OnClickBtnSponsorOfRacersPage = ReactiveCommand.Create(() => container.OpnSponsorOfRacersPage());
+        OnClickBtnDetailedInformationPage = ReactiveCommand.Create(() => container.OpnDetailedInformationPage());
     }
 }

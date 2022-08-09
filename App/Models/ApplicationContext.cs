@@ -10,6 +10,7 @@ public sealed class ApplicationContext : DbContext
     public DbSet<Sponsorship>? Sponsorships { get; set; }
     public DbSet<Racer>? Racers { get; set; }
     public DbSet<Charity>? Charities { get; set; }
+    public DbSet<User>? Users { get; set; }
     
     public ApplicationContext() { }
     

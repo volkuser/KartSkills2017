@@ -34,11 +34,11 @@ public class SponsorOfRacersPageViewModel : ViewModelBase, IRoutableViewModel
     private Racer Racer { get; set; }
     private ObservableCollection<Racer> Racers { get; set; }
     // card
-    public string Card { get; set; }
-    public string CardNumber { get; set; }
-    public string ExpireDateMonth { get; set; } = DateTime.Today.Month.ToString();
-    public string ExpireDateYear { get; set; } = DateTime.Today.Year.ToString();
-    public string CVC { get; set; }
+    private string Card { get; set; }
+    private string CardNumber { get; set; }
+    private string ExpireDateMonth { get; set; } = DateTime.Today.Month.ToString();
+    private string ExpireDateYear { get; set; } = DateTime.Today.Year.ToString();
+    private string CVC { get; set; }
 
     private string? NameOfFund
     {

@@ -4,6 +4,7 @@ using System.Runtime.Serialization;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using App.Models;
+using App.Views.Pages;
 using ReactiveUI;
 
 namespace App.ViewModels
@@ -109,6 +110,34 @@ namespace App.ViewModels
             Router.Navigate.Execute(viewModel);
             AdditionForHistory(viewModel.VisibleBtnBack);
         } 
+        
+        public void OpnAuthorizationMenuPage()
+        {
+            AuthorizationMenuPageViewModel viewModel = new AuthorizationMenuPageViewModel(this);
+            Router.Navigate.Execute(viewModel);
+            AdditionForHistory(viewModel.VisibleBtnBack);
+        }
+        
+        public void OpnRacerMenuPage()
+        {
+            RacerMenuPageViewModel viewModel = new RacerMenuPageViewModel(this);
+            Router.Navigate.Execute(viewModel);
+            AdditionForHistory(viewModel.VisibleBtnBack);
+        }
+        
+        public void OpnCoordinatorMenuPage()
+        {
+            CoordinatorMenuPageViewModel viewModel = new CoordinatorMenuPageViewModel(this);
+            Router.Navigate.Execute(viewModel);
+            AdditionForHistory(viewModel.VisibleBtnBack);
+        }
+        
+        public void OpnAdministratorMenuPage()
+        {
+            AdministratorMenuPageViewModel viewModel = new AdministratorMenuPageViewModel(this);
+            Router.Navigate.Execute(viewModel);
+            AdditionForHistory(viewModel.VisibleBtnBack);
+        }
 
         public void Back()
         {
