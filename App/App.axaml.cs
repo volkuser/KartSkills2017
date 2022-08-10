@@ -32,10 +32,13 @@ namespace App
                 => new DetailedInformationPage());
             Locator.CurrentMutable.Register<IViewFor<CharityListPageViewModel>>(() 
                 => new CharityListPage());
-            Locator.CurrentMutable.Register<IViewFor<AuthorizationMenuPageViewModel>>(() => new AuthorizationMenuPage());
+            Locator.CurrentMutable.Register<IViewFor<AuthorizationMenuPageViewModel>>(() 
+                => new AuthorizationMenuPage());
             Locator.CurrentMutable.Register<IViewFor<RacerMenuPageViewModel>>(() => new RacerMenuPage());
-            Locator.CurrentMutable.Register<IViewFor<CoordinatorMenuPageViewModel>>(() => new CoordinatorMenuPage());
-            Locator.CurrentMutable.Register<IViewFor<AdministratorMenuPageViewModel>>(() => new AdministratorMenuPage());
+            Locator.CurrentMutable.Register<IViewFor<CoordinatorMenuPageViewModel>>(() 
+                => new CoordinatorMenuPage());
+            Locator.CurrentMutable.Register<IViewFor<AdministratorMenuPageViewModel>>(() 
+                => new AdministratorMenuPage());
 
             new MainWindow { DataContext = Locator.Current.GetService<IScreen>() }.Show();
             

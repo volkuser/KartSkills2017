@@ -1,3 +1,6 @@
+using System.Windows.Input;
+using App.Models;
+using App.Views.Pages;
 using ReactiveUI;
 using Splat;
 
@@ -7,9 +10,17 @@ public class RacerMenuPageViewModel : ViewModelBase, IRoutableViewModel
 {
     public string UrlPathSegment => "racerMenu";
     public IScreen HostScreen { get; }
+    
+    private ICommand OnClickBtnContacts { get; set; } 
+    
+    private User CurrentUser { get; set; }
 
-    public RacerMenuPageViewModel(IScreen? screen = null)
+    public RacerMenuPageViewModel(User user, IPageNavigation container, IScreen? screen = null)
     {
         HostScreen = screen ?? Locator.Current.GetService<IScreen>();
+
+        CurrentUser = user;
+        OnClickBtnContacts = ReactiveCommand.CreateFromTask(async
+            => container.OpnInformationAboutContactsWindow(CurrentUser.Email));
     }
 }

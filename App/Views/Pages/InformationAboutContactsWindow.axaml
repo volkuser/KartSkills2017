@@ -1,0 +1,31 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" x:Class="App.Views.Pages.InformationAboutContactsWindow"
+        Icon="/Assets/Images/checkered-flag-sports-tool.ico"
+        Title="Информация о контактах" WindowStartupLocation="CenterScreen"
+        Height="400" Width="800" MinHeight="400" MinWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="1" Classes="h3" 
+                   VerticalAlignment="Center" HorizontalAlignment="Center">
+            Контакты</TextBlock>
+        <StackPanel Grid.Row="2" Orientation="Horizontal"
+                    VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock FontSize="24" Text="Телефон:" FontWeight="Bold"/>
+            <TextBlock FontSize="24" Text="{Binding Phone}"/>
+        </StackPanel>
+        <StackPanel Grid.Row="3" Orientation="Horizontal"
+                    VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock FontSize="24" Text="Почта:" FontWeight="Bold"/>
+            <TextBlock FontSize="24" Text="{Binding Email}"/>
+        </StackPanel>
+    </Grid> 
+</Window>

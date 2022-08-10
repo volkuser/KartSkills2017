@@ -1,4 +1,3 @@
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
 using App.Models;
@@ -16,9 +15,9 @@ public class AuthorizationMenuPageViewModel : ViewModelBase, IRoutableViewModel
     
     private ICommand OnClickBtnCancel { get; set; }
     private ICommand OnClickBtnLogin { get; set; }
-    
-    private string Email { get; set; }
-    private string Password { get; set; }
+
+    private string Email { get; set; } = "L.Jeferson@gmail.com";
+    private string Password { get; set; } = "$1Qr3%9%r";
     
     private User? User { get; set; }
 
@@ -50,7 +49,7 @@ public class AuthorizationMenuPageViewModel : ViewModelBase, IRoutableViewModel
                         break;
                     // racer
                     case 'R':
-                        container.OpnRacerMenuPage();
+                        container.OpnRacerMenuPage(user);
                         break;
                 }
             }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reactive.Linq;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -121,11 +122,19 @@ namespace App.ViewModels
             AdditionForHistory(false);
         }
         
-        public void OpnRacerMenuPage()
+        public void OpnRacerMenuPage(User user)
         {
-            RacerMenuPageViewModel viewModel = new RacerMenuPageViewModel(this);
+            RacerMenuPageViewModel viewModel = new RacerMenuPageViewModel(user, this);
             Router.Navigate.Execute(viewModel);
             AdditionForHistory(false, true);
+        }
+        
+        public Interaction<InformationAboutContactsWindowViewModel, InformationAboutContactsWindowViewModel?> ShowDialog { get; }
+            = new ();
+        public async Task OpnInformationAboutContactsWindow(string email)
+        {
+            var viewModel = new InformationAboutContactsWindowViewModel(email);
+            var result = await ShowDialog.Handle(viewModel);
         }
         
         public void OpnCoordinatorMenuPage()
