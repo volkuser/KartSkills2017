@@ -1,4 +1,3 @@
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace App.Models;
@@ -14,7 +13,9 @@ public class User
     public string First_Name { get; set; }
     [Column("Last_Name")]
     public string Last_Name { get; set; }
-    [Key]
+    
     [Column("ID_Role")]
     public char ID_Role { get; set; }
+    [ForeignKey("ID_Role")]
+    public Role Role { get; set; }
 }

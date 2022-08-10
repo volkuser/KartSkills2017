@@ -13,6 +13,7 @@ public class MainMenuPageViewModel : ViewModelBase, IRoutableViewModel
 
     private ICommand OnClickBtnSponsorOfRacersPage { get; set; }
     private ICommand OnClickBtnDetailedInformationPage { get; set; }
+    private ICommand OnClickBtnOpnAuthorizationMenuPage { get; set; }
 
     public MainMenuPageViewModel(IPageNavigation container, IScreen? screen = null)
     {
@@ -20,5 +21,6 @@ public class MainMenuPageViewModel : ViewModelBase, IRoutableViewModel
         
         OnClickBtnSponsorOfRacersPage = ReactiveCommand.Create(() => container.OpnSponsorOfRacersPage());
         OnClickBtnDetailedInformationPage = ReactiveCommand.Create(() => container.OpnDetailedInformationPage());
+        OnClickBtnOpnAuthorizationMenuPage = ReactiveCommand.Create(() => container.OpnAuthorizationMenuPage());
     }
 }

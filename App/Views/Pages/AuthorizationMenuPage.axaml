@@ -3,5 +3,45 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" x:Class="App.Views.Pages.AuthorizationMenuPage">
-    Welcome to Avalonia!
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.7*"/>
+            <RowDefinition Height="1.3*"/>
+            <RowDefinition Height="2.5*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Classes="h3"
+                   VerticalAlignment="Center" HorizontalAlignment="Center">
+            Форма авторизации</TextBlock>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.9*"/>
+                <ColumnDefinition Width="0.1*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0" FontSize="28" Text="Email:"
+                       VerticalAlignment="Center" HorizontalAlignment="Right"/>
+            <TextBox Grid.Row="0" Grid.Column="2" FontSize="28" Text="{Binding Login}"
+                     VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+            <TextBlock Grid.Row="1" Grid.Column="0" FontSize="28" Text="Password:"
+                       VerticalAlignment="Center" HorizontalAlignment="Right"/>
+            <TextBox Grid.Row="1" Grid.Column="2" FontSize="28" Text="{Binding Password}"
+                     VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="0.3*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Content="Login" Command="{Binding OnClickBtnLogin}"
+                    VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="28"/>
+            <Button Grid.Column="2" Content="Cancel" Command="{Binding OnClickBtnCancel}"
+                    VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="28"/>
+        </Grid>
+    </Grid>    
 </UserControl>

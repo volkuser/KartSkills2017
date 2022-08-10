@@ -1,3 +1,4 @@
+using System.Collections.ObjectModel;
 using System.Windows.Input;
 using App.Models;
 using ReactiveUI;
@@ -31,6 +32,7 @@ public class AuthorizationMenuPageViewModel : ViewModelBase, IRoutableViewModel
 
     private void UserLogin(string login, string password, ApplicationContext db, IPageNavigation container)
     {
+        ObservableCollection<User> users = new(db.Users);
         
     }
 }
