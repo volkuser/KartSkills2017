@@ -129,7 +129,8 @@ namespace App.ViewModels
             AdditionForHistory(false, true);
         }
         
-        public Interaction<InformationAboutContactsWindowViewModel, InformationAboutContactsWindowViewModel?> ShowDialog { get; }
+        public Interaction<InformationAboutContactsWindowViewModel, 
+            InformationAboutContactsWindowViewModel?> ShowDialog { get; }
             = new ();
         public async Task OpnInformationAboutContactsWindow(string email)
         {
@@ -149,6 +150,14 @@ namespace App.ViewModels
             AdministratorMenuPageViewModel viewModel = new AdministratorMenuPageViewModel(this);
             Router.Navigate.Execute(viewModel);
             AdditionForHistory(false, true);
+        }
+
+        public void OpnVerificationOfPreviouslyRacersPage()
+        {
+            VerificationOfPreviouslyEnteredRacersPageViewModel viewModel 
+                = new VerificationOfPreviouslyEnteredRacersPageViewModel(this);
+            Router.Navigate.Execute(viewModel);
+            AdditionForHistory(true);
         }
 
         public void Back()

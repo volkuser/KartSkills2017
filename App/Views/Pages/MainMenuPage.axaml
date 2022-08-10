@@ -24,6 +24,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Button Grid.Row="0" Grid.Column="0" x:Name="BtnRiderRegistration"
+                Command="{Binding OnClickBtnVerificationOfPreviouslyEnteredRacersPage}"
                 HorizontalAlignment="Center" VerticalAlignment="Bottom"
                 Height="150" Width="150" Background="{DynamicResource ImgHelmet}"/>
         <TextBlock Grid.Row="1" Grid.Column="0" Text="Регистрация гонщика"

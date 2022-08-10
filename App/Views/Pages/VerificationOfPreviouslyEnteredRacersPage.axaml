@@ -1,0 +1,29 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" x:Class="App.Views.Pages.VerificationOfPreviouslyEnteredRacersPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2.2*"/>
+            <RowDefinition Height="1.8*"/>
+            <RowDefinition Height="6*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2.5*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="2.5*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Classes="h3" 
+                   VerticalAlignment="Bottom" HorizontalAlignment="Center">
+            Участвовали ранее?</TextBlock>
+        <Button Grid.Row="1" Grid.Column="0" Height="55" Width="120" Content="Да"
+                Command="{Binding OnClickBtnYes}"
+                HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="26"
+                HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Button Grid.Row="1" Grid.Column="2" Height="55" Width="120" Content="Нет"
+                Command="{Binding OnClickBtnNo}"
+                HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="26"
+                HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+    </Grid>
+</UserControl>

@@ -20,8 +20,10 @@
         <Button Grid.Row="1" Grid.Column="0" Content="Kart Skills 2017"
                 Command="{Binding OnClickBtnKartSkills2017}" Classes="SubMenu"/>
         <Button Grid.Row="1" Grid.Column="1" Classes="SubMenu"
-                Command="{Binding OnClickBtnListOfCharities}">Список благотворительных
-        организаций</Button>
+                Command="{Binding OnClickBtnListOfCharities}">
+            <TextBlock TextWrapping="WrapWithOverflow" TextAlignment="Center">
+                Список благотворительных организаций</TextBlock>
+        </Button>
         <Button Grid.Row="2" Grid.Column="0" Content="Предыдущие результаты" 
                 Command="{Binding OnClickBtnPreviousResults}" Classes="SubMenu"/>
     </Grid>

@@ -15,6 +15,7 @@ public interface IPageNavigation
     public Task OpnInformationAboutContactsWindow(string email);
     public void OpnCoordinatorMenuPage();
     public void OpnAdministratorMenuPage();
+    public void OpnVerificationOfPreviouslyRacersPage();
 
     public void Back();
 }

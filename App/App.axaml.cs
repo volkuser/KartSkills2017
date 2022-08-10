@@ -39,6 +39,8 @@ namespace App
                 => new CoordinatorMenuPage());
             Locator.CurrentMutable.Register<IViewFor<AdministratorMenuPageViewModel>>(() 
                 => new AdministratorMenuPage());
+            Locator.CurrentMutable.Register<IViewFor<VerificationOfPreviouslyEnteredRacersPageViewModel>>(() 
+                => new VerificationOfPreviouslyEnteredRacersPage());
 
             new MainWindow { DataContext = Locator.Current.GetService<IScreen>() }.Show();
             

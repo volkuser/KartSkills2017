@@ -19,8 +19,10 @@
             Меню администратора</TextBlock>
         <Button Grid.Row="1" Grid.Column="0" Content="Пользователи" Classes="SubMenu"/>
         <Button Grid.Row="1" Grid.Column="1" Content="Волонтеры" Classes="SubMenu"/>
-        <Button Grid.Row="2" Grid.Column="0" Classes="SubMenu">Благотворительные
-            организации</Button>
+        <Button Grid.Row="2" Grid.Column="0" Classes="SubMenu">
+            <TextBlock TextAlignment="Center" TextWrapping="WrapWithOverflow">
+                Благотворительные организации</TextBlock>
+        </Button>
         <Button Grid.Row="2" Grid.Column="1" Content="Инвентарь" Classes="SubMenu"/>
     </Grid>
 </UserControl>
