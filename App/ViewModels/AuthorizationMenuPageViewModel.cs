@@ -1,4 +1,5 @@
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Input;
 using App.Models;
 using ReactiveUI;
@@ -13,13 +14,13 @@ public class AuthorizationMenuPageViewModel : ViewModelBase, IRoutableViewModel
 
     private ApplicationContext Db { get; set; }
     
-    public bool VisibleBtnBack { get; } = false;
-    
     private ICommand OnClickBtnCancel { get; set; }
     private ICommand OnClickBtnLogin { get; set; }
     
-    private string Login { get; set; }
+    private string Email { get; set; }
     private string Password { get; set; }
+    
+    private User? User { get; set; }
 
     public AuthorizationMenuPageViewModel(IPageNavigation container, IScreen? screen = null)
     {
@@ -27,12 +28,38 @@ public class AuthorizationMenuPageViewModel : ViewModelBase, IRoutableViewModel
         Db = Singleton.GetInstance();
 
         OnClickBtnCancel = ReactiveCommand.Create(() => container.Back());
-        OnClickBtnLogin = ReactiveCommand.Create(() => UserLogin(Login, Password, Db, container));
+        OnClickBtnLogin = ReactiveCommand.Create(() => UserLogin(Email, Password, Db, container, User));
     }
 
-    private void UserLogin(string login, string password, ApplicationContext db, IPageNavigation container)
+    private void UserLogin(string email, string password, ApplicationContext db, IPageNavigation container, User user)
     {
-        ObservableCollection<User> users = new(db.Users);
-        
+        user = db.Users.FirstOrDefault(x => x.Email.Equals(email));
+        if (user != null)
+        {
+            if (user.Password.Equals(password))
+            {
+                switch (user.ID_Role)
+                {
+                    // administrator
+                    case 'A':
+                        container.OpnAdministratorMenuPage();
+                        break;
+                    // coordinator
+                    case 'C':
+                        container.OpnCoordinatorMenuPage();
+                        break;
+                    // racer
+                    case 'R':
+                        container.OpnRacerMenuPage();
+                        break;
+                }
+            }
+            else
+            {
+                var messageBox = MessageBox.Avalonia.MessageBoxManager
+                    .GetMessageBoxStandardWindow("Ошибка входа", "Неверный пароль");
+                messageBox.Show();
+            }
+        } 
     }
 }

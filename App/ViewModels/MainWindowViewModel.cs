@@ -4,7 +4,6 @@ using System.Runtime.Serialization;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using App.Models;
-using App.Views.Pages;
 using ReactiveUI;
 
 namespace App.ViewModels
@@ -15,11 +14,14 @@ namespace App.ViewModels
         private RoutingState _router = new();
 
         // commands
-        private ICommand OnClickBack { get; set; }
+        private ICommand OnClickBtnBack { get; set; }
+        private ICommand OnClickBtnLogout { get; set; }
         
         // properties of element on view
         private bool VisibleBtnBack { get; set; }
-        private List<bool> VisibilityHistory { get; set; } = new();
+        private bool VisibleBtnLogout { get; set; }
+        private List<bool> VisibilityBtnBackHistory { get; set; } = new();
+        private List<bool> VisibilityBtnLogoutHistory { get; set; } = new();
 
         // other
         private string? _displayTimer;
@@ -71,21 +73,22 @@ namespace App.ViewModels
             Singleton.GetInstance();
             OpnMainMenuPage();
 
-            OnClickBack = ReactiveCommand.Create(Back);
+            OnClickBtnBack = ReactiveCommand.Create(Back);
+            OnClickBtnLogout = ReactiveCommand.Create(OpnAuthorizationMenuPage);
         }
 
         public void OpnMainMenuPage()
         {
             MainMenuPageViewModel viewModel = new MainMenuPageViewModel(this);
             Router.Navigate.Execute(viewModel);
-            AdditionForHistory(viewModel.VisibleBtnBack);
+            AdditionForHistory(false);
         }
 
         public void OpnSponsorOfRacersPage()
         {
             SponsorOfRacersPageViewModel viewModel = new SponsorOfRacersPageViewModel(this);
             Router.Navigate.Execute(viewModel);
-            AdditionForHistory(viewModel.VisibleBtnBack);
+            AdditionForHistory(true);
         }
 
         public void OpnConfirmationOfSponsorshipPage(string amountInDollars, Racer racer, string nameOfFund)
@@ -93,7 +96,7 @@ namespace App.ViewModels
             ConfirmationOfSponsorshipPageViewModel viewModel 
                 = new ConfirmationOfSponsorshipPageViewModel(this, amountInDollars, racer, nameOfFund);
             Router.Navigate.Execute(viewModel);
-            AdditionForHistory(viewModel.VisibleBtnBack);
+            AdditionForHistory(false);
         }
 
         public void OpnDetailedInformationPage()
@@ -101,63 +104,75 @@ namespace App.ViewModels
             DetailedInformationPageViewModel viewModel 
                 = new DetailedInformationPageViewModel(this);
             Router.Navigate.Execute(viewModel);
-            AdditionForHistory(viewModel.VisibleBtnBack);
+            AdditionForHistory(true);
         }
         
         public void OpnCharityListPage()
         {
             CharityListPageViewModel viewModel = new CharityListPageViewModel(this);
             Router.Navigate.Execute(viewModel);
-            AdditionForHistory(viewModel.VisibleBtnBack);
+            AdditionForHistory(true);
         } 
         
         public void OpnAuthorizationMenuPage()
         {
             AuthorizationMenuPageViewModel viewModel = new AuthorizationMenuPageViewModel(this);
             Router.Navigate.Execute(viewModel);
-            AdditionForHistory(viewModel.VisibleBtnBack);
+            AdditionForHistory(false);
         }
         
         public void OpnRacerMenuPage()
         {
             RacerMenuPageViewModel viewModel = new RacerMenuPageViewModel(this);
             Router.Navigate.Execute(viewModel);
-            AdditionForHistory(viewModel.VisibleBtnBack);
+            AdditionForHistory(false, true);
         }
         
         public void OpnCoordinatorMenuPage()
         {
             CoordinatorMenuPageViewModel viewModel = new CoordinatorMenuPageViewModel(this);
             Router.Navigate.Execute(viewModel);
-            AdditionForHistory(viewModel.VisibleBtnBack);
+            AdditionForHistory(false, true);
         }
         
         public void OpnAdministratorMenuPage()
         {
             AdministratorMenuPageViewModel viewModel = new AdministratorMenuPageViewModel(this);
             Router.Navigate.Execute(viewModel);
-            AdditionForHistory(viewModel.VisibleBtnBack);
+            AdditionForHistory(false, true);
         }
 
         public void Back()
         {
             Router.NavigateBack.Execute();
-            SetVisibleBtnBack(GetLastHistory());
+            SetVisibleBtnBack(GetLastVisibleBtnBackHistory());
+            SetVisibleBtnLogout(GetLastVisibleBtnLogoutHistory());
         }
 
-        private void AdditionForHistory(bool visible)
+        private void AdditionForHistory(bool visibleBtnBack, bool visibleBtnLogout = false)
         {
-            VisibilityHistory.Add(visible);
-            SetVisibleBtnBack(visible);
+            VisibilityBtnBackHistory.Add(visibleBtnBack);
+            SetVisibleBtnBack(visibleBtnBack);
+            VisibilityBtnLogoutHistory.Add(visibleBtnLogout);
+            SetVisibleBtnLogout(visibleBtnLogout);
         }
-        private bool GetLastHistory()
+        private bool GetLastVisibleBtnBackHistory()
         {
-            VisibilityHistory.RemoveAt(VisibilityHistory.Count - 1);
-            return VisibilityHistory[^1];
+            VisibilityBtnBackHistory.RemoveAt(VisibilityBtnBackHistory.Count - 1);
+            return VisibilityBtnBackHistory[^1];
+        }
+        private bool GetLastVisibleBtnLogoutHistory()
+        {
+            VisibilityBtnLogoutHistory.RemoveAt(VisibilityBtnLogoutHistory.Count - 1);
+            return VisibilityBtnLogoutHistory[^1];
         }
         private void SetVisibleBtnBack(bool visible)
         {
             VisibleBtnBack = visible; 
+        }
+        private void SetVisibleBtnLogout(bool visible)
+        {
+            VisibleBtnLogout = visible; 
         }
     }
 }

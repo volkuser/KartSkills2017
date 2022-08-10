@@ -3,5 +3,24 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" x:Class="App.Views.Pages.AdministratorMenuPage">
-    Welcome, administrator!
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="1.7*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Classes="h3" 
+                   VerticalAlignment="Center" HorizontalAlignment="Center">
+            Меню администратора</TextBlock>
+        <Button Grid.Row="1" Grid.Column="0" Content="Пользователи" Classes="SubMenu"/>
+        <Button Grid.Row="1" Grid.Column="1" Content="Волонтеры" Classes="SubMenu"/>
+        <Button Grid.Row="2" Grid.Column="0" Classes="SubMenu">Благотворительные
+            организации</Button>
+        <Button Grid.Row="2" Grid.Column="1" Content="Инвентарь" Classes="SubMenu"/>
+    </Grid>
 </UserControl>

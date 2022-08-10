@@ -8,8 +8,6 @@ public class MainMenuPageViewModel : ViewModelBase, IRoutableViewModel
 {
     public string UrlPathSegment => "/mainMenu";
     public IScreen HostScreen { get; }
-    
-    public bool VisibleBtnBack { get; } = false;
 
     private ICommand OnClickBtnSponsorOfRacersPage { get; set; }
     private ICommand OnClickBtnDetailedInformationPage { get; set; }

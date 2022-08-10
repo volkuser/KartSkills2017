@@ -7,8 +7,6 @@ public class AdministratorMenuPageViewModel : ViewModelBase, IRoutableViewModel
 {
     public string UrlPathSegment => "administratorMenu";
     public IScreen HostScreen { get; }
-        
-    public bool VisibleBtnBack { get; } = false;
 
     public AdministratorMenuPageViewModel(IScreen? screen = null)
     {

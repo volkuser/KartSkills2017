@@ -3,5 +3,25 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" x:Class="App.Views.Pages.RacerMenuPage">
-    Welcome, racer!
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="0.7*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Classes="h3" 
+                   VerticalAlignment="Center" HorizontalAlignment="Center">
+            Меню гонщика</TextBlock>
+        <Button Grid.Row="1" Grid.Column="0" Content="Регистрация на гонку" Classes="SubMenu"/>
+        <Button Grid.Row="1" Grid.Column="1" Content="Мои результаты" Classes="SubMenu"/>
+        <Button Grid.Row="2" Grid.Column="0" Content="Редактирование профиля" Classes="SubMenu"/>
+        <Button Grid.Row="2" Grid.Column="1" Content="Мой спонсор" Classes="SubMenu"/>
+        <Button Grid.Row="3" Grid.Column="0" Content="Контакты" Classes="SubMenu"/>
+    </Grid>
 </UserControl>

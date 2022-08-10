@@ -3,15 +3,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" x:Class="App.Views.Pages.DetailedInformationPage">
-    <UserControl.Styles>
-        <Style Selector="Button">
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="Height" Value="85"/>
-            <Setter Property="Width" Value="400"/>
-        </Style>
-    </UserControl.Styles>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -26,13 +17,12 @@
         <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Classes="h3" 
                    VerticalAlignment="Center" HorizontalAlignment="Center">
             Подробная информация</TextBlock>
-        <Button Grid.Row="1" Grid.Column="0" Content="Kart Skills 2017" VerticalAlignment="Center"
-                Command="{Binding OnClickBtnKartSkills2017}"/>
-        <Button Grid.Row="1" Grid.Column="1" VerticalAlignment="Center"
-                Command="{Binding OnClickBtnListOfCharities}">
-            Список благотворительных
-            организаций</Button>
-        <Button Grid.Row="2" Grid.Column="0" Content="Предыдущие результаты" VerticalAlignment="Bottom"
-                Command="{Binding OnClickBtnPreviousResults}"/>
+        <Button Grid.Row="1" Grid.Column="0" Content="Kart Skills 2017"
+                Command="{Binding OnClickBtnKartSkills2017}" Classes="SubMenu"/>
+        <Button Grid.Row="1" Grid.Column="1" Classes="SubMenu"
+                Command="{Binding OnClickBtnListOfCharities}">Список благотворительных
+        организаций</Button>
+        <Button Grid.Row="2" Grid.Column="0" Content="Предыдущие результаты" 
+                Command="{Binding OnClickBtnPreviousResults}" Classes="SubMenu"/>
     </Grid>
 </UserControl>

@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace App.Models;
@@ -5,6 +6,7 @@ namespace App.Models;
 [Table("user")]
 public class User
 {
+    [Key]
     [Column("Email")]
     public string Email { get; set; }
     [Column("Password")]

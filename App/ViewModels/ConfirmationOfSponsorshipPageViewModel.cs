@@ -10,8 +10,6 @@ public class ConfirmationOfSponsorshipPageViewModel : ViewModelBase, IRoutableVi
     public string UrlPathSegment => "/confirmationOfSponsorship";
     public IScreen HostScreen { get; }
     
-    public bool VisibleBtnBack { get; } = false;
-    
     private ICommand OnClickBtnBack { get; set; }
     
     public string AmountInDollars { get; set; }

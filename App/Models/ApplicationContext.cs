@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
 
 namespace App.Models;
@@ -22,5 +24,14 @@ public sealed class ApplicationContext : DbContext
         if (!optionsBuilder.IsConfigured)
             optionsBuilder.UseMySql("server=localhost;user=root;password=iuh;database=KartSkills2017;", 
                 new MySqlServerVersion(new Version(15, 1)));
+    }
+    
+    public static bool IsValid(object args)
+    {
+        var results = new List<ValidationResult>();
+        var context = new ValidationContext(args);
+        if (!Validator.TryValidateObject(args, context, results, true))
+            return false;
+        return true;
     }
 }

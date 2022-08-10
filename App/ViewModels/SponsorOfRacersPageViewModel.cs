@@ -13,8 +13,6 @@ public class SponsorOfRacersPageViewModel : ViewModelBase, IRoutableViewModel
     public IScreen HostScreen { get; }
     private ApplicationContext Db;
     
-    public bool VisibleBtnBack { get; } = true;
-    
     // commands
     private ICommand OnClickAmountPlus { get; set; }
     private ICommand OnClickAmountMinus { get; set; }
@@ -103,7 +101,6 @@ public class SponsorOfRacersPageViewModel : ViewModelBase, IRoutableViewModel
         ApplicationContext db, string sponsorName, int amount, IPageNavigation container, string amointInDollars,
         Racer racer, string nameOfFund)
     {
-        /*string message = "Данные карты не валидны!";*/
         bool add = false;
         try
         {
@@ -111,7 +108,7 @@ public class SponsorOfRacersPageViewModel : ViewModelBase, IRoutableViewModel
             int expireDateMonthInInt = Int32.Parse(expireDateMonth);
             int expireDateYearInInt = Int32.Parse(expireDateYear);
             Card card = new Card(cardOwner, cardNumber, expireDateMonthInInt, expireDateYearInInt, cvcInInt);
-            if (card.IsValid()) /*message = "Спасибо за спонсорство!";*/
+            if (card.IsValid())
                 add = true;
         } catch (Exception e) { /*ignored*/ }
 
@@ -126,9 +123,5 @@ public class SponsorOfRacersPageViewModel : ViewModelBase, IRoutableViewModel
             db.SaveChanges();
             container.OpnConfirmationOfSponsorshipPage(amointInDollars, racer, nameOfFund);
         }
-        
-        /*var messageBox = MessageBox.Avalonia.MessageBoxManager
-            .GetMessageBoxStandardWindow("Спонсорство", message);
-        messageBox.Show();*/
     }
 }    

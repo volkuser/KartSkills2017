@@ -1,5 +1,4 @@
 using System.Collections.ObjectModel;
-using System.IO;
 using App.Models;
 using ReactiveUI;
 using Splat;
@@ -11,8 +10,6 @@ public class CharityListPageViewModel : ViewModelBase, IRoutableViewModel
     public string UrlPathSegment => "/charityList";
     public IScreen HostScreen { get; }
     private ApplicationContext Db;
-    
-    public bool VisibleBtnBack { get; } = true;
     
     private ObservableCollection<Charity> Charities { get; set; }
 
