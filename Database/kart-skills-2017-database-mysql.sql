@@ -265,7 +265,8 @@ CREATE TABLE `racer` (
   `Last_Name` varchar(50) NOT NULL,
   `Gender` char(1) NOT NULL,
   `DateOfBirth` date NOT NULL,
-  `ID_Country` char(3) NOT NULL
+  `ID_Country` char(3) NOT NULL,
+  `FileId` int NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -680,7 +681,8 @@ ALTER TABLE `race`
 ALTER TABLE `racer`
   ADD PRIMARY KEY (`ID_Racer`),
   ADD KEY `ID_Country` (`ID_Country`),
-  ADD KEY `FK_Racer_Gender` (`Gender`);
+  ADD KEY `FK_Racer_Gender` (`Gender`),
+  ADD KEY `FileId` (`FileId`);
 
 --
 -- Индексы таблицы `registration`

@@ -43,6 +43,17 @@ CREATE TABLE `Timesheet`(
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `Timesheet`
+--
+create TABLE `File`(
+    `FileId` integer NOT NULL,
+    `FileName` varchar(250) NOT NULL,
+    `File` longblob NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Индексы таблицы `Position`
 --
 
@@ -65,6 +76,13 @@ ALTER TABLE `Timesheet`
   ADD PRIMARY KEY (`Timesheetid`),
   ADD KEY `Staffid` (`Staffid`);
 
+--
+-- Индексы таблицы `Position`
+--
+
+ALTER TABLE `File`
+  ADD PRIMARY KEY (`FileId`);
+
 -- --------------------------------------------------------
 
 --
@@ -82,3 +100,8 @@ ALTER TABLE `Staff`
 --
 ALTER TABLE `Timesheet`
   MODIFY `Timesheetid` integer NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT для таблицы `File`
+--
+ALTER TABLE `File`
+  MODIFY `FileId` integer NOT NULL AUTO_INCREMENT;
