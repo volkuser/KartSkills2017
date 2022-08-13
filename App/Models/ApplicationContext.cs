@@ -13,6 +13,7 @@ public sealed class ApplicationContext : DbContext
     public DbSet<Racer>? Racers { get; set; }
     public DbSet<Charity>? Charities { get; set; }
     public DbSet<User>? Users { get; set; }
+    public DbSet<DbFile>? DbFiles { get; set; }
     
     public ApplicationContext() { }
     

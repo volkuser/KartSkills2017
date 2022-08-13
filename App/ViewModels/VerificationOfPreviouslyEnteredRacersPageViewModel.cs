@@ -17,6 +17,6 @@ public class VerificationOfPreviouslyEnteredRacersPageViewModel : ViewModelBase,
         HostScreen = screen ?? Locator.Current.GetService<IScreen>();
 
         OnClickBtnYes = ReactiveCommand.Create(() => container.OpnAuthorizationMenuPage());
-        //OnClickBtnNo = ReactiveCommand.Create(() => );
+        OnClickBtnNo = ReactiveCommand.Create(() => container.OpnRacerRegistrationPage());
     }
 }

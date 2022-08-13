@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Reactive;
 using System.Reactive.Linq;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using App.Models;
 using ReactiveUI;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Formats.Png;
 
 namespace App.ViewModels
 {
@@ -130,8 +134,7 @@ namespace App.ViewModels
         }
         
         public Interaction<InformationAboutContactsWindowViewModel, 
-            InformationAboutContactsWindowViewModel?> ShowDialog { get; }
-            = new ();
+            InformationAboutContactsWindowViewModel?> ShowDialog { get; } = new ();
         public async Task OpnInformationAboutContactsWindow(string email)
         {
             var viewModel = new InformationAboutContactsWindowViewModel(email);
@@ -158,6 +161,29 @@ namespace App.ViewModels
                 = new VerificationOfPreviouslyEnteredRacersPageViewModel(this);
             Router.Navigate.Execute(viewModel);
             AdditionForHistory(true);
+        }
+        
+        public void OpnRacerRegistrationPage()
+        {
+            RacerRegistrationPageViewModel viewModel = new RacerRegistrationPageViewModel(this);
+            Router.Navigate.Execute(viewModel);
+            AdditionForHistory(true);
+        }
+
+        private string PathToImage { get; set; }
+        public Interaction<Unit, string?> ShowOpenFileDialog { get; } = new ();
+        public async Task OpnOpenFileDialog()
+        {
+            var fileName = await ShowOpenFileDialog.Handle(Unit.Default);
+
+            if (fileName != null)
+            {
+                PathToImage = fileName;
+            }
+        }
+        public string GetPathToImage()
+        {
+            return PathToImage;
         }
 
         public void Back()

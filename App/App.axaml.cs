@@ -41,6 +41,8 @@ namespace App
                 => new AdministratorMenuPage());
             Locator.CurrentMutable.Register<IViewFor<VerificationOfPreviouslyEnteredRacersPageViewModel>>(() 
                 => new VerificationOfPreviouslyEnteredRacersPage());
+            Locator.CurrentMutable.Register<IViewFor<RacerRegistrationPageViewModel>>(() 
+                => new RacerRegistrationPage());
 
             new MainWindow { DataContext = Locator.Current.GetService<IScreen>() }.Show();
             

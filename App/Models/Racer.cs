@@ -27,4 +27,9 @@ public class Racer
     public string ID_Country { get; set; }
     [ForeignKey("ID_Country")]
     public Country Country { get; set; }
+    
+    [Column("FileId")] 
+    public int FileId { get; set; }
+    [ForeignKey("FileId")]
+    public DbFile File { get; set; }
 }

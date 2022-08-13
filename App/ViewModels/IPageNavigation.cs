@@ -16,6 +16,9 @@ public interface IPageNavigation
     public void OpnCoordinatorMenuPage();
     public void OpnAdministratorMenuPage();
     public void OpnVerificationOfPreviouslyRacersPage();
+    public void OpnRacerRegistrationPage();
+    public Task OpnOpenFileDialog();
+    public string GetPathToImage();
 
     public void Back();
 }
