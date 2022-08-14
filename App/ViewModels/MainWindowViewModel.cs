@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Reactive;
 using System.Reactive.Linq;
 using System.Runtime.Serialization;
@@ -8,8 +7,6 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using App.Models;
 using ReactiveUI;
-using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.Formats.Png;
 
 namespace App.ViewModels
 {

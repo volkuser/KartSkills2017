@@ -90,11 +90,11 @@
             <TextBox Grid.Row="1" Grid.Column="0" Text="{Binding PathToImage}" FontSize="22"
                      VerticalAlignment="Center" HorizontalAlignment="Stretch" IsReadOnly="True"/>
             <Button Grid.Row="1" Grid.Column="2" Content="Просмотр" FontSize="22" 
-                    Command="{Binding OnClickBtnView}"
+                    Command="{Binding OnClickBtnView}" 
                     VerticalAlignment="Center" HorizontalAlignment="Left"/>
             <TextBlock Grid.Row="2" Grid.Column="0" FontSize="22" Text="Дата рождения:"
                        VerticalAlignment="Center" HorizontalAlignment="Right"/>
-            <DatePicker Grid.Row="2" Grid.Column="2" FontSize="22"
+            <DatePicker Grid.Row="2" Grid.Column="2" FontSize="22" SelectedDate="{Binding DateOfBirth}"
                         VerticalAlignment="Center" HorizontalAlignment="Left"/>
             <TextBlock Grid.Row="3" Grid.Column="0" FontSize="22" Text="Страна:"
                        VerticalAlignment="Center" HorizontalAlignment="Right"/>

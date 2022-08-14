@@ -18,21 +18,32 @@ public class RacerRegistrationPageViewModel : ViewModelBase, IRoutableViewModel
     private ApplicationContext Db;
     
     private ICommand OnClickBtnView { get; set; }
-    private  ICommand OnClickBtnRegistration { get; set; }
+    private ICommand OnClickBtnRegistration { get; set; }
     private ICommand OnClickBtnCancel { get; set; }
     
+    // as user-racer
+    private string FirstName { get; set; }
+    private string LastName { get; set; }
+    
+    // as user
     private string Email { get; set; }
     private string Password { get; set; }
     private string RepeatPassword { get; set; }
-    private string FirstName { get; set; }
-    private string LastName { get; set; }
-
-    private string PathToImage { get; set; } 
-    private ObservableCollection<Gender> Genders { get; set; }
+    
+    // as racer
     private Gender Gender { get; set; }
-    private ObservableCollection<Country> Countries { get; set; }
+    private DateTimeOffset DateOfBirth { get; set; } = new DateTimeOffset(DateTime.Today);
     private Country Country { get; set; }
+
+    // as file
+    private string PathToImage { get; set; } 
+    
+    private ObservableCollection<Gender> Genders { get; set; }
+    private ObservableCollection<Country> Countries { get; set; }
+    
     private ObservableCollection<DbFile> DbFiles { get; set; }
+    private ObservableCollection<User> Users { get; set; }
+    private ObservableCollection<Racer> Racers { get; set; }
 
     public RacerRegistrationPageViewModel(IPageNavigation container, IScreen? screen = null)
     {
@@ -41,13 +52,14 @@ public class RacerRegistrationPageViewModel : ViewModelBase, IRoutableViewModel
         
         Genders = new(Db.Genders);
         Countries = new(Db.Countries);
+        
         DbFiles = new (Db.DbFiles);
+        Users = new (Db.Users);
+        Racers = new (Db.Racers);
         
         OnClickBtnView = ReactiveCommand.CreateFromTask(() => Task.FromResult(ViewImage(container)));
-        OnClickBtnRegistration = ReactiveCommand.Create(() =>
-        {
-            if (PathToImage != null) Registration(PathToImage, Db, DbFiles);
-        });
+        OnClickBtnRegistration = ReactiveCommand.Create(() => Registration(Db, PathToImage, DbFiles, FirstName, 
+            LastName, Email, Password, RepeatPassword, Users, Gender, DateOfBirth, Country, Racers));
         OnClickBtnCancel = ReactiveCommand.Create(() => container.Back());
     }
 
@@ -57,24 +69,68 @@ public class RacerRegistrationPageViewModel : ViewModelBase, IRoutableViewModel
         PathToImage = container.GetPathToImage();
     }
     
-    private void Registration(string fileName, ApplicationContext db, ObservableCollection<DbFile> dbFiles)
+    private void Registration(ApplicationContext db, string pathToImage, ObservableCollection<DbFile> dbFiles,
+        string firstName, string lastName, string email, string password, string repeatPassword, 
+        ObservableCollection<User> users, Gender gender, DateTimeOffset dateOfBirth, Country country,
+        ObservableCollection<Racer> racers)
     {
-        string shortFileName = fileName.Substring(fileName.LastIndexOf('/') + 1); // only unix
-        Image image = Image.Load(fileName);
-        byte[] imageData;
-        using (var ms = new MemoryStream())
+        DbFile dbFile = new DbFile();
+        if (pathToImage != null)
         {
-            image.Save(ms, new PngEncoder());
-            imageData = ms.ToArray();
+            string shortFileName = pathToImage.Substring(pathToImage.LastIndexOf('/') + 1); // only unix
+            Image image = Image.Load(pathToImage);
+            byte[] imageData;
+            using (var ms = new MemoryStream())
+            {
+                image.Save(ms, new PngEncoder());
+                imageData = ms.ToArray();
+            }
+            dbFile = new DbFile
+            {
+                FileName = shortFileName,
+                FileItself = imageData
+            };
         }
-
-        DbFile dbFile = new DbFile
+        
+        User user = new User()
         {
-            FileName = shortFileName,
-            FileItself = imageData
+            Email = email,
+            Password = password,
+            RepeatPassword = repeatPassword,
+            First_Name = firstName,
+            Last_Name = lastName,
+            ID_Role = 'R' // racer
         };
-        dbFiles.Add(dbFile);
-        db.DbFiles.Add(dbFile);
-        db.SaveChanges();
+
+        DateTime dateOfBirthInDateTime = dateOfBirth.Date;
+        Racer racer = new Racer()
+        {
+            First_Name = firstName,
+            Last_Name = lastName,
+            FullGender = gender,
+            DateOfBirth = dateOfBirthInDateTime,
+            Country = country
+        };
+
+        if (ApplicationContext.IsValid(user) && ApplicationContext.IsValid(racer) 
+                                             && user.PasswordCompare() && racer.CorrectDateOfBirth())
+        {
+            if (dbFile != null)
+            {
+                dbFiles.Add(dbFile);
+                db.DbFiles.Add(dbFile);
+                db.SaveChanges();
+
+                racer.File = dbFiles[^1];
+            }
+            
+            users.Add(user);
+            db.Users.Add(user);
+            db.SaveChanges();
+            
+            racers.Add(racer);
+            db.Racers.Add(racer);
+            db.SaveChanges();
+        }
     }
 }

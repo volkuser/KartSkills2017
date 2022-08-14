@@ -266,7 +266,7 @@ CREATE TABLE `racer` (
   `Gender` char(1) NOT NULL,
   `DateOfBirth` date NOT NULL,
   `ID_Country` char(3) NOT NULL,
-  `FileId` int NULL
+  `FileId` int
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
