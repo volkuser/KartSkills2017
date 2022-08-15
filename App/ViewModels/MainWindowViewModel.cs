@@ -197,6 +197,14 @@ namespace App.ViewModels
             var viewModel = new InformationAboutCharityWindowViewModel(charity);
             var result = await ShowInformationAboutCharityWindow.Handle(viewModel);
         }
+
+        public void OpnConfirmationOfRacerRegistrationPage()
+        {
+            ConfirmationOfRacerRegistrationPageViewModel viewModel 
+                = new ConfirmationOfRacerRegistrationPageViewModel(this);
+            Router.Navigate.Execute(viewModel);
+            AdditionForHistory(false, true);
+        }
         
         public void Back()
         {

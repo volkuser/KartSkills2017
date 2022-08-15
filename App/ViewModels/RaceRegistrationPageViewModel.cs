@@ -141,6 +141,7 @@ public class RaceRegistrationPageViewModel : ViewModelBase, IRoutableViewModel
             registrations.Add(registration);
             db.Registrations.Add(registration);
             db.SaveChanges();
+            container.OpnConfirmationOfRacerRegistrationPage();
         }
     }
 
