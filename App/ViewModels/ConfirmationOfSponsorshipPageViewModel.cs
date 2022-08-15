@@ -7,7 +7,7 @@ namespace App.ViewModels;
 
 public class ConfirmationOfSponsorshipPageViewModel : ViewModelBase, IRoutableViewModel
 {
-    public string UrlPathSegment => "/confirmationOfSponsorship";
+    public string UrlPathSegment => "confirmationOfSponsorship";
     public IScreen HostScreen { get; }
     
     private ICommand OnClickBtnBack { get; set; }

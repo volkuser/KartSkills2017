@@ -6,7 +6,7 @@ namespace App.ViewModels;
 
 public class MainMenuPageViewModel : ViewModelBase, IRoutableViewModel
 {
-    public string UrlPathSegment => "/mainMenu";
+    public string UrlPathSegment => "mainMenu";
     public IScreen HostScreen { get; }
 
     private ICommand OnClickBtnVerificationOfPreviouslyEnteredRacersPage { get; set; }

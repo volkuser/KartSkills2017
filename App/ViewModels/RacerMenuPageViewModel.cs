@@ -11,8 +11,9 @@ public class RacerMenuPageViewModel : ViewModelBase, IRoutableViewModel
     public string UrlPathSegment => "racerMenu";
     public IScreen HostScreen { get; }
     
-    private ICommand OnClickBtnContacts { get; set; } 
-    
+    private ICommand OnClickBtnContacts { get; set; }
+    private ICommand OnClickBtnRaceRegistrationPage { get; set; }
+
     private User CurrentUser { get; set; }
 
     public RacerMenuPageViewModel(User user, IPageNavigation container, IScreen? screen = null)
@@ -22,5 +23,6 @@ public class RacerMenuPageViewModel : ViewModelBase, IRoutableViewModel
         CurrentUser = user;
         OnClickBtnContacts = ReactiveCommand.CreateFromTask(async
             => container.OpnInformationAboutContactsWindow(CurrentUser.Email));
+        OnClickBtnRaceRegistrationPage = ReactiveCommand.Create(() => container.OpnRaceRegistrationPage(user));
     }
 }

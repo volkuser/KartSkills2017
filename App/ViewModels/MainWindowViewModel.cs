@@ -166,7 +166,7 @@ namespace App.ViewModels
             Router.Navigate.Execute(viewModel);
             AdditionForHistory(true);
         }
-
+        
         private string PathToImage { get; set; }
         public Interaction<Unit, string?> ShowOpenFileDialog { get; } = new ();
         public async Task OpnOpenFileDialog()
@@ -181,6 +181,13 @@ namespace App.ViewModels
         public string GetPathToImage()
         {
             return PathToImage;
+        }
+        
+        public void OpnRaceRegistrationPage(User currentUser)
+        {
+            RaceRegistrationPageViewModel viewModel = new RaceRegistrationPageViewModel(currentUser, this);
+            Router.Navigate.Execute(viewModel);
+            AdditionForHistory(true, true);
         }
 
         public void Back()

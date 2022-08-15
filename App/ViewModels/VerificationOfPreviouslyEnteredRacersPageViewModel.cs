@@ -6,7 +6,7 @@ namespace App.ViewModels;
 
 public class VerificationOfPreviouslyEnteredRacersPageViewModel : ViewModelBase, IRoutableViewModel
 {
-    public string UrlPathSegment => "/verificationOfPreviouslyEnteredRacers";
+    public string UrlPathSegment => "verificationOfPreviouslyEnteredRacers";
     public IScreen HostScreen { get; }
     
     private ICommand OnClickBtnYes { get; set; }

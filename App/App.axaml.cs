@@ -43,6 +43,8 @@ namespace App
                 => new VerificationOfPreviouslyEnteredRacersPage());
             Locator.CurrentMutable.Register<IViewFor<RacerRegistrationPageViewModel>>(() 
                 => new RacerRegistrationPage());
+            Locator.CurrentMutable.Register<IViewFor<RaceRegistrationPageViewModel>>(() 
+                => new RaceRegistrationPage());
 
             new MainWindow { DataContext = Locator.Current.GetService<IScreen>() }.Show();
             

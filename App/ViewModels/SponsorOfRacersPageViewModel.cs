@@ -9,7 +9,7 @@ namespace App.ViewModels;
 
 public class SponsorOfRacersPageViewModel : ViewModelBase, IRoutableViewModel
 {
-    public string UrlPathSegment => "/sponsorOfRacers";
+    public string UrlPathSegment => "sponsorOfRacers";
     public IScreen HostScreen { get; }
     private ApplicationContext Db;
     

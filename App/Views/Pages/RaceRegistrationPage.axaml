@@ -1,0 +1,117 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="App.Views.Pages.RaceRegistrationPage">
+    <UserControl.Styles>
+        <Style Selector="TextBlock, TextBox, ComboBox, Button, CheckBox, RadioButton">
+            <Setter Property="TextBlock.FontSize" Value="24"/>
+        </Style>
+    </UserControl.Styles>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.8*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="6*"/>
+        </Grid.ColumnDefinitions>
+        
+        <!--title-->
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" 
+                   Text="Регистрация на гонку" Classes="h2" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center" />
+        
+        <!--race type-->
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.7*"/>
+                <RowDefinition Height="3*"/>
+            </Grid.RowDefinitions>  
+            <TextBlock Grid.Row="0" Text="Вид гонки" Classes="h3" 
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <StackPanel Grid.Row="1" Orientation="Vertical">
+                <CheckBox IsChecked="{Binding Race2AndHalfKm}" Content="Заезд 2,5 км($25)"/>
+                <CheckBox IsChecked="{Binding Race4Km}" Content="Заезд 4 км($40)"/>
+                <CheckBox IsChecked="{Binding Race6AndHalfKm}" Content="Заезд 6,5 км($65)"/>
+            </StackPanel>
+        </Grid>
+        
+        <!--details of sponsorship-->
+        <Grid Grid.Row="2" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="0.1*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
+                       Text="Детали спонсорства" Classes="h3"
+                       VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Взнос:"
+                       HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <ComboBox Grid.Row="1" Grid.Column="2" Items="{Binding Charities}"
+                      SelectedItem="{Binding Charity}"
+                      VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Charity_Name}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Пароль:"
+                       VerticalAlignment="Center" HorizontalAlignment="Right"/>
+            <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding Password}" PasswordChar="*"
+                     VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+            <Button Grid.Row="3" Grid.Column="0" Content="Регистрация"
+                    Command="{Binding OnClickBtnRegistration}"
+                    VerticalAlignment="Center" HorizontalAlignment="Right"/>
+            <Button Grid.Row="3" Grid.Column="2" Content="Отмена"
+                    Command="{Binding OnClickBtnCancel}"
+                    VerticalAlignment="Center" HorizontalAlignment="Left"/>
+        </Grid>
+        
+        <!--kit options-->
+        <Grid Grid.Row="1" Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.7*"/>
+                <RowDefinition Height="3*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Text="Варианты комплектов" Classes="h3" 
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <StackPanel Grid.Row="1" Orientation="Vertical">
+                <RadioButton IsChecked="{Binding VariantA}" GroupName="Kits"
+                             Content="Вариант А ($0) Номер пилота + Браслет"/>
+                <RadioButton IsChecked="{Binding VariantB}" GroupName="Kits"
+                             Content="Вариант Б ($30) Номер пилота + Шлем + Браслет"/>
+                <RadioButton IsChecked="{Binding VariantC}" GroupName="Kits">
+                    <TextBlock TextWrapping="WrapWithOverflow">
+                        Вариант С ($50) Номер пилота + Экипировка + Браслет
+                    </TextBlock>
+                </RadioButton>
+            </StackPanel>
+        </Grid>
+        
+        <!--registration contribution-->
+        <Grid Grid.Row="2" Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="3*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Text="Регистрационный взнос" Classes="h3" 
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="1" Text="{Binding RegistrationConfirmation}"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"
+                       FontSize="70" FontWeight="Bold"/>
+        </Grid> 
+    </Grid>
+</UserControl>

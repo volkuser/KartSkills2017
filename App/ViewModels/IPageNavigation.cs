@@ -19,6 +19,7 @@ public interface IPageNavigation
     public void OpnRacerRegistrationPage();
     public Task OpnOpenFileDialog();
     public string GetPathToImage();
+    public void OpnRaceRegistrationPage(User currentUser);
 
     public void Back();
 }

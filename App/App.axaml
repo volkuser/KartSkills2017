@@ -30,7 +30,7 @@
     
     <Application.Styles>
         <FluentTheme Mode="Light"/>
-        <Style Selector="TextBlock, TextBox, ComboBox, Button, DatePicker">
+        <Style Selector="TextBlock, TextBox, ComboBox, Button, DatePicker, CheckBox, RadioButton">
             <Setter Property="TextBlock.Foreground"
                     Value="{StaticResource Black}"/>
             <Setter Property="TextBlock.FontFamily" 

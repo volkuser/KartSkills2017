@@ -7,7 +7,7 @@ namespace App.ViewModels;
 
 public class CharityListPageViewModel : ViewModelBase, IRoutableViewModel
 {
-    public string UrlPathSegment => "/charityList";
+    public string UrlPathSegment => "charityList";
     public IScreen HostScreen { get; }
     private ApplicationContext Db;
     

@@ -6,7 +6,7 @@ namespace App.ViewModels;
 
 public class DetailedInformationPageViewModel : ViewModelBase, IRoutableViewModel
 {
-    public string UrlPathSegment => "/detailedInformation";
+    public string UrlPathSegment => "detailedInformation";
     public IScreen HostScreen { get; }
     
     private ICommand OnClickBtnKartSkills2017 { get; set; }
