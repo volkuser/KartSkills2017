@@ -1,6 +1,5 @@
 using System.Windows.Input;
 using App.Models;
-using App.Views.Pages;
 using ReactiveUI;
 using Splat;
 

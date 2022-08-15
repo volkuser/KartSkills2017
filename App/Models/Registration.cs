@@ -30,7 +30,7 @@ public class Registration
     [Column("ID_Charity")]
     public int ID_Charity { get; set; }
     [ForeignKey("ID_Charity")]
-    public Charity CHarity { get; set; }
+    public Charity Charity { get; set; }
     
     [Column("SponsorshipTarget")]
     public int SponsorshipTarget { get; set; }

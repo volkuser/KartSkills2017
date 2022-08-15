@@ -59,7 +59,7 @@ public class RacerRegistrationPageViewModel : ViewModelBase, IRoutableViewModel
         
         OnClickBtnView = ReactiveCommand.CreateFromTask(() => Task.FromResult(ViewImage(container)));
         OnClickBtnRegistration = ReactiveCommand.Create(() => Registration(Db, PathToImage, DbFiles, FirstName, 
-            LastName, Email, Password, RepeatPassword, Users, Gender, DateOfBirth, Country, Racers));
+            LastName, Email, Password, RepeatPassword, Users, Gender, DateOfBirth, Country, Racers, container));
         OnClickBtnCancel = ReactiveCommand.Create(() => container.Back());
     }
 
@@ -72,7 +72,7 @@ public class RacerRegistrationPageViewModel : ViewModelBase, IRoutableViewModel
     private void Registration(ApplicationContext db, string pathToImage, ObservableCollection<DbFile> dbFiles,
         string firstName, string lastName, string email, string password, string repeatPassword, 
         ObservableCollection<User> users, Gender gender, DateTimeOffset dateOfBirth, Country country,
-        ObservableCollection<Racer> racers)
+        ObservableCollection<Racer> racers, IPageNavigation container)
     {
         DbFile dbFile = new DbFile();
         if (pathToImage != null)
@@ -131,6 +131,8 @@ public class RacerRegistrationPageViewModel : ViewModelBase, IRoutableViewModel
             racers.Add(racer);
             db.Racers.Add(racer);
             db.SaveChanges();
+            
+            container.OpnRacerMenuPage(users[^1]);
         }
     }
 }

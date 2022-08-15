@@ -20,6 +20,7 @@ public interface IPageNavigation
     public Task OpnOpenFileDialog();
     public string GetPathToImage();
     public void OpnRaceRegistrationPage(User currentUser);
+    public Task OpnInformationAboutCharityWindow(Charity charity);
 
     public void Back();
 }

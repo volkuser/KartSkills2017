@@ -131,11 +131,11 @@ namespace App.ViewModels
         }
         
         public Interaction<InformationAboutContactsWindowViewModel, 
-            InformationAboutContactsWindowViewModel?> ShowDialog { get; } = new ();
+            InformationAboutContactsWindowViewModel?> ShowInformationAboutContactsWindow { get; } = new ();
         public async Task OpnInformationAboutContactsWindow(string email)
         {
             var viewModel = new InformationAboutContactsWindowViewModel(email);
-            var result = await ShowDialog.Handle(viewModel);
+            var result = await ShowInformationAboutContactsWindow.Handle(viewModel);
         }
         
         public void OpnCoordinatorMenuPage()
@@ -190,6 +190,14 @@ namespace App.ViewModels
             AdditionForHistory(true, true);
         }
 
+        public Interaction<InformationAboutCharityWindowViewModel, 
+            InformationAboutCharityWindowViewModel?> ShowInformationAboutCharityWindow { get; } = new ();
+        public async Task OpnInformationAboutCharityWindow(Charity charity)
+        {
+            var viewModel = new InformationAboutCharityWindowViewModel(charity);
+            var result = await ShowInformationAboutCharityWindow.Handle(viewModel);
+        }
+        
         public void Back()
         {
             Router.NavigateBack.Execute();

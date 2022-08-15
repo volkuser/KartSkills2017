@@ -18,13 +18,16 @@ public partial class MainWindow : ReactiveWindow<MainWindowViewModel>
     {
         this.WhenActivated(disposables =>
         {
-            disposables(ViewModel!.ShowDialog.RegisterHandler(DoShowDialogAsync));
+            disposables(ViewModel!.ShowInformationAboutContactsWindow
+                .RegisterHandler(ShowInformationAboutContactsWindow));
             disposables(ViewModel.ShowOpenFileDialog.RegisterHandler(ShowOpenFileDialog));
+            disposables(ViewModel!.ShowInformationAboutCharityWindow
+                .RegisterHandler(ShowInformationAboutCharityWindow));
         });
         AvaloniaXamlLoader.Load(this);
     }
     
-    private async Task DoShowDialogAsync(InteractionContext<InformationAboutContactsWindowViewModel,
+    private async Task ShowInformationAboutContactsWindow(InteractionContext<InformationAboutContactsWindowViewModel,
         InformationAboutContactsWindowViewModel?> interaction)
     {
         var dialog = new InformationAboutContactsWindow
@@ -40,5 +43,15 @@ public partial class MainWindow : ReactiveWindow<MainWindowViewModel>
         dialog.Filters.Add(new FileDialogFilter() { Name = "Image files" , Extensions = { "jpg", "png" } });
         var fileNameStrings = await dialog.ShowAsync(this);
         interaction.SetOutput(fileNameStrings.FirstOrDefault());
+    }
+    
+    private async Task ShowInformationAboutCharityWindow(InteractionContext<InformationAboutCharityWindowViewModel,
+        InformationAboutCharityWindowViewModel?> interaction)
+    {
+        var dialog = new InformationAboutCharityWindow
+            { DataContext = interaction.Input };
+
+        var result = await dialog.ShowDialog<InformationAboutCharityWindowViewModel?>(this);
+        interaction.SetOutput(result);
     }
 }
