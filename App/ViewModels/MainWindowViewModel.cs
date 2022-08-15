@@ -206,6 +206,14 @@ namespace App.ViewModels
             AdditionForHistory(false, true);
         }
         
+        public void OpnProfileEditingPage(User currentUser)
+        {
+            ProfileEditingPageViewModel viewModel 
+                = new ProfileEditingPageViewModel(currentUser, this);
+            Router.Navigate.Execute(viewModel);
+            AdditionForHistory(false, true);
+        }
+        
         public void Back()
         {
             Router.NavigateBack.Execute();

@@ -22,6 +22,7 @@ public interface IPageNavigation
     public void OpnRaceRegistrationPage(User currentUser);
     public Task OpnInformationAboutCharityWindow(Charity charity);
     public void OpnConfirmationOfRacerRegistrationPage();
+    public void OpnProfileEditingPage(User currentUser);
 
     public void Back();
 }
