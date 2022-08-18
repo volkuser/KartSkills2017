@@ -12,11 +12,8 @@ public class Event
     public int ID_Event { get; set; }
     [Column("Event_Name")]
     public string Event_Name { get; set; }
-    
     [Column("ID_EventType")]
     public string ID_EventType { get; set; }
-    [ForeignKey("ID_EventType")]
-    public EventType EventType { get; set; }
     
     [Column("ID_Race")]
     public int ID_Race { get; set; }

@@ -31,4 +31,58 @@
         <PackageReference Include="SixLabors.ImageSharp" Version="2.1.3" />
         <PackageReference Include="XamlNameReferenceGenerator" Version="1.3.4" />
     </ItemGroup>
+    <ItemGroup>
+      <Compile Update="Views\Pages\Racer\ProfileEditingPage.axaml.cs">
+        <DependentUpon>ProfileEditingPage.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\Pages\Racer\MyResultsPage.axaml.cs">
+        <DependentUpon>MyResultsPage.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\Pages\Racer\RacerMenuPage.axaml.cs">
+        <DependentUpon>RacerMenuPage.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\Pages\Racer\RaceRegistrationPage.axaml.cs">
+        <DependentUpon>RaceRegistrationPage.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\Pages\Racer\InformationAboutContactsWindow.axaml.cs">
+        <DependentUpon>InformationAboutContactsWindow.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\Pages\Racer\InformationAboutCharityWindow.axaml.cs">
+        <DependentUpon>InformationAboutCharityWindow.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\Pages\Racer\ConfirmationOfRacerRegistrationPage.axaml.cs">
+        <DependentUpon>ConfirmationOfRacerRegistrationPage.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\Pages\Sponsor\ConfirmationOfSponsorshipPage.axaml.cs">
+        <DependentUpon>ConfirmationOfSponsorshipPage.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\Pages\Sponsor\SponsorOfRacersPage.axaml.cs">
+        <DependentUpon>SponsorOfRacersPage.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\Pages\Coordinator\CoordinatorMenuPage.axaml.cs">
+        <DependentUpon>CoordinatorMenuPage.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\Pages\Administrator\AdministratorMenuPage.axaml.cs">
+        <DependentUpon>AdministratorMenuPage.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\Pages\Information\CharityListPage.axaml.cs">
+        <DependentUpon>CharityListPage.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\Pages\Information\DetailedInformationPage.axaml.cs">
+        <DependentUpon>DetailedInformationPage.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+    </ItemGroup>
 </Project>

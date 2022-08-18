@@ -3,9 +3,6 @@ using Avalonia.Markup.Xaml;
 using App.ViewModels;
 using App.Views;
 using App.Views.Pages;
-using Avalonia.Controls;
-using Avalonia.Media;
-using Avalonia.Styling;
 using PropertyChanged;
 using ReactiveUI;
 using Splat;
@@ -49,6 +46,7 @@ namespace App
                 => new ConfirmationOfRacerRegistrationPage());
             Locator.CurrentMutable.Register<IViewFor<ProfileEditingPageViewModel>>(() 
                 => new ProfileEditingPage());
+            Locator.CurrentMutable.Register<IViewFor<MyResultsPageViewModel>>(() => new MyResultsPage());
 
             new MainWindow { DataContext = Locator.Current.GetService<IScreen>() }.Show();
             

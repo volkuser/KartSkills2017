@@ -1,6 +1,7 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using App.Models;
 using ReactiveUI;
@@ -118,7 +119,10 @@ public class RaceRegistrationPageViewModel : ViewModelBase, IRoutableViewModel
         OnClickBtnRegistration = ReactiveCommand.Create(() => Registration(Db, Registrations, currentUser, 
             Confirmation, Charity, SponsorshipTargetInInt, container));
         OnClickBtnInformation = ReactiveCommand.CreateFromTask(async
-            => container.OpnInformationAboutCharityWindow(Charity));
+            => {
+            if (Charity != null) return Task.FromResult(container.OpnInformationAboutCharityWindow(Charity));
+            return Task.CompletedTask;
+        });
     }
 
     private void Registration(ApplicationContext db, ObservableCollection<Registration> registrations, User user, 

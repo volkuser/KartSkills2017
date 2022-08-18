@@ -214,6 +214,14 @@ namespace App.ViewModels
             AdditionForHistory(false, true);
         }
         
+        public void OpnMyResultsPage(User currentUser)
+        {
+            MyResultsPageViewModel viewModel 
+                = new MyResultsPageViewModel(currentUser, this);
+            Router.Navigate.Execute(viewModel);
+            AdditionForHistory(true, true);
+        }
+        
         public void Back()
         {
             Router.NavigateBack.Execute();

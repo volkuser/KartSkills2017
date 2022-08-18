@@ -23,6 +23,10 @@ public class Result
     
     [Column("BidNumber")]
     public int BidNumber { get; set; }
+    [NotMapped]
+    public int GenderPlace { get; set; }
+    [NotMapped]
+    public int AgePlace { get; set; }
     [Column("RaceTime")]
-    public DateTime RaceTime { get; set; }
+    public TimeSpan RaceTime { get; set; }
 }

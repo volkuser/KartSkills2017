@@ -10,14 +10,13 @@ public class AuthorizationMenuPageViewModel : ViewModelBase, IRoutableViewModel
 {
     public string UrlPathSegment => "authorizationMenu";
     public IScreen HostScreen { get; }
-
     private ApplicationContext Db { get; set; }
     
     private ICommand OnClickBtnCancel { get; set; }
     private ICommand OnClickBtnLogin { get; set; }
 
-    private string Email { get; set; } = "L.Jeferson@gmail.com";
-    private string Password { get; set; } = "$1Qr3%9%r";
+    private string Email { get; set; } = "A.Ivanova@gmail.com";
+    private string Password { get; set; } = "%pO53f";
     
     private User? User { get; set; }
 
