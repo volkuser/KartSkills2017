@@ -90,5 +90,9 @@
                 </ListBox>
             </ScrollViewer>
         </Grid>
+        <Button Grid.Row="3" Content="Показать все результаты" FontSize="25"
+                Command="{Binding OnClickBtnShowAllResults}"
+                VerticalAlignment="Center" HorizontalAlignment="Center"
+                VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
     </Grid>
 </UserControl>

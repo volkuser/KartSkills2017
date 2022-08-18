@@ -24,6 +24,7 @@ public interface IPageNavigation
     public void OpnConfirmationOfRacerRegistrationPage();
     public void OpnProfileEditingPage(User currentUser);
     public void OpnMyResultsPage(User currentUser);
+    public void OpnPastRaceResultsPage();
 
     public void Back();
 }

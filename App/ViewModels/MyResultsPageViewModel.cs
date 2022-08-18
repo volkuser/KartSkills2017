@@ -38,7 +38,7 @@ public class MyResultsPageViewModel : ViewModelBase, IRoutableViewModel
         RequiredResults = GetRequiredResults(Db, currentRacer/*, CurrentAgeCategory*/);
 
         OnClickBtnChangeCurrentCategory = ReactiveCommand.Create(() => ChangeCurrentCategory(Db, currentRacer));
-        OnClickBtnShowAllResults = ReactiveCommand.Create(() => { });
+        OnClickBtnShowAllResults = ReactiveCommand.Create(() => container.OpnPastRaceResultsPage());
     }
 
     private string GetViewGender(ApplicationContext db, Racer currentRacer)

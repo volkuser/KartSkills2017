@@ -47,6 +47,8 @@ namespace App
             Locator.CurrentMutable.Register<IViewFor<ProfileEditingPageViewModel>>(() 
                 => new ProfileEditingPage());
             Locator.CurrentMutable.Register<IViewFor<MyResultsPageViewModel>>(() => new MyResultsPage());
+            Locator.CurrentMutable.Register<IViewFor<PastRaceResultsPageViewModel>>(() 
+                => new PastRaceResultsPage());
 
             new MainWindow { DataContext = Locator.Current.GetService<IScreen>() }.Show();
             

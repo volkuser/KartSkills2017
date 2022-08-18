@@ -222,6 +222,14 @@ namespace App.ViewModels
             AdditionForHistory(true, true);
         }
         
+        public void OpnPastRaceResultsPage()
+        {
+            PastRaceResultsPageViewModel viewModel 
+                = new PastRaceResultsPageViewModel(this);
+            Router.Navigate.Execute(viewModel);
+            AdditionForHistory(true);
+        }
+        
         public void Back()
         {
             Router.NavigateBack.Execute();
