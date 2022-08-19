@@ -3,6 +3,7 @@ using Avalonia.Markup.Xaml;
 using App.ViewModels;
 using App.Views;
 using App.Views.Pages;
+using App.Views.Pages.Information;
 using PropertyChanged;
 using ReactiveUI;
 using Splat;
@@ -49,6 +50,8 @@ namespace App
             Locator.CurrentMutable.Register<IViewFor<MyResultsPageViewModel>>(() => new MyResultsPage());
             Locator.CurrentMutable.Register<IViewFor<PastRaceResultsPageViewModel>>(() 
                 => new PastRaceResultsPage());
+            Locator.CurrentMutable.Register<IViewFor<KartSkills2017PageViewModel>>(() 
+                => new KartSkills2017Page());
 
             new MainWindow { DataContext = Locator.Current.GetService<IScreen>() }.Show();
             

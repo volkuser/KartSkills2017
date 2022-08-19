@@ -25,6 +25,7 @@ public interface IPageNavigation
     public void OpnProfileEditingPage(User currentUser);
     public void OpnMyResultsPage(User currentUser);
     public void OpnPastRaceResultsPage();
+    public void OpnKartSkills2017Page();
 
     public void Back();
 }

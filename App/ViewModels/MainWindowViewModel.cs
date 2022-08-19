@@ -208,24 +208,28 @@ namespace App.ViewModels
         
         public void OpnProfileEditingPage(User currentUser)
         {
-            ProfileEditingPageViewModel viewModel 
-                = new ProfileEditingPageViewModel(currentUser, this);
+            ProfileEditingPageViewModel viewModel = new ProfileEditingPageViewModel(currentUser, this);
             Router.Navigate.Execute(viewModel);
             AdditionForHistory(false, true);
         }
         
         public void OpnMyResultsPage(User currentUser)
         {
-            MyResultsPageViewModel viewModel 
-                = new MyResultsPageViewModel(currentUser, this);
+            MyResultsPageViewModel viewModel = new MyResultsPageViewModel(currentUser, this);
             Router.Navigate.Execute(viewModel);
             AdditionForHistory(true, true);
         }
         
         public void OpnPastRaceResultsPage()
         {
-            PastRaceResultsPageViewModel viewModel 
-                = new PastRaceResultsPageViewModel(this);
+            PastRaceResultsPageViewModel viewModel = new PastRaceResultsPageViewModel(this);
+            Router.Navigate.Execute(viewModel);
+            AdditionForHistory(true);
+        }
+        
+        public void OpnKartSkills2017Page()
+        {
+            KartSkills2017PageViewModel viewModel = new KartSkills2017PageViewModel(this);
             Router.Navigate.Execute(viewModel);
             AdditionForHistory(true);
         }

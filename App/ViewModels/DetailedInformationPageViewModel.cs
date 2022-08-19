@@ -18,5 +18,6 @@ public class DetailedInformationPageViewModel : ViewModelBase, IRoutableViewMode
         HostScreen = screen ?? Locator.Current.GetService<IScreen>();
 
         OnClickBtnListOfCharities = ReactiveCommand.Create(() => container.OpnCharityListPage());
+        OnClickBtnKartSkills2017 = ReactiveCommand.Create(() => container.OpnKartSkills2017Page());
     }
 }
