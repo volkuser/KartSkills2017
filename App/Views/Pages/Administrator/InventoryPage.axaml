@@ -2,6 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:models="clr-namespace:App.Models"
              mc:Ignorable="d" x:Class="App.Views.Pages.Administrator.InventoryPage">
     <UserControl.Styles>
         <Style Selector="Border">
@@ -37,11 +38,14 @@
                    VerticalAlignment="Center" HorizontalAlignment="Center"/>
         
         <Button Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" Content="Отчет" FontSize="24"
+                Command="{Binding OnClickBtnReport}"
                 VerticalAlignment="Center" HorizontalAlignment="Right"/>
         <Button Grid.Row="3" Grid.Column="3" Content="Поступление" FontSize="24"
+                Command="{Binding OnClickBtnIncoming}"
                 VerticalAlignment="Center" HorizontalAlignment="Right"/>
         
-        <Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3">
+        <Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" 
+              DataContext="{Binding InventoryControl}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1.5*"/>
                 <ColumnDefinition/>
@@ -60,13 +64,20 @@
                 <RowDefinition/>
                 <!--<RowDefinition/>-->
             </Grid.RowDefinitions>
-            <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" Fill="{StaticResource DarkGray}" />
-            <Rectangle Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="7" Fill="{StaticResource Gray}" />
-            <Rectangle Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="7" Fill="{StaticResource LightGray}" />
-            <Rectangle Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="7" Fill="{StaticResource Gray}" />
-            <Rectangle Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="7" Fill="{StaticResource LightGray}" />
-            <Rectangle Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="7" Fill="{StaticResource Gray}" />
-            <!--<Rectangle Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="7" Fill="{StaticResource LightGray}" />-->
+            <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" 
+                       Fill="{StaticResource DarkGray}" />
+            <Rectangle Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="7" 
+                       Fill="{StaticResource Gray}" />
+            <Rectangle Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="7" 
+                       Fill="{StaticResource LightGray}" />
+            <Rectangle Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="7" 
+                       Fill="{StaticResource Gray}" />
+            <Rectangle Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="7" 
+                       Fill="{StaticResource LightGray}" />
+            <Rectangle Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="7" 
+                       Fill="{StaticResource Gray}" />
+            <!--<Rectangle Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="7" 
+                Fill="{StaticResource LightGray}" />-->
             
             <Border Grid.Row="0" Grid.Column="0"><TextBlock Text="Комплект" FontWeight="Bold" /></Border>
             <Border Grid.Row="0" Grid.Column="1"><TextBlock Text="Тип А" FontWeight="Bold"/></Border>
@@ -79,39 +90,52 @@
             <Border Grid.Row="1" Grid.Column="0"><TextBlock Text="Выбрало данный комплект" /></Border>
             <Border Grid.Row="1" Grid.Column="1"><TextBlock Text="{Binding SelectedTypeA}"/></Border> 
             <Border Grid.Row="1" Grid.Column="2"><TextBlock Text="{Binding SelectedTypeB}"/></Border> 
-            <Border Grid.Row="1" Grid.Column="3"><TextBlock Text="{Binding SelectedTypeB}"/></Border> 
+            <Border Grid.Row="1" Grid.Column="3"><TextBlock Text="{Binding SelectedTypeC}"/></Border> 
             <Border Grid.Row="1" Grid.Column="4"/>
             <Border Grid.Row="1" Grid.Column="5"/>
             <Border Grid.Row="1" Grid.Column="6"/>
             
-            <Border Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4"><TextBlock Text="Состав комплекта" /></Border>
+            <Border Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4"><TextBlock 
+                                                                         Text="Состав комплекта"/></Border>
             <Border Grid.Row="2" Grid.Column="4"/>
             <Border Grid.Row="2" Grid.Column="5"/>
             <Border Grid.Row="2" Grid.Column="6"/>
             
-            <Border Grid.Row="3" Grid.Column="0"><TextBlock Text="Браслет" /></Border>
-            <Border Grid.Row="3" Grid.Column="1"><TextBlock Text="{Binding TypeABraceletCount}"/></Border> 
-            <Border Grid.Row="3" Grid.Column="2"><TextBlock Text="{Binding TypeBBraceletCount}"/></Border> 
-            <Border Grid.Row="3" Grid.Column="3"><TextBlock Text="{Binding TypeCBraceletCount}"/></Border> 
-            <Border Grid.Row="3" Grid.Column="4"><TextBlock Text="{Binding BraceletNecessary}"/></Border> 
+            <Border Grid.Row="3" Grid.Column="0"><TextBlock Text="Браслет"/></Border>
+            <Border Grid.Row="3" Grid.Column="1"><TextBlock 
+                                                     Text="{Binding TypeABraceletCount}"/></Border> 
+            <Border Grid.Row="3" Grid.Column="2"><TextBlock 
+                                                     Text="{Binding TypeBBraceletCount}"/></Border> 
+            <Border Grid.Row="3" Grid.Column="3"><TextBlock 
+                                                     Text="{Binding TypeCBraceletCount}"/></Border> 
+            <Border Grid.Row="3" Grid.Column="4"><TextBlock 
+                                                     Text="{Binding BraceletNecessary}"/></Border> 
             <Border Grid.Row="3" Grid.Column="5"><TextBlock Text="{Binding BraceletResidue}"/></Border> 
-            <Border Grid.Row="3" Grid.Column="6"><TextBlock Text="{Binding BraceletAlsoNecessary}"/></Border> 
+            <Border Grid.Row="3" Grid.Column="6"><TextBlock 
+                                                     Text="{Binding BraceletAlsoNecessary}"/></Border> 
             
             <Border Grid.Row="4" Grid.Column="0" ><TextBlock Text="Шлем" /></Border>
             <Border Grid.Row="4" Grid.Column="1"><TextBlock Text="-"/></Border> 
-            <Border Grid.Row="4" Grid.Column="2"><TextBlock Text="{Binding TypeBHelmetCount}"/></Border> 
-            <Border Grid.Row="4" Grid.Column="3"><TextBlock Text="{Binding TypeCHelmetCount}"/></Border> 
+            <Border Grid.Row="4" Grid.Column="2"><TextBlock 
+                                                     Text="{Binding TypeBHelmetCount}"/></Border> 
+            <Border Grid.Row="4" Grid.Column="3"><TextBlock 
+                                                     Text="{Binding TypeCHelmetCount}"/></Border> 
             <Border Grid.Row="4" Grid.Column="4"><TextBlock Text="{Binding HelmetNecessary}"/></Border> 
             <Border Grid.Row="4" Grid.Column="5"><TextBlock Text="{Binding HelmetResidue}"/></Border> 
-            <Border Grid.Row="4" Grid.Column="6"><TextBlock Text="{Binding HelmetAlsoNecessary}"/></Border> 
+            <Border Grid.Row="4" Grid.Column="6"><TextBlock 
+                                                     Text="{Binding HelmetAlsoNecessary}"/></Border> 
             
             <Border Grid.Row="5" Grid.Column="0"><TextBlock Text="Экипировка" /></Border>
             <Border Grid.Row="5" Grid.Column="1"><TextBlock Text="-"/></Border> 
             <Border Grid.Row="5" Grid.Column="2"><TextBlock Text="-"/></Border> 
-            <Border Grid.Row="5" Grid.Column="3"><TextBlock Text="{Binding TypeCEquipmentCount}"/></Border> 
-            <Border Grid.Row="5" Grid.Column="4"><TextBlock Text="{Binding EquipmentNecessary}"/></Border> 
-            <Border Grid.Row="5" Grid.Column="5"><TextBlock Text="{Binding EquipmentResidue}"/></Border> 
-            <Border Grid.Row="5" Grid.Column="6"><TextBlock Text="{Binding EquipmentAlsoNecessary}"/></Border> 
+            <Border Grid.Row="5" Grid.Column="3"><TextBlock 
+                                                     Text="{Binding TypeCEquipmentCount}"/></Border> 
+            <Border Grid.Row="5" Grid.Column="4"><TextBlock 
+                                                     Text="{Binding EquipmentNecessary}"/></Border> 
+            <Border Grid.Row="5" Grid.Column="5"><TextBlock 
+                                                     Text="{Binding EquipmentResidue}"/></Border> 
+            <Border Grid.Row="5" Grid.Column="6"><TextBlock 
+                                                     Text="{Binding EquipmentAlsoNecessary}"/></Border> 
         </Grid>
     </Grid>
 </UserControl>

@@ -10,11 +10,6 @@ public class IncomingInventory
     [Column("IncomingInventoryId")]
     public int IncomingInventoryId { get; set; }
     
-    /*[Column("ID_Racer")]
-    public int ID_Racer { get; set; }
-    [ForeignKey("ID_Racer")]
-    public Racer Racer { get; set; }*/
-    
     [Column("Bracelet")]
     public int Bracelet { get; set; }
     [Column("Helmet")]
