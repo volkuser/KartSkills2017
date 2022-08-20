@@ -27,6 +27,7 @@ public interface IPageNavigation
     public void OpnPastRaceResultsPage();
     public void OpnKartSkills2017Page();
     public void OpnInventoryPage();
+    public void OpnInventoryIncomingPage();
 
     public void Back();
 }

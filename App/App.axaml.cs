@@ -54,6 +54,8 @@ namespace App
             Locator.CurrentMutable.Register<IViewFor<KartSkills2017PageViewModel>>(() 
                 => new KartSkills2017Page());
             Locator.CurrentMutable.Register<IViewFor<InventoryPageViewModel>>(() => new InventoryPage());
+            Locator.CurrentMutable.Register<IViewFor<InventoryIncomingPageViewModel>>(() 
+                => new InventoryIncomingPage());
 
             new MainWindow { DataContext = Locator.Current.GetService<IScreen>() }.Show();
             

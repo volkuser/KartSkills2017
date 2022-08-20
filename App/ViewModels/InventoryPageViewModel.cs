@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
 using App.Models;
 using ReactiveUI;
@@ -14,18 +16,56 @@ public class InventoryPageViewModel : ViewModelBase, IRoutableViewModel
     
     private ICommand OnClickBtnReport { get; set; }
     private ICommand OnClickBtnIncoming { get; set; }
+    
+    private ObservableCollection<IncomingInventory> IncomingInventories { get; set; }
 
+    private int RacerCount { get; set; }
     private InventoryControl InventoryControl { get; set; }
 
-    public InventoryPageViewModel(IScreen? screen = null)
+    public InventoryPageViewModel(IPageNavigation container, IScreen? screen = null)
     {
         HostScreen = screen ?? Locator.Current.GetService<IScreen>();
         Db = Singleton.GetInstance();
 
-        InventoryControl = GetInventoryControl(Db);
+        IncomingInventories = new(Db.IncomingInventories);
+        
+        RacerCount = GetRacerCount(Db);
+        InventoryControl = GetInventoryControl(Db, IncomingInventories);
+
+        OnClickBtnIncoming = ReactiveCommand.Create(() => container.OpnInventoryIncomingPage());
     }
 
-    private InventoryControl GetInventoryControl(ApplicationContext db)
+    private int GetRacerCount(ApplicationContext db)
+    {
+        int racerCount = 0;
+
+        List<Registration> registrations = new (db.Registrations);
+        List<Registration> tempRegistrations = new();
+        bool add = true;
+        foreach (var registration in registrations)
+        {
+            foreach (var tempRegistration in tempRegistrations)
+            {
+                if (tempRegistration.ID_Racer == registration.ID_Racer)
+                {
+                    add = false;
+                    break;
+                }
+            }
+
+            if (add)
+            {
+                tempRegistrations.Add(registration);
+                racerCount++;
+            }
+            else add = true;
+        }
+
+        return racerCount;
+    }
+    
+    private InventoryControl GetInventoryControl(ApplicationContext db, 
+        ObservableCollection<IncomingInventory> incomingInventories)
     {
         InventoryControl ic = new();
 
@@ -51,16 +91,26 @@ public class InventoryPageViewModel : ViewModelBase, IRoutableViewModel
         ic.BraceletNecessary = ic.HelmetNecessary = ic.EquipmentNecessary 
             = selectedTypeA + selectedTypeB + selectedTypeC;
 
-        List<IncomingInventory> incomingInventories = new(db.IncomingInventories);
+        int braceletsOnWarehouse = 0, helmetsOnWarehouse = 0, equipmentsOnWarehouse = 0;
         foreach (var incoming in incomingInventories)
         {
-            if (incoming.Bracelet > 0) ic.BraceletAlsoNecessary += incoming.Bracelet;
-            else if (incoming.Bracelet < 0) ic.BraceletResidue += incoming.Bracelet;
-            if (incoming.Helmet > 0) ic.HelmetAlsoNecessary += incoming.Helmet;
-            else if (incoming.Helmet < 0) ic.BraceletResidue += incoming.Helmet;
-            if (incoming.Equipment > 0) ic.EquipmentAlsoNecessary += incoming.Equipment;
-            else if (incoming.Equipment < 0) ic.EquipmentResidue += incoming.Equipment;
+            braceletsOnWarehouse += incoming.Bracelet;
+            helmetsOnWarehouse += incoming.Helmet;
+            equipmentsOnWarehouse += incoming.Equipment;
         }
+
+        if (braceletsOnWarehouse > ic.BraceletNecessary)
+            ic.BraceletResidue = braceletsOnWarehouse - ic.BraceletNecessary;
+        else if (braceletsOnWarehouse < ic.BraceletNecessary)
+            ic.BraceletAlsoNecessary = Math.Abs(braceletsOnWarehouse - ic.BraceletNecessary);
+        if (helmetsOnWarehouse > ic.HelmetNecessary)
+            ic.HelmetResidue = helmetsOnWarehouse - ic.HelmetNecessary;
+        else if (helmetsOnWarehouse < ic.HelmetNecessary)
+            ic.HelmetAlsoNecessary = Math.Abs(helmetsOnWarehouse - ic.HelmetNecessary);
+        if (equipmentsOnWarehouse > ic.EquipmentNecessary)
+            ic.EquipmentResidue = equipmentsOnWarehouse - ic.EquipmentNecessary;
+        else if (equipmentsOnWarehouse < ic.EquipmentNecessary)
+            ic.EquipmentAlsoNecessary = Math.Abs(equipmentsOnWarehouse - ic.EquipmentNecessary);
 
         return ic;
     }

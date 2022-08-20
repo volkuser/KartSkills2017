@@ -8,12 +8,9 @@
 
     <Application.Resources>
         <!--fonts-->
-        <FontFamily x:Key="TitleFontFamily">Open Sans Semibold
-        </FontFamily>
-        <FontFamily x:Key="MainFontFamily">Open Sans Light
-        </FontFamily>
-        <FontFamily x:Key="AlternativeFontFamily">Arial
-        </FontFamily>
+        <FontFamily x:Key="TitleFontFamily">Open Sans Semibold</FontFamily>
+        <FontFamily x:Key="MainFontFamily">Open Sans Light</FontFamily>
+        <FontFamily x:Key="AlternativeFontFamily">Arial</FontFamily>
         
         <!--colors-->
         <!--main colors-->
@@ -47,6 +44,18 @@
         </Style>
         <Style Selector="TextBlock.h3">
             <Setter Property="FontSize" Value="26"/>
+        </Style>
+        
+        <Style Selector="Border.Cell">
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Black}"/>
+        </Style>
+        <Style Selector="TextBlock.Cell, TextBox.Cell">
+            <Setter Property="TextBox.FontSize" Value="20"/>
+            <Setter Property="TextBox.VerticalAlignment" Value="Stretch"/>
+            <Setter Property="TextBox.HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="TextBox.TextAlignment" Value="Center"/>
+            <Setter Property="TextBox.TextWrapping" Value="WrapWithOverflow"/>
         </Style>
         
         <Style Selector="Button">
