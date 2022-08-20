@@ -10,7 +10,7 @@ namespace App.ViewModels;
 
 public class MyResultsPageViewModel : ViewModelBase, IRoutableViewModel
 {
-    public string UrlPathSegment => "racerRegistration";
+    public string UrlPathSegment => "myResults";
     public IScreen HostScreen { get; }
     private ApplicationContext Db;
 

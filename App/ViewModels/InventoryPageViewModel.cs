@@ -4,14 +4,15 @@ using Splat;
 
 namespace App.ViewModels;
 
-public class PastRaceResultsPageViewModel : ViewModelBase, IRoutableViewModel
+public class InventoryPageViewModel : ViewModelBase, IRoutableViewModel
 {
-    public string UrlPathSegment => "pastRaceResults";
+    public string UrlPathSegment => "inventory";
     public IScreen HostScreen { get; }
     private ApplicationContext Db;
 
-    public PastRaceResultsPageViewModel(IScreen? screen = null)
+    public InventoryPageViewModel(IScreen? screen = null)
     {
         HostScreen = screen ?? Locator.Current.GetService<IScreen>();
+        Db = Singleton.GetInstance();
     }
 }

@@ -23,6 +23,7 @@
             <TextBlock TextAlignment="Center" TextWrapping="WrapWithOverflow">
                 Благотворительные организации</TextBlock>
         </Button>
-        <Button Grid.Row="2" Grid.Column="1" Content="Инвентарь" Classes="SubMenu"/>
+        <Button Grid.Row="2" Grid.Column="1" Content="Инвентарь" Classes="SubMenu"
+                Command="{Binding OnClickBtnInventory}"/>
     </Grid>
 </UserControl>

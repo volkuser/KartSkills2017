@@ -34,4 +34,9 @@ public class Registration
     
     [Column("SponsorshipTarget")]
     public int SponsorshipTarget { get; set; }
+    
+    [Column("InventoryTypeId")]
+    public int InventoryTypeId { get; set; }
+    [ForeignKey("InventoryTypeId")]
+    public InventoryType InventoryType { get; set; }
 }

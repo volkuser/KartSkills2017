@@ -133,6 +133,10 @@ public class RaceRegistrationPageViewModel : ViewModelBase, IRoutableViewModel
         {
             Racer racer = db.Racers.FirstOrDefault(x => x.First_Name.Equals(user.First_Name)
                                                         && x.Last_Name.Equals(user.Last_Name));
+            int currentInventoryTypeId = 0;
+            if (VariantA) currentInventoryTypeId = 1;
+            else if (VariantB) currentInventoryTypeId = 2;
+            else if (VariantC) currentInventoryTypeId = 3;
             Registration registration = new Registration()
             {
                 Racer = racer,
@@ -140,7 +144,8 @@ public class RaceRegistrationPageViewModel : ViewModelBase, IRoutableViewModel
                 ID_Registration_Status = 1, // registered
                 Cost = cost,
                 Charity = charity,
-                SponsorshipTarget = sponsorshipTarget
+                SponsorshipTarget = sponsorshipTarget,
+                InventoryTypeId = currentInventoryTypeId
             };
             registrations.Add(registration);
             db.Registrations.Add(registration);

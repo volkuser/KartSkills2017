@@ -234,6 +234,13 @@ namespace App.ViewModels
             AdditionForHistory(true);
         }
         
+        public void OpnInventoryPage()
+        {
+            InventoryPageViewModel viewModel = new InventoryPageViewModel(this);
+            Router.Navigate.Execute(viewModel);
+            AdditionForHistory(true);
+        }
+        
         public void Back()
         {
             Router.NavigateBack.Execute();
