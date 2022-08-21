@@ -11,9 +11,8 @@
             <RowDefinition Height="2*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Classes="h3"
-                   HorizontalAlignment="Center" VerticalAlignment="Center">
-            Спасибо за спонсорскую поддержку!</TextBlock>
+        <TextBlock Grid.Row="0" Classes="h3" Text="Спасибо за спонсорскую поддержку!"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBlock Grid.Row="1" Text="{Binding ViewOfRacer}" FontSize="32"
                    HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
         <TextBlock Grid.Row="2" Text="{Binding NameOfFund}" FontSize="30"

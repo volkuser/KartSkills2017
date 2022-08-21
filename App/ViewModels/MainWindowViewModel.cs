@@ -255,6 +255,13 @@ namespace App.ViewModels
             AdditionForHistory(true);
         }
         
+        public void OpnCharityControlPage()
+        {
+            CharityControlPageViewModel viewModel = new CharityControlPageViewModel(this);
+            Router.Navigate.Execute(viewModel);
+            AdditionForHistory(true, true);
+        }
+        
         public void Back()
         {
             Router.NavigateBack.Execute();

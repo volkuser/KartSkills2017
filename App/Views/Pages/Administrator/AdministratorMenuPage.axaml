@@ -15,13 +15,14 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Classes="h3" 
-                   VerticalAlignment="Center" HorizontalAlignment="Center">
-            Меню администратора</TextBlock>
+                   VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Text="Меню администратора"/>
         <Button Grid.Row="1" Grid.Column="0" Content="Пользователи" Classes="SubMenu"/>
         <Button Grid.Row="1" Grid.Column="1" Content="Волонтеры" Classes="SubMenu"/>
-        <Button Grid.Row="2" Grid.Column="0" Classes="SubMenu">
-            <TextBlock TextAlignment="Center" TextWrapping="WrapWithOverflow">
-                Благотворительные организации</TextBlock>
+        <Button Grid.Row="2" Grid.Column="0" Classes="SubMenu"
+                Command="{Binding OnClickBtnCharity}">
+            <TextBlock TextAlignment="Center" TextWrapping="WrapWithOverflow"
+                       Text="Благотворительные организации"/>
         </Button>
         <Button Grid.Row="2" Grid.Column="1" Content="Инвентарь" Classes="SubMenu"
                 Command="{Binding OnClickBtnInventory}"/>

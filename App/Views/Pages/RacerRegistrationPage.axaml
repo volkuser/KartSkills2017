@@ -20,8 +20,8 @@
         </Grid.ColumnDefinitions>
         
         <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Classes="h3" 
-                   VerticalAlignment="Center" HorizontalAlignment="Center">
-            Регистрация гонщиков</TextBlock>
+                   VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Text="Регистрация гонщиков"/>
         
         <Grid Grid.Row="1" Grid.Column="0">
             <Grid.ColumnDefinitions>

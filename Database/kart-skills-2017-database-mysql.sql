@@ -30,7 +30,8 @@ CREATE TABLE `charity` (
   `ID_Сharity` int(11) NOT NULL,
   `Charity_Name` varchar(100) NOT NULL,
   `Charity_Description` text,
-  `Charity_Logo` varchar(50) DEFAULT NULL
+  `Charity_Logo` varchar(50) DEFAULT NULL,
+  `FileId` int
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -641,7 +642,8 @@ CREATE TABLE `сharity` (
 -- Индексы таблицы `charity`
 --
 ALTER TABLE `charity`
-  ADD PRIMARY KEY (`ID_Сharity`);
+  ADD PRIMARY KEY (`ID_Сharity`),
+  ADD KEY `FileId` (`FileId`);
 
 --
 -- Индексы таблицы `country`

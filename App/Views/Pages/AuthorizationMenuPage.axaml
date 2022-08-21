@@ -9,9 +9,8 @@
             <RowDefinition Height="1.3*"/>
             <RowDefinition Height="2.5*"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Classes="h3"
-                   VerticalAlignment="Center" HorizontalAlignment="Center">
-            Форма авторизации</TextBlock>
+        <TextBlock Grid.Row="0" Classes="h3" Text="Форма авторизации"
+                   VerticalAlignment="Center" HorizontalAlignment="Center"/>
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition/>

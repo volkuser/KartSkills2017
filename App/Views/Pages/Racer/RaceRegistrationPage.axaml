@@ -54,9 +54,8 @@
                 <RadioButton IsChecked="{Binding VariantB}" GroupName="Kits"
                              Content="Вариант Б ($30) Номер пилота + Шлем + Браслет"/>
                 <RadioButton IsChecked="{Binding VariantC}" GroupName="Kits">
-                    <TextBlock TextWrapping="WrapWithOverflow">
-                        Вариант С ($50) Номер пилота + Экипировка + Браслет
-                    </TextBlock>
+                    <TextBlock TextWrapping="WrapWithOverflow"
+                               Text="Вариант С ($50) Номер пилота + Экипировка + Браслет"/>
                 </RadioButton>
             </StackPanel>
         </Grid>

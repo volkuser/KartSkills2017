@@ -13,8 +13,8 @@
             <RowDefinition Height="3.3*"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Classes="h3"
-                   VerticalAlignment="Center" HorizontalAlignment="Center">
-            Список благотворительных организаций</TextBlock>
+                   VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Text="Список благотворительных организаций"/>
         <ListBox Grid.Row="1" Items="{Binding Charities}"
                   HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <ListBox.ItemTemplate>

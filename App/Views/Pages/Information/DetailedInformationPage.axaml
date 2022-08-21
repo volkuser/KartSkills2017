@@ -15,14 +15,14 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Classes="h3" 
-                   VerticalAlignment="Center" HorizontalAlignment="Center">
-            Подробная информация</TextBlock>
+                   VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Text="Подробная информация"/>
         <Button Grid.Row="1" Grid.Column="0" Content="Kart Skills 2017"
                 Command="{Binding OnClickBtnKartSkills2017}" Classes="SubMenu"/>
         <Button Grid.Row="1" Grid.Column="1" Classes="SubMenu"
                 Command="{Binding OnClickBtnListOfCharities}">
-            <TextBlock TextWrapping="WrapWithOverflow" TextAlignment="Center">
-                Список благотворительных организаций</TextBlock>
+            <TextBlock TextWrapping="WrapWithOverflow" TextAlignment="Center"
+                       Text="Список благотворительных организаций"/>
         </Button>
         <Button Grid.Row="2" Grid.Column="0" Content="Предыдущие результаты" 
                 Command="{Binding OnClickBtnPreviousResults}" Classes="SubMenu"/>

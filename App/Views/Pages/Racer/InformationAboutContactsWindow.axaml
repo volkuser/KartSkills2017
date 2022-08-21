@@ -14,9 +14,8 @@
             <RowDefinition/>
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="1" Classes="h3" 
-                   VerticalAlignment="Center" HorizontalAlignment="Center">
-            Контакты</TextBlock>
+        <TextBlock Grid.Row="1" Classes="h3" Text="Контакты"
+                   VerticalAlignment="Center" HorizontalAlignment="Center"/>
         <StackPanel Grid.Row="2" Orientation="Horizontal"
                     VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock FontSize="24" Text="Телефон:" FontWeight="Bold"/>
