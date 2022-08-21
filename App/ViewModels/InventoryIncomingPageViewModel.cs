@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Input;
 using App.Models;
-using Microsoft.EntityFrameworkCore.Diagnostics;
 using ReactiveUI;
 using Splat;
 
@@ -27,7 +26,7 @@ public class InventoryIncomingPageViewModel : ViewModelBase, IRoutableViewModel
         Db = Singleton.GetInstance();
 
         OnClickBtnSave = ReactiveCommand.Create(() => Incoming(Db, BraceletCount, HelmetCount, EquipmentCount));
-        OnClickBtnCancel = ReactiveCommand.Create(() => container.Back());
+        OnClickBtnCancel = ReactiveCommand.Create(() => container.OpnInventoryPage());
     }
 
     private void Incoming(ApplicationContext db, string? braceletCount, string? helmetCount, string? equipmentCount)

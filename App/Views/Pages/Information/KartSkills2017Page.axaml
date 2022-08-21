@@ -46,6 +46,7 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <Button Grid.Row="0" Grid.Column="1" Background="{DynamicResource Map}" 
+                            Command="{Binding OnClickBtnShowFullMap}"
                             VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
                     <Image Grid.Row="2" Grid.Column="1" Source="/Assets/Images/Photos/Kart-Start.jpg" Stretch="Fill"
                            VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>

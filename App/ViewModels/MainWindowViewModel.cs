@@ -166,14 +166,7 @@ namespace App.ViewModels
             Router.Navigate.Execute(viewModel);
             AdditionForHistory(true);
         }
-        
-        public void OpnInventoryIncomingPage()
-        {
-            InventoryIncomingPageViewModel viewModel = new InventoryIncomingPageViewModel(this);
-            Router.Navigate.Execute(viewModel);
-            AdditionForHistory(false);
-        }
-        
+
         private string PathToImage { get; set; }
         public Interaction<Unit, string?> ShowOpenFileDialog { get; } = new ();
         public async Task OpnOpenFileDialog()
@@ -244,6 +237,20 @@ namespace App.ViewModels
         public void OpnInventoryPage()
         {
             InventoryPageViewModel viewModel = new InventoryPageViewModel(this);
+            Router.Navigate.Execute(viewModel);
+            AdditionForHistory(true);
+        }
+        
+        public void OpnInventoryIncomingPage()
+        {
+            InventoryIncomingPageViewModel viewModel = new InventoryIncomingPageViewModel(this);
+            Router.Navigate.Execute(viewModel);
+            AdditionForHistory(false);
+        }
+        
+        public void OpnRaceMapPage()
+        {
+            RaceMapPageViewModel viewModel = new RaceMapPageViewModel(this);
             Router.Navigate.Execute(viewModel);
             AdditionForHistory(true);
         }

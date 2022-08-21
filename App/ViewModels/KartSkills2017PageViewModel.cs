@@ -12,8 +12,10 @@ public class KartSkills2017PageViewModel : ViewModelBase, IRoutableViewModel
     private ICommand OnClickBtnShowFullMap { get; set; }
     private string PathToInfo { get; set; } = "/Assets/Txt/kart-skills-2017-kart-info.txt";
 
-    public KartSkills2017PageViewModel(IScreen? screen = null)
+    public KartSkills2017PageViewModel(IPageNavigation container, IScreen? screen = null)
     {
         HostScreen = screen ?? Locator.Current.GetService<IScreen>();
+
+        OnClickBtnShowFullMap = ReactiveCommand.Create(() => container.OpnRaceMapPage());
     }
 }
