@@ -26,6 +26,8 @@ public class CharityControlPageViewModel : ViewModelBase, IRoutableViewModel
         Db = Singleton.GetInstance();
 
         Charities = GetCharityList(Db);
+
+        OnClickBtnAddNew = ReactiveCommand.Create(() => container.OpnCharityAddingOrEditingPage());
     }
 
     private ObservableCollection<Charity> GetCharityList(ApplicationContext db)

@@ -30,6 +30,7 @@ public interface IPageNavigation
     public void OpnInventoryIncomingPage();
     public void OpnRaceMapPage();
     public void OpnCharityControlPage();
+    public void OpnCharityAddingOrEditingPage(Charity? charity = null);
 
     public void Back();
 }
