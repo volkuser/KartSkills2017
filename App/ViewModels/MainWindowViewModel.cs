@@ -76,12 +76,12 @@ namespace App.ViewModels
             OpnMainMenuPage();
 
             OnClickBtnBack = ReactiveCommand.Create(Back);
-            OnClickBtnLogout = ReactiveCommand.Create(OpnAuthorizationMenuPage);
+            OnClickBtnLogout = ReactiveCommand.Create(OpnMainMenuPage);
         }
 
         public void OpnMainMenuPage()
         {
-            MainMenuPageViewModel viewModel = new MainMenuPageViewModel(this, this);
+            MainMenuPageViewModel viewModel = new MainMenuPageViewModel(this);
             Router.Navigate.Execute(viewModel);
             AdditionForHistory(false);
         }
@@ -104,28 +104,28 @@ namespace App.ViewModels
         public void OpnDetailedInformationPage()
         {
             DetailedInformationPageViewModel viewModel 
-                = new DetailedInformationPageViewModel(this, this);
+                = new DetailedInformationPageViewModel(this);
             Router.Navigate.Execute(viewModel);
             AdditionForHistory(true);
         }
         
         public void OpnCharityListPage()
         {
-            CharityListPageViewModel viewModel = new CharityListPageViewModel(this);
+            CharityListPageViewModel viewModel = new CharityListPageViewModel();
             Router.Navigate.Execute(viewModel);
             AdditionForHistory(true);
         } 
         
         public void OpnAuthorizationMenuPage()
         {
-            AuthorizationMenuPageViewModel viewModel = new AuthorizationMenuPageViewModel(this, this);
+            AuthorizationMenuPageViewModel viewModel = new AuthorizationMenuPageViewModel(this);
             Router.Navigate.Execute(viewModel);
             AdditionForHistory(false);
         }
         
         public void OpnRacerMenuPage(User user)
         {
-            RacerMenuPageViewModel viewModel = new RacerMenuPageViewModel(user, this, this);
+            RacerMenuPageViewModel viewModel = new RacerMenuPageViewModel(user, this);
             Router.Navigate.Execute(viewModel);
             AdditionForHistory(false, true);
         }
@@ -140,14 +140,14 @@ namespace App.ViewModels
         
         public void OpnCoordinatorMenuPage()
         {
-            CoordinatorMenuPageViewModel viewModel = new CoordinatorMenuPageViewModel(this);
+            CoordinatorMenuPageViewModel viewModel = new CoordinatorMenuPageViewModel();
             Router.Navigate.Execute(viewModel);
             AdditionForHistory(false, true);
         }
         
         public void OpnAdministratorMenuPage()
         {
-            AdministratorMenuPageViewModel viewModel = new AdministratorMenuPageViewModel(this, this);
+            AdministratorMenuPageViewModel viewModel = new AdministratorMenuPageViewModel(this);
             Router.Navigate.Execute(viewModel);
             AdditionForHistory(false, true);
         }
@@ -155,14 +155,14 @@ namespace App.ViewModels
         public void OpnVerificationOfPreviouslyRacersPage()
         {
             VerificationOfPreviouslyEnteredRacersPageViewModel viewModel 
-                = new VerificationOfPreviouslyEnteredRacersPageViewModel(this, this);
+                = new VerificationOfPreviouslyEnteredRacersPageViewModel(this);
             Router.Navigate.Execute(viewModel);
             AdditionForHistory(true);
         }
         
         public void OpnRacerRegistrationPage()
         {
-            RacerRegistrationPageViewModel viewModel = new RacerRegistrationPageViewModel(this, this);
+            RacerRegistrationPageViewModel viewModel = new RacerRegistrationPageViewModel(this);
             Router.Navigate.Execute(viewModel);
             AdditionForHistory(true);
         }
@@ -185,7 +185,7 @@ namespace App.ViewModels
         
         public void OpnRaceRegistrationPage(User currentUser)
         {
-            RaceRegistrationPageViewModel viewModel = new RaceRegistrationPageViewModel(currentUser, this, this);
+            RaceRegistrationPageViewModel viewModel = new RaceRegistrationPageViewModel(currentUser, this);
             Router.Navigate.Execute(viewModel);
             AdditionForHistory(true, true);
         }
@@ -201,63 +201,63 @@ namespace App.ViewModels
         public void OpnConfirmationOfRacerRegistrationPage()
         {
             ConfirmationOfRacerRegistrationPageViewModel viewModel 
-                = new ConfirmationOfRacerRegistrationPageViewModel(this, this);
+                = new ConfirmationOfRacerRegistrationPageViewModel(this);
             Router.Navigate.Execute(viewModel);
             AdditionForHistory(false, true);
         }
         
         public void OpnProfileEditingPage(User currentUser)
         {
-            ProfileEditingPageViewModel viewModel = new ProfileEditingPageViewModel(currentUser, this, this);
+            ProfileEditingPageViewModel viewModel = new ProfileEditingPageViewModel(currentUser, this);
             Router.Navigate.Execute(viewModel);
             AdditionForHistory(false, true);
         }
         
         public void OpnMyResultsPage(User currentUser)
         {
-            MyResultsPageViewModel viewModel = new MyResultsPageViewModel(currentUser, this, this);
+            MyResultsPageViewModel viewModel = new MyResultsPageViewModel(currentUser, this);
             Router.Navigate.Execute(viewModel);
             AdditionForHistory(true, true);
         }
         
         public void OpnPastRaceResultsPage()
         {
-            PastRaceResultsPageViewModel viewModel = new PastRaceResultsPageViewModel(this);
+            PastRaceResultsPageViewModel viewModel = new PastRaceResultsPageViewModel();
             Router.Navigate.Execute(viewModel);
             AdditionForHistory(true);
         }
         
         public void OpnKartSkills2017Page()
         {
-            KartSkills2017PageViewModel viewModel = new KartSkills2017PageViewModel(this, this);
+            KartSkills2017PageViewModel viewModel = new KartSkills2017PageViewModel(this);
             Router.Navigate.Execute(viewModel);
             AdditionForHistory(true);
         }
         
         public void OpnInventoryPage()
         {
-            InventoryPageViewModel viewModel = new InventoryPageViewModel(this, this);
+            InventoryPageViewModel viewModel = new InventoryPageViewModel(this);
             Router.Navigate.Execute(viewModel);
             AdditionForHistory(true);
         }
         
         public void OpnInventoryIncomingPage()
         {
-            InventoryIncomingPageViewModel viewModel = new InventoryIncomingPageViewModel(this, this);
+            InventoryIncomingPageViewModel viewModel = new InventoryIncomingPageViewModel(this);
             Router.Navigate.Execute(viewModel);
             AdditionForHistory(false);
         }
         
         public void OpnRaceMapPage()
         {
-            RaceMapPageViewModel viewModel = new RaceMapPageViewModel(this);
+            RaceMapPageViewModel viewModel = new RaceMapPageViewModel();
             Router.Navigate.Execute(viewModel);
             AdditionForHistory(true);
         }
         
         public void OpnCharityControlPage()
         {
-            CharityControlPageViewModel viewModel = new CharityControlPageViewModel(this, this);
+            CharityControlPageViewModel viewModel = new CharityControlPageViewModel(this);
             Router.Navigate.Execute(viewModel);
             AdditionForHistory(true, true);
         }
@@ -265,7 +265,7 @@ namespace App.ViewModels
         public void OpnCharityAddingOrEditingPage(Charity? charity = null)
         {
             CharityAddingOrEditingPageViewModel viewModel 
-                = new CharityAddingOrEditingPageViewModel(this, this, charity);
+                = new CharityAddingOrEditingPageViewModel(this, charity);
             Router.Navigate.Execute(viewModel);
             AdditionForHistory(false, true);
         }

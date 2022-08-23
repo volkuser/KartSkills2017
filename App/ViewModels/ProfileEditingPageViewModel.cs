@@ -77,8 +77,7 @@ public class ProfileEditingPageViewModel : ViewModelBase, IRoutableViewModel
 
         OnClickBtnView = ReactiveCommand.CreateFromTask(() => Task.FromResult(ViewImage(container)));
         OnClickBtnSave = ReactiveCommand.Create(() => Saving(Db, dbFile, PathToImage, DbFiles, FirstName, 
-            LastName, currentUser, Password, RepeatPassword, Users, currentRacer, Gender, DateOfBirth, Country, 
-            Racers, container));
+            LastName, currentUser, Password, RepeatPassword, currentRacer, Gender, DateOfBirth, Country));
         OnClickBtnCancel = ReactiveCommand.Create(() => container.Back());
     }
     
@@ -89,9 +88,8 @@ public class ProfileEditingPageViewModel : ViewModelBase, IRoutableViewModel
     }
     
     private void Saving(ApplicationContext db, DbFile dbFile, string pathToImage, ObservableCollection<DbFile> dbFiles,
-        string firstName, string lastName, User user, string password, string repeatPassword, 
-        ObservableCollection<User> users, Racer racer, Gender gender, DateTimeOffset dateOfBirth, Country country,
-        ObservableCollection<Racer> racers, IPageNavigation container)
+        string firstName, string lastName, User user, string password, string repeatPassword, Racer racer,
+        Gender gender, DateTimeOffset dateOfBirth, Country country)
     {
         if (pathToImage != null)
         {
@@ -125,7 +123,7 @@ public class ProfileEditingPageViewModel : ViewModelBase, IRoutableViewModel
         user.Last_Name = lastName;
         user.ID_Role = 'R'; // racer
 
-        DateTime dateOfBirthInDateTime = dateOfBirth.Date;
+        var dateOfBirthInDateTime = dateOfBirth.Date;
         racer.First_Name = firstName;
         racer.Last_Name = lastName;
         racer.FullGender = gender;

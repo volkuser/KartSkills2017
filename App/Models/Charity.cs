@@ -1,6 +1,9 @@
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Windows.Input;
+using App.ViewModels;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using ReactiveUI;
 
 namespace App.Models;
@@ -17,7 +20,7 @@ public class Charity
     public string Charity_Description { get; set; }
     
     [Column("Charity_Logo")]
-    public string Charity_Logo { get; set; }
+    public string? Charity_Logo { get; set; }
     [NotMapped]
     public string FullCharity_Logo { get; set; }
     
@@ -28,7 +31,6 @@ public class Charity
 
     [NotMapped]
     public string? FileName { get; set; }
-
     [NotMapped] 
-    public ICommand CmdEdit { get; set; } = ReactiveCommand.Create(() => { });
+    public ICommand CmdEdit { get; set; }
 }

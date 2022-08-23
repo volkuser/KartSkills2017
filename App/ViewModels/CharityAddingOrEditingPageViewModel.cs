@@ -1,7 +1,10 @@
+using System.IO;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using App.Models;
-using Avalonia.Controls.Chrome;
 using ReactiveUI;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Formats.Png;
 using Splat;
 
 namespace App.ViewModels;
@@ -11,9 +14,8 @@ public class CharityAddingOrEditingPageViewModel : ViewModelBase, IRoutableViewM
     public string UrlPathSegment => "charityAddingOrEditingPageViewModel";
     public IScreen HostScreen { get; }
     private ApplicationContext Db;
-
-    private string NameOfBtnChange { get; set; }
     
+    private ICommand OnClickBtnView { get; set; }
     private ICommand OnClickBtnSave { get; set; }
     private ICommand OnClickBtnCancel { get; set; }
     
@@ -21,32 +23,64 @@ public class CharityAddingOrEditingPageViewModel : ViewModelBase, IRoutableViewM
     private string Description { get; set; }
     private string PathToImage { get; set; }
 
-    public CharityAddingOrEditingPageViewModel(IPageNavigation container, IScreen? screen = null,
-        Charity? charity = null)
+    public CharityAddingOrEditingPageViewModel(IPageNavigation container, Charity? charity = null, 
+        IScreen? screen = null)
     {
         HostScreen = screen ?? Locator.Current.GetService<IScreen>();
         Db = Singleton.GetInstance();
 
-        if (charity == null)
-        {
-            NameOfBtnChange = "Сохранить";
+        OnClickBtnView = ReactiveCommand.CreateFromTask(() 
+            => Task.FromResult(ViewImage(container)));
+        
+        if (charity == null) 
             OnClickBtnSave = ReactiveCommand.Create(() => Saving(Db, Title, Description, PathToImage));
-        }
         else
         {
-            IfAChange(Db);
+            FieldsFilling(Db);
+            
         }
 
-        OnClickBtnCancel = ReactiveCommand.Create(() => container.Back());
+        OnClickBtnCancel = ReactiveCommand.Create(() => container.OpnCharityControlPage());
+    }
+    
+    private async Task ViewImage(IPageNavigation container)
+    {
+        await container.OpnOpenFileDialog();
+        PathToImage = container.GetPathToImage();
     }
 
-    private void IfAChange(ApplicationContext db)
+    private void FieldsFilling(ApplicationContext db)
     {
-        NameOfBtnChange = "Изменить";
+        
     }
 
     private void Saving(ApplicationContext db, string title, string description, string pathToImage)
     {
+        Charity charity = new Charity();
+        charity.Charity_Name = title;
+        charity.Charity_Description = description;
+        charity.FileName = pathToImage;
         
+        if (pathToImage != null)
+        {
+            string shortFileName = pathToImage.Substring(pathToImage.LastIndexOf('/') + 1); // only unix
+            Image image = Image.Load(pathToImage);
+            byte[] imageData;
+            using (var ms = new MemoryStream())
+            {
+                image.Save(ms, new PngEncoder());
+                imageData = ms.ToArray();
+            }
+            DbFile file = new DbFile()
+            {
+                FileName = shortFileName,
+                FileItself = imageData
+            };
+
+            charity.File = file;
+        }
+
+        db.Charities.Add(charity);
+        db.SaveChanges();
     }
 }

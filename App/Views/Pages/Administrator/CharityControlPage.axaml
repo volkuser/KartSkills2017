@@ -31,7 +31,7 @@
                 <DataGridTemplateColumn Header="Лого" Width="150">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Image Stretch="None" Source="{Binding FileName, 
+                            <Image Stretch="UniformToFill" Source="{Binding FileName, 
                                 Converter={StaticResource VariableImage}}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

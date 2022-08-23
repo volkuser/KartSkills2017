@@ -25,12 +25,12 @@ public class CharityControlPageViewModel : ViewModelBase, IRoutableViewModel
         HostScreen = screen ?? Locator.Current.GetService<IScreen>();
         Db = Singleton.GetInstance();
 
-        Charities = GetCharityList(Db);
+        Charities = GetCharityList(Db, container);
 
         OnClickBtnAddNew = ReactiveCommand.Create(() => container.OpnCharityAddingOrEditingPage());
     }
 
-    private ObservableCollection<Charity> GetCharityList(ApplicationContext db)
+    private ObservableCollection<Charity> GetCharityList(ApplicationContext db, IPageNavigation conteiner)
     {
         ObservableCollection<Charity> charities = new(db.Charities);
         
@@ -44,6 +44,8 @@ public class CharityControlPageViewModel : ViewModelBase, IRoutableViewModel
                     fs.Write(temp.FileItself, 0, temp.FileItself.Length);
                 charity.FileName = Environment.CurrentDirectory + "/" + temp.FileName;
             }
+            charity.CmdEdit = ReactiveCommand.Create(() 
+                => conteiner.OpnCharityAddingOrEditingPage(charity));
         }
         
         return charities;

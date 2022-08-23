@@ -59,6 +59,8 @@ namespace App
             Locator.CurrentMutable.Register<IViewFor<RaceMapPageViewModel>>(() => new RaceMapPage());
             Locator.CurrentMutable.Register<IViewFor<CharityControlPageViewModel>>(() 
                 => new CharityControlPage());
+            Locator.CurrentMutable.Register<IViewFor<CharityAddingOrEditingPageViewModel>>(() 
+                => new CharityAddingOrEditingPage());
 
             new MainWindow { DataContext = Locator.Current.GetService<IScreen>() }.Show();
             
