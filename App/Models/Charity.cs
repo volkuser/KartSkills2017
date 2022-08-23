@@ -15,8 +15,10 @@ public class Charity
     [Column("ID_Сharity")]
     public int ID_Сharity { get; set; }
     [Column("Charity_Name")]
+    [Required]
     public string Charity_Name { get; set; }
     [Column("Charity_Description")]
+    [Required]
     public string Charity_Description { get; set; }
     
     [Column("Charity_Logo")]
