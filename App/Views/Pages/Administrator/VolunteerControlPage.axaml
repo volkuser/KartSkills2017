@@ -47,6 +47,7 @@
             <TextBlock Grid.Column="1" Text="{Binding VolunteerCount}"/>
         </Grid>
         <Button Grid.Row="1" Grid.Column="5"
+                Command="{Binding OnClickBtnLoad}"
                 VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock Text="Загрузка волонтеров" TextAlignment="Center"
                        TextWrapping="Wrap"/>

@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using App.Models;
+using Avalonia.Controls;
 using ReactiveUI;
 
 namespace App.ViewModels

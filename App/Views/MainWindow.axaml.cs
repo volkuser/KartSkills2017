@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using System.Reactive;
 using System.Threading.Tasks;
@@ -40,7 +41,7 @@ public partial class MainWindow : ReactiveWindow<MainWindowViewModel>
     private async Task ShowOpenFileDialog(InteractionContext<Unit, string?> interaction)
     {
         var dialog = new OpenFileDialog();
-        dialog.Filters.Add(new FileDialogFilter());
+        dialog.Filters.Add(new FileDialogFilter() { Name = "All files", Extensions = {"*"} });
         var fileNameStrings = await dialog.ShowAsync(this);
         interaction.SetOutput(fileNameStrings.FirstOrDefault());
     }
