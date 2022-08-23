@@ -11,6 +11,7 @@ public class AdministratorMenuPageViewModel : ViewModelBase, IRoutableViewModel
 
     private ICommand OnClickBtnInventory { get; set; }
     private ICommand OnClickBtnCharity { get; set; }
+    private ICommand OnClickBtnVolunteers { get; set; }
 
     public AdministratorMenuPageViewModel(IPageNavigation container, IScreen? screen = null)
     {
@@ -18,5 +19,6 @@ public class AdministratorMenuPageViewModel : ViewModelBase, IRoutableViewModel
 
         OnClickBtnInventory = ReactiveCommand.Create(() => container.OpnInventoryPage());
         OnClickBtnCharity = ReactiveCommand.Create(() => container.OpnCharityControlPage());
+        OnClickBtnVolunteers = ReactiveCommand.Create(() => container.OpnVolunteerControlPage());
     }
 }

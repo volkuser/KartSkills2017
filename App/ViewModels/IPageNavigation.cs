@@ -31,6 +31,8 @@ public interface IPageNavigation
     public void OpnRaceMapPage();
     public void OpnCharityControlPage();
     public void OpnCharityAddingOrEditingPage(Charity? charity = null);
+    public void OpnVolunteerControlPage();
+    public void OpnVolunteerLoadPage();
 
     public void Back();
 }

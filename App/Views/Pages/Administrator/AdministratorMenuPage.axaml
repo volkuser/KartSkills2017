@@ -18,7 +18,8 @@
                    VerticalAlignment="Center" HorizontalAlignment="Center"
                    Text="Меню администратора"/>
         <Button Grid.Row="1" Grid.Column="0" Content="Пользователи" Classes="SubMenu"/>
-        <Button Grid.Row="1" Grid.Column="1" Content="Волонтеры" Classes="SubMenu"/>
+        <Button Grid.Row="1" Grid.Column="1" Content="Волонтеры" Classes="SubMenu"
+                Command="{Binding OnClickBtnVolunteers}"/>
         <Button Grid.Row="2" Grid.Column="0" Classes="SubMenu"
                 Command="{Binding OnClickBtnCharity}">
             <TextBlock TextAlignment="Center" TextWrapping="WrapWithOverflow"

@@ -61,6 +61,10 @@ namespace App
                 => new CharityControlPage());
             Locator.CurrentMutable.Register<IViewFor<CharityAddingOrEditingPageViewModel>>(() 
                 => new CharityAddingOrEditingPage());
+            Locator.CurrentMutable.Register<IViewFor<VolunteerControlPageViewModel>>(() 
+                => new VolunteerControlPage());
+            Locator.CurrentMutable.Register<IViewFor<VolunteerLoadPageViewModel>>(() 
+                => new VolunteerLoadPage());
 
             new MainWindow { DataContext = Locator.Current.GetService<IScreen>() }.Show();
             

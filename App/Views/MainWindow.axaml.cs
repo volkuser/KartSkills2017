@@ -40,7 +40,7 @@ public partial class MainWindow : ReactiveWindow<MainWindowViewModel>
     private async Task ShowOpenFileDialog(InteractionContext<Unit, string?> interaction)
     {
         var dialog = new OpenFileDialog();
-        dialog.Filters.Add(new FileDialogFilter() { Name = "Image files" , Extensions = { "jpg", "png" } });
+        dialog.Filters.Add(new FileDialogFilter());
         var fileNameStrings = await dialog.ShowAsync(this);
         interaction.SetOutput(fileNameStrings.FirstOrDefault());
     }
