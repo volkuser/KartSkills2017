@@ -35,6 +35,7 @@ public interface IPageNavigation
     public void OpnVolunteerControlPage();
     public void OpnVolunteerLoadPage();
     public void OpnMySponsorsPage(User currentUser);
+    public Task OpnRacerCardWindow(Racer currentRacer);
 
     public void Back();
 }

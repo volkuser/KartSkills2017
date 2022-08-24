@@ -4,11 +4,13 @@ using System.Reactive;
 using System.Threading.Tasks;
 using App.ViewModels;
 using App.Views.Pages;
+using App.Views.Pages.Information;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using Avalonia.ReactiveUI;
 using PropertyChanged;
 using ReactiveUI;
+using InformationAboutContactsWindow = App.Views.Pages.Racer.InformationAboutContactsWindow;
 
 namespace App.Views;
 
@@ -24,6 +26,7 @@ public partial class MainWindow : ReactiveWindow<MainWindowViewModel>
             disposables(ViewModel.ShowOpenFileDialog.RegisterHandler(ShowOpenFileDialog));
             disposables(ViewModel!.ShowInformationAboutCharityWindow
                 .RegisterHandler(ShowInformationAboutCharityWindow));
+            disposables(ViewModel!.ShowRacerCardWindow.RegisterHandler(ShowRacerCardWindow));
         });
         AvaloniaXamlLoader.Load(this);
     }
@@ -53,6 +56,16 @@ public partial class MainWindow : ReactiveWindow<MainWindowViewModel>
             { DataContext = interaction.Input };
 
         var result = await dialog.ShowDialog<InformationAboutCharityWindowViewModel?>(this);
+        interaction.SetOutput(result);
+    }
+    
+    private async Task ShowRacerCardWindow(InteractionContext<RacerCardWindowViewModel, 
+        RacerCardWindowViewModel?> interaction)
+    {
+        var dialog = new RacerCardWindow
+            { DataContext = interaction.Input };
+
+        var result = await dialog.ShowDialog<RacerCardWindowViewModel?>(this);
         interaction.SetOutput(result);
     }
 }

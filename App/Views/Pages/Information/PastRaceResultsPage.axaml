@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" x:Class="App.Views.Pages.PastRaceResultsPage">
     <UserControl.Styles>
-        <Style Selector="TextBox, TextBlock">
+        <Style Selector="TextBox, TextBlock, Button">
             <Setter Property="TextBlock.FontSize" Value="20"/>
         </Style>
     </UserControl.Styles>
@@ -33,7 +33,7 @@
                 <ColumnDefinition Width="0.5*"/>
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="0" Grid.Row="0" Text="Событие:"
-                       VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                       VerticalAlignment="Center" HorizontalAlignment="Right"/>
             <ComboBox Grid.Column="1" Grid.Row="0" 
                       Items="{Binding Events}" SelectedItem="{Binding Event}"
                       VerticalAlignment="Center" HorizontalAlignment="Stretch">
@@ -45,7 +45,7 @@
             </ComboBox>
             
             <TextBlock Grid.Column="0" Grid.Row="1" Text="Тип гонки:"
-                       VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                       VerticalAlignment="Center" HorizontalAlignment="Right"/>
             <ComboBox Grid.Column="1" Grid.Row="1" 
                       Items="{Binding EventTypes}" SelectedItem="{Binding EventType}"
                       VerticalAlignment="Center" HorizontalAlignment="Stretch">
@@ -57,7 +57,7 @@
             </ComboBox>
             
             <TextBlock Grid.Column="3" Grid.Row="0" Text="Пол:"
-                       VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                       VerticalAlignment="Center" HorizontalAlignment="Right"/>
             <ComboBox Grid.Column="4" Grid.Row="0" 
                       HorizontalAlignment="Stretch" VerticalAlignment="Center" 
                       Items="{Binding Genders}" SelectedItem="{Binding Gender}">
@@ -69,7 +69,7 @@
             </ComboBox>
             
             <TextBlock Grid.Column="3" Grid.Row="1" Text="Категория:"
-                       VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                       VerticalAlignment="Center" HorizontalAlignment="Right"/>
             <ComboBox Grid.Column="4" Grid.Row="1"
                       Items="{Binding AgeCategories}" SelectedItem="{Binding AgeCategory}"
                       VerticalAlignment="Center" HorizontalAlignment="Stretch">
@@ -88,9 +88,11 @@
                     VerticalAlignment="Bottom" HorizontalAlignment="Center">
             <TextBlock Text="Всего пилотов: " FontWeight="Bold"/>
             <TextBlock Text="{Binding RacerCount}"/>
-            <TextBlock Text="Всего пилотов: " FontWeight="Bold"/>
+            <TextBlock Text=" "/>
+            <TextBlock Text="Всего пилотов финишировало: " FontWeight="Bold"/>
             <TextBlock Text="{Binding RacerWhoFinishCount}"/>
-            <TextBlock Text="Всего пилотов: " FontWeight="Bold"/>
+            <TextBlock Text=" "/>
+            <TextBlock Text="Среднее время: " FontWeight="Bold"/>
             <TextBlock Text="{Binding MediumTime}"/>
         </StackPanel>
         

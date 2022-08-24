@@ -217,7 +217,7 @@ namespace App.ViewModels
         
         public void OpnPastRaceResultsPage()
         {
-            var viewModel = new PastRaceResultsPageViewModel();
+            var viewModel = new PastRaceResultsPageViewModel(this);
             Router.Navigate.Execute(viewModel);
             AdditionForHistory(true);
         }
@@ -283,6 +283,13 @@ namespace App.ViewModels
             var viewModel = new MySponsorsPageViewModel(currentUser, this);
             Router.Navigate.Execute(viewModel);
             AdditionForHistory(true, true);
+        }
+        
+        public Interaction<RacerCardWindowViewModel, RacerCardWindowViewModel?> ShowRacerCardWindow { get; } = new ();
+        public async Task OpnRacerCardWindow(Racer currentRacer)
+        {
+            var viewModel = new RacerCardWindowViewModel(currentRacer);
+            var result = await ShowRacerCardWindow.Handle(viewModel);
         }
         
         public void Back()

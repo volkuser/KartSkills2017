@@ -1,6 +1,7 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using App.Models;
 using ReactiveUI;
@@ -60,7 +61,7 @@ public class PastRaceResultsPageViewModel : ViewModelBase, IRoutableViewModel
 
     private ObservableCollection<PastResult> PastResults { get; set; } = new();
     
-    public PastRaceResultsPageViewModel(IScreen? screen = null)
+    public PastRaceResultsPageViewModel(IPageNavigation container, IScreen? screen = null)
     {
         HostScreen = screen ?? Locator.Current.GetService<IScreen>();
         Db = Singleton.GetInstance();
@@ -70,11 +71,29 @@ public class PastRaceResultsPageViewModel : ViewModelBase, IRoutableViewModel
         EventTypes = new (Db.EventTypes);
 
         OnClickBtnSearch = ReactiveCommand.Create(() =>
-            { PastResults = GetPastResults(Db, Event, EventType, AgeCategory, Gender); });
+        {
+            PastResults = GetPastResults(Db, Event, EventType, AgeCategory, Gender, container);
+            if (PastResults.Count > 0)
+            {
+                RacerCount = PastResults.Count;
+                RacerWhoFinishCount = /*logic to getting required information*/ PastResults.Count;
+
+                int time = 0;
+                foreach (var pastResult in PastResults)
+                {
+                    time += pastResult.TimeS.Seconds + pastResult.TimeS.Minutes * 60 + pastResult.TimeS.Hours * 120;
+                }
+                time /= PastResults.Count;
+                TimeSpan timeS = TimeSpan.FromSeconds(time);
+                if (timeS.Hours > 0) MediumTime = timeS.Hours + "ч ";
+                MediumTime += timeS.Minutes + "м " + timeS.Seconds + "c";
+            }
+        });
     }
 
     private ObservableCollection<PastResult> GetPastResults(ApplicationContext db, Event? selectedEvent, 
-        EventType? selectedEventType, AgeCategory? selectedAgeCategory, Gender? selectedGender)
+        EventType? selectedEventType, AgeCategory? selectedAgeCategory, Gender? selectedGender, 
+        IPageNavigation container)
     {
         ObservableCollection<PastResult> pastResults = new();
 
@@ -116,11 +135,16 @@ public class PastRaceResultsPageViewModel : ViewModelBase, IRoutableViewModel
                         pastResult.Position = "#" + Convert.ToString(++counter);
     
                         // time
-                        if (result.RaceTime.Hours > 0) pastResult.Time = result.RaceTime.Hours + "ч";
-                        pastResult.Time += result.RaceTime.Minutes + "м" + result.RaceTime.Seconds + "c";
+                        if (result.RaceTime.Hours > 0) pastResult.Time = result.RaceTime.Hours + "ч ";
+                        pastResult.Time += result.RaceTime.Minutes + "м " + result.RaceTime.Seconds + "c";
+                        pastResult.TimeS = result.RaceTime;
                         
                         // racer name
                         pastResult.RacerName = racer.First_Name + " " + racer.Last_Name;
+                        
+                        // command for opening racer card
+                        pastResult.CmdRacerCard = ReactiveCommand.CreateFromTask(async
+                            => Task.FromResult(container.OpnRacerCardWindow(racer)));
                         
                         // country
                         Race race = Db.Races.FirstOrDefault(x => x.ID_Race.Equals(currentEvent.ID_Race));

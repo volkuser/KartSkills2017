@@ -4,7 +4,7 @@ using Avalonia.ReactiveUI;
 using PropertyChanged;
 using ReactiveUI;
 
-namespace App.Views.Pages;
+namespace App.Views.Pages.Racer;
 
 [DoNotNotify]
 public partial class InformationAboutContactsWindow : ReactiveWindow<InformationAboutContactsWindowViewModel>
