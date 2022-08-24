@@ -23,6 +23,8 @@ public class Result
     
     [Column("BidNumber")]
     public int BidNumber { get; set; }
+    /*[NotMapped]
+    public int GlobalPlace { get; set; }*/
     [NotMapped]
     public int GenderPlace { get; set; }
     [NotMapped]

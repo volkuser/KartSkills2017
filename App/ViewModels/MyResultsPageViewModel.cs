@@ -156,16 +156,16 @@ public class MyResultsPageViewModel : ViewModelBase, IRoutableViewModel
                 foreach (var singleGenderResult in singleGenderResults) 
                     singleGenderResult.GenderPlace = singleGenderResult.BidNumber;
                 
-                int temp;
+                Result temp;
                 for (int i = 0; i < singleGenderResults.Count; i++)
                 {
                     for (int j = i + 1; j < singleGenderResults.Count; j++)
                     {
                         if (singleGenderResults[i].GenderPlace > singleGenderResults[j].GenderPlace)
                         {
-                            temp = singleGenderResults[i].GenderPlace;
-                            singleGenderResults[i].GenderPlace = singleGenderResults[j].GenderPlace;
-                            singleGenderResults[j].GenderPlace = temp;
+                            temp = singleGenderResults[i];
+                            singleGenderResults[i] = singleGenderResults[j];
+                            singleGenderResults[j] = temp;
                         }                   
                     }            
                 }
@@ -173,16 +173,16 @@ public class MyResultsPageViewModel : ViewModelBase, IRoutableViewModel
                 foreach (var singleAgeResult in singleAgeResults) 
                     singleAgeResult.GenderPlace = singleAgeResult.BidNumber;
                 
-                int temp1;
+                Result temp1;
                 for (int i = 0; i < singleAgeResults.Count; i++)
                 {
                     for (int j = i + 1; j < singleAgeResults.Count; j++)
                     {
                         if (singleAgeResults[i].AgePlace > singleAgeResults[j].AgePlace)
                         {
-                            temp1 = singleAgeResults[i].AgePlace;
-                            singleAgeResults[i].AgePlace = singleAgeResults[j].AgePlace;
-                            singleAgeResults[j].AgePlace = temp1;
+                            temp1 = singleAgeResults[i];
+                            singleAgeResults[i] = singleAgeResults[j];
+                            singleAgeResults[j] = temp1;
                         }                   
                     }            
                 }

@@ -59,7 +59,8 @@
                      Text="{Binding LastName}" Watermark="Фамилия" FontSize="22"/>
             <TextBlock Grid.Row="5" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"
                        Text="Пол:" FontSize="22"/>
-            <ComboBox Grid.Row="5" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" 
+            <ComboBox Grid.Row="5" Grid.Column="2" 
+                      HorizontalAlignment="Stretch" VerticalAlignment="Center" 
                       Items="{Binding Genders}" SelectedItem="{Binding Gender}">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>

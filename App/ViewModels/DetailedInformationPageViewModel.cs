@@ -19,5 +19,6 @@ public class DetailedInformationPageViewModel : ViewModelBase, IRoutableViewMode
 
         OnClickBtnListOfCharities = ReactiveCommand.Create(() => container.OpnCharityListPage());
         OnClickBtnKartSkills2017 = ReactiveCommand.Create(() => container.OpnKartSkills2017Page());
+        OnClickBtnPreviousResults = ReactiveCommand.Create(() => container.OpnPastRaceResultsPage());
     }
 }
