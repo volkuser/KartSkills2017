@@ -517,25 +517,26 @@ INSERT INTO `role` (`ID_Role`, `Role_Name`) VALUES
 CREATE TABLE `sponsorship` (
   `ID_Sponsorship` int(11) NOT NULL,
   `SponsorName` varchar(150) NOT NULL,
-  `Amount` decimal(10,0) NOT NULL
+  `Amount` decimal(10,0) NOT NULL,
+  `ID_Racer` int NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Дамп данных таблицы `sponsorship`
 --
 
-INSERT INTO `sponsorship` (`ID_Sponsorship`, `SponsorName`, `Amount`) VALUES
-(1, 'Angel Jhons', '180'),
-(2, 'Uri Kovrov', '25'),
-(3, 'Asha Timbert', '150'),
-(4, 'Artur Genby', '1000'),
-(5, 'Gely Brick', '290'),
-(6, 'Bondy Black', '236'),
-(7, 'Ban Trick', '8000'),
-(8, 'Oliver Greds', '5200'),
-(9, 'Grindel Frool', '15000'),
-(10, 'Emanuel Rick', '50'),
-(11, 'Elena Tvordova', '150');
+INSERT INTO `sponsorship` (`ID_Sponsorship`, `SponsorName`, `Amount`, `ID_Racer`) VALUES
+(1, 'Angel Jhons', '180', 8),
+(2, 'Uri Kovrov', '25', 8),
+(3, 'Asha Timbert', '150', 10),
+(4, 'Artur Genby', '1000', 11),
+(5, 'Gely Brick', '290', 8),
+(6, 'Bondy Black', '236', 11),
+(7, 'Ban Trick', '8000', 7),
+(8, 'Oliver Greds', '5200', 7),
+(9, 'Grindel Frool', '15000', 19),
+(10, 'Emanuel Rick', '50', 16),
+(11, 'Elena Tvordova', '150', 16);
 
 -- --------------------------------------------------------
 
@@ -720,7 +721,8 @@ ALTER TABLE `role`
 -- Индексы таблицы `sponsorship`
 --
 ALTER TABLE `sponsorship`
-  ADD PRIMARY KEY (`ID_Sponsorship`);
+  ADD PRIMARY KEY (`ID_Sponsorship`),
+  ADD KEY `ID_Racer` (`ID_Racer`);
 
 --
 -- Индексы таблицы `user`

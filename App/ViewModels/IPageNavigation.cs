@@ -34,6 +34,7 @@ public interface IPageNavigation
     public void OpnCharityAddingOrEditingPage(Charity? charity = null);
     public void OpnVolunteerControlPage();
     public void OpnVolunteerLoadPage();
+    public void OpnMySponsorsPage(User currentUser);
 
     public void Back();
 }

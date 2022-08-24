@@ -5,6 +5,7 @@ using App.Views;
 using App.Views.Pages;
 using App.Views.Pages.Administrator;
 using App.Views.Pages.Information;
+using App.Views.Pages.Racer;
 using PropertyChanged;
 using ReactiveUI;
 using Splat;
@@ -63,8 +64,8 @@ namespace App
                 => new CharityAddingOrEditingPage());
             Locator.CurrentMutable.Register<IViewFor<VolunteerControlPageViewModel>>(() 
                 => new VolunteerControlPage());
-            Locator.CurrentMutable.Register<IViewFor<VolunteerLoadPageViewModel>>(() 
-                => new VolunteerLoadPage());
+            Locator.CurrentMutable.Register<IViewFor<VolunteerLoadPageViewModel>>(() => new VolunteerLoadPage());
+            Locator.CurrentMutable.Register<IViewFor<MySponsorsPageViewModel>>(() => new MySponsorsPage());
 
             new MainWindow { DataContext = Locator.Current.GetService<IScreen>() }.Show();
             

@@ -24,7 +24,8 @@
                 Command="{Binding OnClickBtnMyResultsPage}"/>
         <Button Grid.Row="2" Grid.Column="0" Content="Редактирование профиля" Classes="SubMenu"
                 Command="{Binding OnClickBtnProfileEditingPage}"/>
-        <Button Grid.Row="2" Grid.Column="1" Content="Мой спонсор" Classes="SubMenu"/>
+        <Button Grid.Row="2" Grid.Column="1" Content="Мой спонсор" Classes="SubMenu"
+                Command="{Binding OnClickBtnMySponsors}"/>
         <Button Grid.Row="3" Grid.Column="0" Content="Контакты" Classes="SubMenu"
                 Command="{Binding OnClickBtnContacts}"/>
     </Grid>

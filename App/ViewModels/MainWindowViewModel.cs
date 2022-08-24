@@ -278,6 +278,13 @@ namespace App.ViewModels
             AdditionForHistory(false);
         }
         
+        public void OpnMySponsorsPage(User currentUser)
+        {
+            var viewModel = new MySponsorsPageViewModel(currentUser, this);
+            Router.Navigate.Execute(viewModel);
+            AdditionForHistory(true, true);
+        }
+        
         public void Back()
         {
             Router.NavigateBack.Execute();

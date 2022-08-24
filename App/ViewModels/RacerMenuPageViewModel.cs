@@ -14,6 +14,7 @@ public class RacerMenuPageViewModel : ViewModelBase, IRoutableViewModel
     private ICommand OnClickBtnRaceRegistrationPage { get; set; }
     private ICommand OnClickBtnProfileEditingPage { get; set; }
     private ICommand OnClickBtnMyResultsPage { get; set; }
+    private ICommand OnClickBtnMySponsors { get; set; }
 
     private User CurrentUser { get; set; }
 
@@ -27,5 +28,6 @@ public class RacerMenuPageViewModel : ViewModelBase, IRoutableViewModel
         OnClickBtnRaceRegistrationPage = ReactiveCommand.Create(() => container.OpnRaceRegistrationPage(user));
         OnClickBtnProfileEditingPage = ReactiveCommand.Create(() => container.OpnProfileEditingPage(user));
         OnClickBtnMyResultsPage = ReactiveCommand.Create(() => container.OpnMyResultsPage(user));
+        OnClickBtnMySponsors = ReactiveCommand.Create(() => container.OpnMySponsorsPage(user));
     }
 }

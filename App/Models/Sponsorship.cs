@@ -13,4 +13,9 @@ public class Sponsorship
     public string SponsorName { get; set; }
     [Column("Amount")]
     public decimal Amount { get; set; }
+    
+    [Column("ID_Racer")]
+    public int ID_Racer { get; set; }
+    [ForeignKey("ID_Racer")]
+    public Racer Racer { get; set; }
 }

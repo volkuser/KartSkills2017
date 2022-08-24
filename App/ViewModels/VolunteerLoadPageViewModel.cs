@@ -1,3 +1,4 @@
+using System;
 using System.Globalization;
 using System.IO;
 using System.Threading.Tasks;
@@ -39,13 +40,22 @@ public class VolunteerLoadPageViewModel : ViewModelBase, IRoutableViewModel
 
     private void CsvLoading(ApplicationContext db, string fileName)
     {
-        using var reader = new CsvReader(new StreamReader(fileName), CultureInfo.InvariantCulture);
-        reader.Context.RegisterClassMap<VolunteerMap>();
-        var volunteers = reader.GetRecords<Volunteer>();
-        if (volunteers != null)
+        try
         {
-            foreach (var volunteer in volunteers) db.Volunteers.Add(volunteer);
-            db.SaveChanges();
+            using var reader = new CsvReader(new StreamReader(fileName), CultureInfo.InvariantCulture);
+            reader.Context.RegisterClassMap<VolunteerMap>();
+            var volunteers = reader.GetRecords<Volunteer>();
+            if (volunteers != null)
+            {
+                foreach (var volunteer in volunteers) db.Volunteers.Add(volunteer);
+                db.SaveChanges();
+            }
+        }
+        catch (Exception exception)
+        {
+            var messageBoxStandardWindow = MessageBox.Avalonia.MessageBoxManager
+                .GetMessageBoxStandardWindow("Exception!", exception.Message);
+            messageBoxStandardWindow.Show();
         }
     }
 }
