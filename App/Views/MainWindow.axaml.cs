@@ -1,16 +1,15 @@
-using System.Collections.Generic;
 using System.Linq;
 using System.Reactive;
 using System.Threading.Tasks;
 using App.ViewModels;
 using App.Views.Pages;
 using App.Views.Pages.Information;
+using App.Views.Pages.Racer;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using Avalonia.ReactiveUI;
 using PropertyChanged;
 using ReactiveUI;
-using InformationAboutContactsWindow = App.Views.Pages.Racer.InformationAboutContactsWindow;
 
 namespace App.Views;
 

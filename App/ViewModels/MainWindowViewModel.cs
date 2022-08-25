@@ -77,7 +77,7 @@ namespace App.ViewModels
             OpnMainMenuPage();
 
             OnClickBtnBack = ReactiveCommand.Create(Back);
-            OnClickBtnLogout = ReactiveCommand.Create(OpnMainMenuPage);
+            OnClickBtnLogout = ReactiveCommand.Create(OpnAuthorizationMenuPage);
         }
 
         public void OpnMainMenuPage()
@@ -140,7 +140,7 @@ namespace App.ViewModels
         
         public void OpnCoordinatorMenuPage()
         {
-            var viewModel = new CoordinatorMenuPageViewModel();
+            var viewModel = new CoordinatorMenuPageViewModel(this);
             Router.Navigate.Execute(viewModel);
             AdditionForHistory(false, true);
         }
@@ -290,6 +290,20 @@ namespace App.ViewModels
         {
             var viewModel = new RacerCardWindowViewModel(currentRacer);
             var result = await ShowRacerCardWindow.Handle(viewModel);
+        }
+        
+        public void OpnRacerControlPage()
+        {
+            var viewModel = new RacerControlPageViewModel(this);
+            Router.Navigate.Execute(viewModel);
+            AdditionForHistory(true, true);
+        }
+        
+        public void OpnSponsorViewPage()
+        {
+            var viewModel = new SponsorViewPageViewModel(this);
+            Router.Navigate.Execute(viewModel);
+            AdditionForHistory(true, true);
         }
         
         public void Back()

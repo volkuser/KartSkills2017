@@ -4,6 +4,7 @@ using App.ViewModels;
 using App.Views;
 using App.Views.Pages;
 using App.Views.Pages.Administrator;
+using App.Views.Pages.Coordinator;
 using App.Views.Pages.Information;
 using App.Views.Pages.Racer;
 using PropertyChanged;
@@ -30,8 +31,7 @@ namespace App
                 => new ConfirmationOfSponsorshipPage());
             Locator.CurrentMutable.Register<IViewFor<DetailedInformationPageViewModel>>(() 
                 => new DetailedInformationPage());
-            Locator.CurrentMutable.Register<IViewFor<CharityListPageViewModel>>(() 
-                => new CharityListPage());
+            Locator.CurrentMutable.Register<IViewFor<CharityListPageViewModel>>(() => new CharityListPage());
             Locator.CurrentMutable.Register<IViewFor<AuthorizationMenuPageViewModel>>(() 
                 => new AuthorizationMenuPage());
             Locator.CurrentMutable.Register<IViewFor<RacerMenuPageViewModel>>(() => new RacerMenuPage());
@@ -66,6 +66,8 @@ namespace App
                 => new VolunteerControlPage());
             Locator.CurrentMutable.Register<IViewFor<VolunteerLoadPageViewModel>>(() => new VolunteerLoadPage());
             Locator.CurrentMutable.Register<IViewFor<MySponsorsPageViewModel>>(() => new MySponsorsPage());
+            Locator.CurrentMutable.Register<IViewFor<RacerControlPageViewModel>>(() => new RacerControlPage());
+            Locator.CurrentMutable.Register<IViewFor<SponsorViewPageViewModel>>(() => new SponsorViewPage());
 
             new MainWindow { DataContext = Locator.Current.GetService<IScreen>() }.Show();
             
