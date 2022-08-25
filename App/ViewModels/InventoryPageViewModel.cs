@@ -33,6 +33,7 @@ public class InventoryPageViewModel : ViewModelBase, IRoutableViewModel
         InventoryControl = GetInventoryControl(Db, IncomingInventories);
 
         OnClickBtnIncoming = ReactiveCommand.Create(() => container.OpnInventoryIncomingPage());
+        OnClickBtnReport = ReactiveCommand.Create(() => container.OpnReportPrintPage());
     }
 
     private int GetRacerCount(ApplicationContext db)

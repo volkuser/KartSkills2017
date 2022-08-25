@@ -306,6 +306,13 @@ namespace App.ViewModels
             AdditionForHistory(true, true);
         }
         
+        public void OpnReportPrintPage()
+        {
+            var viewModel = new ReportPrintPageViewModel(this);
+            Router.Navigate.Execute(viewModel);
+            AdditionForHistory(false);
+        }
+        
         public void Back()
         {
             Router.NavigateBack.Execute();

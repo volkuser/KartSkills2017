@@ -38,6 +38,7 @@ public interface IPageNavigation
     public Task OpnRacerCardWindow(Racer currentRacer);
     public void OpnRacerControlPage();
     public void OpnSponsorViewPage();
+    public void OpnReportPrintPage();
 
     public void Back();
 }

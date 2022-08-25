@@ -90,5 +90,9 @@
         <DependentUpon>PastRaceResultsPage.axaml</DependentUpon>
         <SubType>Code</SubType>
       </Compile>
+      <Compile Update="Views\Pages\Administrator\ReportPrintPage.axaml.cs">
+        <DependentUpon>ReportPrintPage.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
     </ItemGroup>
 </Project>

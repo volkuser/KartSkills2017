@@ -68,6 +68,7 @@ namespace App
             Locator.CurrentMutable.Register<IViewFor<MySponsorsPageViewModel>>(() => new MySponsorsPage());
             Locator.CurrentMutable.Register<IViewFor<RacerControlPageViewModel>>(() => new RacerControlPage());
             Locator.CurrentMutable.Register<IViewFor<SponsorViewPageViewModel>>(() => new SponsorViewPage());
+            Locator.CurrentMutable.Register<IViewFor<ReportPrintPageViewModel>>(() => new ReportPrintPage());
 
             new MainWindow { DataContext = Locator.Current.GetService<IScreen>() }.Show();
             
