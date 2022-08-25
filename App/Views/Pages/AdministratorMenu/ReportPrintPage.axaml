@@ -1,0 +1,39 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" x:Class="App.Views.Pages.AdministratorMenu.ReportPrintPage">
+    <UserControl.Resources>
+        <ImageBrush x:Key="Printer" Source="/Assets/Images/printer.jpg" Stretch="Fill"/>
+    </UserControl.Resources>
+    <UserControl.Styles>
+        <Style Selector="TextBox, Button">
+            <Setter Property="TextBox.FontSize" Value="20"/>
+        </Style>
+    </UserControl.Styles>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.2*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.2*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="Печать отчета" Classes="h2"
+                   VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        
+        <Button Grid.Row="1" Grid.Column="1" Background="{DynamicResource Printer}"
+                Command="{Binding OnClickBtnPrint}"
+                VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="50" Height="50"/>
+        
+        <TextBox Grid.Row="2" Grid.Column="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+        
+        <Button Grid.Row="3" Grid.Column="1" Content="Отмена"
+                Command="{Binding OnClickBtnCancel}"
+                VerticalAlignment="Center" HorizontalAlignment="Center"/>
+    </Grid>
+</UserControl>

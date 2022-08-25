@@ -1,0 +1,84 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:converters="clr-namespace:App.Views.Converters"
+             mc:Ignorable="d" x:Class="App.Views.Pages.InformationMenu.KartSkills2017Page">
+    <UserControl.Resources>
+        <converters:TextValueConverter x:Key="VariableText"/>
+        <ImageBrush x:Key="Map" Source="/Assets/Images/Map/kart-skill-2017-map-1.png" Stretch="Fill"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+        
+        <!--title-->
+        <TextBlock Grid.Row="0" Text="Информация о Kart Skills 2017" Classes="h2"
+                   VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        
+        <ScrollViewer Grid.Row="1">
+            <Grid Height="1300">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="0.2*"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="0.05*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1000"/>
+                    <RowDefinition Height="300"/>
+                </Grid.RowDefinitions>
+                
+                <!--map & photos-->
+                <Grid Grid.Row="0" Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="0.2*"/>
+                        <RowDefinition/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition/>
+                        <RowDefinition Height="0.1*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.1*"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Row="0" Grid.Column="1" Background="{DynamicResource Map}" 
+                            Command="{Binding OnClickBtnShowFullMap}"
+                            VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                    <Image Grid.Row="2" Grid.Column="1" Source="/Assets/Images/Photos/Kart-Start.jpg" Stretch="Fill"
+                           VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                    <Image Grid.Row="4" Grid.Column="1" Source="/Assets/Images/Photos/Duma.jpg" Stretch="Fill"
+                           VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                </Grid>
+                
+                <!--info-->
+                <TextBlock Grid.Row="0" Grid.Column="2" FontSize="18" Text="{Binding PathToInfo, 
+                    Converter={StaticResource VariableText}}" TextWrapping="WrapWithOverflow"
+                                        VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                
+                <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
+                      VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.1*"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="0.2*"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="0.1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="0.1*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <Image Grid.Row="0" Grid.Column="1" Source="/Assets/Images/Photos/Kremlin.jpg" Stretch="Fill"
+                           VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                    <Image Grid.Row="0" Grid.Column="3" Source="/Assets/Images/Photos/Park-Gorkogo.jpg" Stretch="Fill"
+                           VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                </Grid>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

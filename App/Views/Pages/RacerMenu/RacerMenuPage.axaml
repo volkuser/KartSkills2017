@@ -1,0 +1,32 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" x:Class="App.Views.Pages.RacerMenu.RacerMenuPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="0.7*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Classes="h3" 
+                   VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Text="Меню гонщика"/>
+        <Button Grid.Row="1" Grid.Column="0" Content="Регистрация на гонку" Classes="SubMenu"
+                Command="{Binding OnClickBtnRaceRegistrationPage}"/>
+        <Button Grid.Row="1" Grid.Column="1" Content="Мои результаты" Classes="SubMenu"
+                Command="{Binding OnClickBtnMyResultsPage}"/>
+        <Button Grid.Row="2" Grid.Column="0" Content="Редактирование профиля" Classes="SubMenu"
+                Command="{Binding OnClickBtnProfileEditingPage}"/>
+        <Button Grid.Row="2" Grid.Column="1" Content="Мой спонсор" Classes="SubMenu"
+                Command="{Binding OnClickBtnMySponsors}"/>
+        <Button Grid.Row="3" Grid.Column="0" Content="Контакты" Classes="SubMenu"
+                Command="{Binding OnClickBtnContacts}"/>
+    </Grid>
+</UserControl>

@@ -1,0 +1,182 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" x:Class="App.Views.Pages.AdministratorMenu.InventoryPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.7*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="3.5*"/>
+            <RowDefinition Height="0.7*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.1*"/>
+        </Grid.ColumnDefinitions>
+        
+        <TextBlock Grid.Row="0" Grid.Column="2" Classes="h2" Text="Инвентарь"
+                   VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        <TextBlock Grid.Row="1" Grid.Column="2" Classes="h3" FontWeight="Bold" Text="Количество пилотов:"
+                   VerticalAlignment="Center" HorizontalAlignment="Left"/>
+        <TextBlock Grid.Row="1" Grid.Column="2" Classes="h3" Text="{Binding RacerCount}"
+                   VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        
+        <Button Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" Content="Отчет" FontSize="24"
+                Command="{Binding OnClickBtnReport}"
+                VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        <Button Grid.Row="3" Grid.Column="3" Content="Поступление" FontSize="24"
+                Command="{Binding OnClickBtnIncoming}"
+                VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        
+        <Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" 
+              DataContext="{Binding InventoryControl}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2.5*"/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <!--<RowDefinition/>-->
+            </Grid.RowDefinitions>
+            <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" 
+                       Fill="{StaticResource DarkGray}" />
+            <Rectangle Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="7" 
+                       Fill="{StaticResource Gray}" />
+            <Rectangle Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="7" 
+                       Fill="{StaticResource LightGray}" />
+            <Rectangle Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="7" 
+                       Fill="{StaticResource Gray}" />
+            <Rectangle Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="7" 
+                       Fill="{StaticResource LightGray}" />
+            <Rectangle Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="7" 
+                       Fill="{StaticResource Gray}" />
+            <!--<Rectangle Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="7" 
+                Fill="{StaticResource LightGray}" />-->
+            
+            <Border Grid.Row="0" Grid.Column="0" Classes="Cell">
+                <TextBlock Text="Комплект" FontWeight="Bold" Classes="Cell"/>
+            </Border>
+            <Border Grid.Row="0" Grid.Column="1" Classes="Cell">
+                <TextBlock Text="Тип А" FontWeight="Bold" Classes="Cell"/>
+            </Border>
+            <Border Grid.Row="0" Grid.Column="2" Classes="Cell">
+                <TextBlock Text="Тип B" FontWeight="Bold" Classes="Cell"/>
+            </Border>
+            <Border Grid.Row="0" Grid.Column="3" Classes="Cell">
+                <TextBlock Text="Тип С" FontWeight="Bold" Classes="Cell"/>
+            </Border>
+            <Border Grid.Row="0" Grid.Column="4" Classes="Cell">
+                <TextBlock Text="Всего нужно" FontWeight="Bold" Classes="Cell"/>
+            </Border>
+            <Border Grid.Row="0" Grid.Column="5" Classes="Cell">
+                <TextBlock Text="Остаток" FontWeight="Bold" Classes="Cell"/>
+            </Border>
+            <Border Grid.Row="0" Grid.Column="6" Classes="Cell">
+                <TextBlock Text="Еще необходимо" FontWeight="Bold" Classes="Cell"/>
+            </Border>
+            
+            <Border Grid.Row="1" Grid.Column="0" Classes="Cell">
+                <TextBlock Text="Выбрало данный комплект" Classes="Cell"/>
+            </Border>
+            <Border Grid.Row="1" Grid.Column="1" Classes="Cell">
+                <TextBlock Text="{Binding SelectedTypeA}" Classes="Cell"/>
+            </Border> 
+            <Border Grid.Row="1" Grid.Column="2" Classes="Cell">
+                <TextBlock Text="{Binding SelectedTypeB}" Classes="Cell"/>
+            </Border> 
+            <Border Grid.Row="1" Grid.Column="3" Classes="Cell">
+                <TextBlock Text="{Binding SelectedTypeC}" Classes="Cell"/>
+            </Border> 
+            <Border Grid.Row="1" Grid.Column="4" Classes="Cell"/>
+            <Border Grid.Row="1" Grid.Column="5" Classes="Cell"/>
+            <Border Grid.Row="1" Grid.Column="6" Classes="Cell"/>
+            
+            <Border Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Classes="Cell">
+                <TextBlock Text="Состав комплекта" Classes="Cell"/>
+            </Border>
+            <Border Grid.Row="2" Grid.Column="4" Classes="Cell"/>
+            <Border Grid.Row="2" Grid.Column="5" Classes="Cell"/>
+            <Border Grid.Row="2" Grid.Column="6" Classes="Cell"/>
+            
+            <Border Grid.Row="3" Grid.Column="0" Classes="Cell">
+                <TextBlock Text="Браслет" Classes="Cell"/>
+            </Border>
+            <Border Grid.Row="3" Grid.Column="1" Classes="Cell">
+                <TextBlock Text="{Binding TypeABraceletCount}" Classes="Cell"/>
+            </Border> 
+            <Border Grid.Row="3" Grid.Column="2" Classes="Cell">
+                <TextBlock Text="{Binding TypeBBraceletCount}" Classes="Cell"/>
+            </Border> 
+            <Border Grid.Row="3" Grid.Column="3" Classes="Cell">
+                <TextBlock Text="{Binding TypeCBraceletCount}" Classes="Cell"/>
+            </Border> 
+            <Border Grid.Row="3" Grid.Column="4" Classes="Cell">
+                <TextBlock Text="{Binding BraceletNecessary}" Classes="Cell"/>
+            </Border> 
+            <Border Grid.Row="3" Grid.Column="5" Classes="Cell">
+                <TextBlock Text="{Binding BraceletResidue}" Classes="Cell"/>
+            </Border> 
+            <Border Grid.Row="3" Grid.Column="6" Classes="Cell">
+                <TextBlock Text="{Binding BraceletAlsoNecessary}" Classes="Cell"/>
+            </Border> 
+            
+            <Border Grid.Row="4" Grid.Column="0" Classes="Cell">
+                <TextBlock Text="Шлем" Classes="Cell"/>
+            </Border>
+            <Border Grid.Row="4" Grid.Column="1" Classes="Cell">
+                <TextBlock Text="-" Classes="Cell"/>
+            </Border> 
+            <Border Grid.Row="4" Grid.Column="2" Classes="Cell">
+                <TextBlock Text="{Binding TypeBHelmetCount}" Classes="Cell"/>
+            </Border> 
+            <Border Grid.Row="4" Grid.Column="3" Classes="Cell">
+                <TextBlock Text="{Binding TypeCHelmetCount}" Classes="Cell"/>
+            </Border> 
+            <Border Grid.Row="4" Grid.Column="4" Classes="Cell">
+                <TextBlock Text="{Binding HelmetNecessary}" Classes="Cell"/>
+            </Border> 
+            <Border Grid.Row="4" Grid.Column="5" Classes="Cell">
+                <TextBlock Text="{Binding HelmetResidue}" Classes="Cell"/>
+            </Border> 
+            <Border Grid.Row="4" Grid.Column="6" Classes="Cell">
+                <TextBlock Text="{Binding HelmetAlsoNecessary}" Classes="Cell"/>
+            </Border> 
+            
+            <Border Grid.Row="5" Grid.Column="0" Classes="Cell">
+                <TextBlock Text="Экипировка" Classes="Cell"/>
+            </Border>
+            <Border Grid.Row="5" Grid.Column="1" Classes="Cell">
+                <TextBlock Text="-" Classes="Cell"/>
+            </Border> 
+            <Border Grid.Row="5" Grid.Column="2" Classes="Cell">
+                <TextBlock Text="-" Classes="Cell"/>
+            </Border> 
+            <Border Grid.Row="5" Grid.Column="3" Classes="Cell">
+                <TextBlock Text="{Binding TypeCEquipmentCount}" Classes="Cell"/>
+            </Border> 
+            <Border Grid.Row="5" Grid.Column="4" Classes="Cell">
+                <TextBlock Text="{Binding EquipmentNecessary}" Classes="Cell"/>
+            </Border> 
+            <Border Grid.Row="5" Grid.Column="5" Classes="Cell">
+                <TextBlock Text="{Binding EquipmentResidue}" Classes="Cell"/>
+            </Border> 
+            <Border Grid.Row="5" Grid.Column="6" Classes="Cell">
+                <TextBlock Text="{Binding EquipmentAlsoNecessary}" Classes="Cell"/>
+            </Border> 
+        </Grid>
+    </Grid>
+</UserControl>

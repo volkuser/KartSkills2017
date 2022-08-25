@@ -5,8 +5,12 @@ using System.Reactive.Linq;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using App.Models;
-using Avalonia.Controls;
+using App.Models.FromDatabase;
+using App.ViewModels.AdministratorMenu;
+using App.ViewModels.CoordinatorMenu;
+using App.ViewModels.InformationMenu;
+using App.ViewModels.RacerMenu;
+using App.ViewModels.SponsorMenu;
 using ReactiveUI;
 
 namespace App.ViewModels
@@ -14,8 +18,6 @@ namespace App.ViewModels
     [DataContract]
     public class MainWindowViewModel : ReactiveObject, IScreen, IPageNavigation
     {
-        private RoutingState _router = new();
-
         // commands
         private ICommand OnClickBtnBack { get; set; }
         private ICommand OnClickBtnLogout { get; set; }
@@ -30,11 +32,7 @@ namespace App.ViewModels
         private string? _displayTimer;
 
         [DataMember]
-        public RoutingState Router
-        {
-            get => _router;
-            set => _router = value;
-        }
+        public RoutingState Router { get; set; } = new();
 
         private string? DisplayTimer
         {
@@ -94,11 +92,15 @@ namespace App.ViewModels
             AdditionForHistory(true);
         }
 
-        public void OpnConfirmationOfSponsorshipPage(string amountInDollars, Racer racer, string nameOfFund)
+        public void OpnConfirmationOfSponsorshipPage(string amountInDollars, Racer? racer, string nameOfFund)
         {
-            var viewModel 
-                = new ConfirmationOfSponsorshipPageViewModel(this, amountInDollars, racer, nameOfFund);
-            Router.Navigate.Execute(viewModel);
+            if (racer != null)
+            {
+                var viewModel 
+                    = new ConfirmationOfSponsorshipPageViewModel(this, amountInDollars, racer, nameOfFund);
+                Router.Navigate.Execute(viewModel);
+            }
+
             AdditionForHistory(false);
         }
 
@@ -123,7 +125,7 @@ namespace App.ViewModels
             AdditionForHistory(false);
         }
         
-        public void OpnRacerMenuPage(User user)
+        public void OpnRacerMenuPage(User? user)
         {
             var viewModel = new RacerMenuPageViewModel(user, this);
             Router.Navigate.Execute(viewModel);
@@ -135,7 +137,7 @@ namespace App.ViewModels
         public async Task OpnInformationAboutContactsWindow(string email)
         {
             var viewModel = new InformationAboutContactsWindowViewModel(email);
-            var result = await ShowInformationAboutContactsWindow.Handle(viewModel);
+            await ShowInformationAboutContactsWindow.Handle(viewModel);
         }
         
         public void OpnCoordinatorMenuPage()
@@ -166,7 +168,7 @@ namespace App.ViewModels
             AdditionForHistory(true);
         }
 
-        private string PathToImage { get; set; }
+        private string? PathToImage { get; set; }
         public Interaction<Unit, string?> ShowOpenFileDialog { get; } = new ();
         public async Task OpnOpenFileDialog()
         {
@@ -174,12 +176,12 @@ namespace App.ViewModels
 
             if (fileName != null) PathToImage = fileName;
         }
-        public string GetPathToImage()
+        public string? GetPathToImage()
         {
             return PathToImage;
         }
         
-        public void OpnRaceRegistrationPage(User currentUser)
+        public void OpnRaceRegistrationPage(User? currentUser)
         {
             var viewModel = new RaceRegistrationPageViewModel(currentUser, this);
             Router.Navigate.Execute(viewModel);
@@ -188,10 +190,10 @@ namespace App.ViewModels
 
         public Interaction<InformationAboutCharityWindowViewModel, 
             InformationAboutCharityWindowViewModel?> ShowInformationAboutCharityWindow { get; } = new ();
-        public async Task OpnInformationAboutCharityWindow(Charity charity)
+        public async Task OpnInformationAboutCharityWindow(Charity? charity)
         {
             var viewModel = new InformationAboutCharityWindowViewModel(charity);
-            var result = await ShowInformationAboutCharityWindow.Handle(viewModel);
+            await ShowInformationAboutCharityWindow.Handle(viewModel);
         }
 
         public void OpnConfirmationOfRacerRegistrationPage()
@@ -201,14 +203,14 @@ namespace App.ViewModels
             AdditionForHistory(false, true);
         }
         
-        public void OpnProfileEditingPage(User currentUser)
+        public void OpnProfileEditingPage(User? currentUser)
         {
             var viewModel = new ProfileEditingPageViewModel(currentUser, this);
             Router.Navigate.Execute(viewModel);
             AdditionForHistory(false, true);
         }
         
-        public void OpnMyResultsPage(User currentUser)
+        public void OpnMyResultsPage(User? currentUser)
         {
             var viewModel = new MyResultsPageViewModel(currentUser, this);
             Router.Navigate.Execute(viewModel);
@@ -278,7 +280,7 @@ namespace App.ViewModels
             AdditionForHistory(false);
         }
         
-        public void OpnMySponsorsPage(User currentUser)
+        public void OpnMySponsorsPage(User? currentUser)
         {
             var viewModel = new MySponsorsPageViewModel(currentUser, this);
             Router.Navigate.Execute(viewModel);
@@ -289,7 +291,7 @@ namespace App.ViewModels
         public async Task OpnRacerCardWindow(Racer currentRacer)
         {
             var viewModel = new RacerCardWindowViewModel(currentRacer);
-            var result = await ShowRacerCardWindow.Handle(viewModel);
+            await ShowRacerCardWindow.Handle(viewModel);
         }
         
         public void OpnRacerControlPage()

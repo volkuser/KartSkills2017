@@ -1,0 +1,76 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:converters="clr-namespace:App.Views.Converters"
+             mc:Ignorable="d" x:Class="App.Views.Pages.AdministratorMenu.CharityControlPage">
+    <UserControl.Resources>
+        <converters:BitmapValueConverter x:Key="VariableImage"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.1*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="Управление благотворительнымы организациями" Classes="h2"
+                   VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <Button Grid.Row="1" Grid.Column="1" Content="+ Добавить нового" Classes="h2"
+                Command="{Binding OnClickBtnAddNew}"
+                VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        
+        <DataGrid Grid.Row="2" Grid.Column="1" Items="{Binding Charities}"
+                  AutoGenerateColumns="False" IsReadOnly="True"
+                  VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="Лого" Width="150">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Stretch="UniformToFill" Source="{Binding FileName, 
+                                Converter={StaticResource VariableImage}}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Наименование">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Charity_Name}"
+                                           TextWrapping="WrapWithOverflow"/>
+                                <TextBlock Text=" "/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Описание" Width="400">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="0.1*"/>
+                                </Grid.ColumnDefinitions>
+                                <ScrollViewer Grid.Row="0">
+                                    <TextBlock Text="{Binding Charity_Description}"
+                                               TextWrapping="WrapWithOverflow"/>
+                                </ScrollViewer>
+                            </Grid>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Edit" Command="{Binding CmdEdit}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

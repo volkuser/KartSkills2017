@@ -1,4 +1,4 @@
-using App.ViewModels;
+using App.ViewModels.SponsorMenu;
 using Avalonia.Markup.Xaml;
 using Avalonia.ReactiveUI;
 using PropertyChanged;

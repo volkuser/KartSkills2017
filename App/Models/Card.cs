@@ -6,22 +6,13 @@ namespace App.Models;
 
 public class Card
 {
-    public Card(string cardOwner, string cardNumber, int expireDateMonth, int expireDateYear, int cvc)
-    {
-        CardOwner = cardOwner; 
-        CardNumber = cardNumber;
-        ExpireDateMonth = expireDateMonth;
-        ExpireDateYear = expireDateYear;
-        CVC = cvc;
-    }
-
     [Required]
-    public string CardOwner { get; set; }
+    public string? CardOwner { get; set; }
     [Required]
     [StringLength(16)]
     [MinLength(16)]
     [RegularExpression(@"\d{16}")]
-    public string CardNumber { get; set; }
+    public string? CardNumber { get; set; }
     [Required]
     [Range(1, 12)]
     public int ExpireDateMonth { get; set; }

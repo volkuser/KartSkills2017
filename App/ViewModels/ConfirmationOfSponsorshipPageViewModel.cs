@@ -1,5 +1,6 @@
 using System.Windows.Input;
 using App.Models;
+using App.Models.FromDatabase;
 using ReactiveUI;
 using Splat;
 
@@ -11,10 +12,10 @@ public class ConfirmationOfSponsorshipPageViewModel : ViewModelBase, IRoutableVi
     public IScreen HostScreen { get; }
     
     private ICommand OnClickBtnBack { get; set; }
-    
-    public string AmountInDollars { get; set; }
-    public string ViewOfRacer { get; set; }
-    public string NameOfFund { get; set; }
+
+    private string AmountInDollars { get; set; }
+    private string ViewOfRacer { get; set; }
+    private string NameOfFund { get; set; }
 
     public ConfirmationOfSponsorshipPageViewModel(IPageNavigation container, string amountInDollars, Racer racer, 
         string nameOfFund, IScreen? screen = null)
@@ -24,6 +25,6 @@ public class ConfirmationOfSponsorshipPageViewModel : ViewModelBase, IRoutableVi
         AmountInDollars = amountInDollars;
         ViewOfRacer = racer.First_Name + " " + racer.Last_Name + " " + racer.ID_Country;
         NameOfFund = nameOfFund;
-        OnClickBtnBack = ReactiveCommand.Create(() => container.Back());
+        OnClickBtnBack = ReactiveCommand.Create(container.Back);
     }
 }

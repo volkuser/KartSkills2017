@@ -1,0 +1,44 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:converters="clr-namespace:App.Views.Converters"
+             mc:Ignorable="d" x:Class="App.Views.Pages.CoordinatorMenu.SponsorViewPage">
+    <UserControl.Resources>
+        <converters:BitmapValueConverter x:Key="VariableImage"/>
+    </UserControl.Resources>
+    <UserControl.Styles>
+        <Style Selector="TextBlock, Button">
+            <Setter Property="TextBlock.FontSize" Value="20"/>
+        </Style>
+    </UserControl.Styles>
+    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBlock Classes="h2" Text="Просмотр спонсоров" TextAlignment="Center"/>
+        <TextBlock Text=" "/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock FontWeight="Bold" Text="Благотворительные организации:"/>
+            <TextBlock Text="{Binding CharityCount}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock FontWeight="Bold" Text="Всего спонсорских взносов:"/>
+            <TextBlock Text="{Binding GlobalAmount}"/>
+        </StackPanel>
+        <TextBlock Text=" "/>
+        <DataGrid Items="{Binding Charities}"
+                  AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="Логотип">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Height="50" Width="150" Stretch="Uniform"
+                                   Source="{Binding FullCharity_Logo, 
+                                    Converter={StaticResource VariableImage}}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Наименование" Binding="{Binding Charity_Name}"/>
+                <!--<DataGridTextColumn Header="Сумма"/>-->
+            </DataGrid.Columns>
+        </DataGrid>
+    </StackPanel>
+</UserControl>

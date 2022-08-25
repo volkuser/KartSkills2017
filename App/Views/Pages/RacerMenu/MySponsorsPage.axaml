@@ -1,0 +1,30 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" x:Class="App.Views.Pages.RacerMenu.MySponsorsPage">
+    <UserControl.Styles>
+        <Style Selector="TextBlock">
+            <Setter Property="FontSize" Value="22"/>
+        </Style>
+    </UserControl.Styles>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Classes="h2" Text="Мои спонсоры"
+                   VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <DataGrid Grid.Row="1" Items="{Binding Sponsorships}"
+                  AutoGenerateColumns="False" IsReadOnly="True"
+                  VerticalAlignment="Stretch" HorizontalAlignment="Center">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Спонсор" Binding="{Binding SponsorName}"/>
+                <DataGridTextColumn Header="Взнос" Binding="{Binding Amount}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBlock Grid.Row="2" FontSize="50" FontWeight="Bold" Text="{Binding FinalAmount}"
+                   VerticalAlignment="Center" HorizontalAlignment="Center"/>
+    </Grid>
+</UserControl>

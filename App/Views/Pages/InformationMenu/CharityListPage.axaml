@@ -1,0 +1,46 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:converters="clr-namespace:App.Views.Converters"
+             mc:Ignorable="d" x:Class="App.Views.Pages.InformationMenu.CharityListPage">
+    <UserControl.Resources>
+        <converters:BitmapValueConverter x:Key="VariableImage"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.7*"/>
+            <RowDefinition Height="3.3*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Classes="h3"
+                   VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Text="Список благотворительных организаций"/>
+        <ListBox Grid.Row="1" Items="{Binding Charities}"
+                  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Height="100">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.7*"/>
+                            <RowDefinition Height="2.3*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.9*"/>
+                            <ColumnDefinition Width="0.1*"/>
+                            <ColumnDefinition Width="4*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Row="0" Grid.RowSpan="2" Grid.Column="0"
+                               Source="{Binding FullCharity_Logo, 
+                                Converter={StaticResource VariableImage}}"
+                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Row="0" Grid.Column="2" FontSize="20"
+                                   Text="{Binding Charity_Name}"/>
+                        <TextBlock Grid.Row="1" Grid.Column="2" FontSize="15"
+                                   TextWrapping="WrapWithOverflow"
+                                   Text="{Binding Charity_Description}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</UserControl>

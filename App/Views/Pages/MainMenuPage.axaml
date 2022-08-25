@@ -3,7 +3,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" x:Class="App.Views.Pages.MainMenuPage">
-    
     <UserControl.Resources>
         <ImageBrush x:Key="ImgMoney" Source="/Assets/Images/SubMenuLogos/Dengi.png" Stretch="Uniform"/>
         <ImageBrush x:Key="ImgInformation" Source="/Assets/Images/SubMenuLogos/Informatsia.png" Stretch="Uniform"/>

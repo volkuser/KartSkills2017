@@ -1,0 +1,67 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:converters="clr-namespace:App.Views.Converters"
+             mc:Ignorable="d" x:Class="App.Views.Pages.AdministratorMenu.CharityAddingOrEditingPage">
+    <UserControl.Resources>
+        <converters:BitmapValueConverter x:Key="VariableImage"/>
+    </UserControl.Resources>
+    <UserControl.Styles>
+        <Style Selector="TextBlock, TextBox, Button">
+            <Setter Property="TextBox.FontSize" Value="20"/>
+        </Style>
+    </UserControl.Styles>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.3*"/>
+            <RowDefinition Height="0.7*"/>
+            <RowDefinition Height="0.7*"/>
+            <RowDefinition Height="0.7*"/>
+            <RowDefinition Height="2.1*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="0.1*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"
+                   Classes="h2" Text="Добавление/Редактирование благотворительных организаций" 
+                   TextWrapping="WrapWithOverflow" TextAlignment="Center"
+                   HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+        
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="Наименование:" TextAlignment="Left"
+                   HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Title}"
+                 VerticalAlignment="Top" HorizontalAlignment="Stretch"/>
+        <TextBlock Grid.Row="1" Grid.Column="3" Text="Логотип файл:" TextAlignment="Left"
+                   HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+        <TextBox Grid.Row="2" Grid.Column="3" Text="{Binding PathToImage}"
+                 VerticalAlignment="Top" HorizontalAlignment="Stretch" IsReadOnly="True"/>
+        <Button Grid.Row="2" Grid.Column="5" Content="Просмотр"
+                Command="{Binding OnClickBtnView}"
+                VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        
+        <TextBlock Grid.Row="3" Grid.Column="1" Text="Описание:" TextAlignment="Left"
+                   HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Description}"
+                 VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+        <TextBlock Grid.Row="3" Grid.Column="3" Text="Текущий логотип:" TextAlignment="Left"
+                   HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+        <Image Grid.Row="4" Grid.Column="3" Source="{Binding PathToImage, 
+            Converter={StaticResource VariableImage}}"
+                 VerticalAlignment="Top" HorizontalAlignment="Stretch"/>
+        
+        <Button Grid.Row="5" Grid.Column="1" Content="Сохранить"
+                Command="{Binding OnClickBtnSave}"
+                VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        <Button Grid.Row="5" Grid.Column="3" Content="Отмена"
+                Command="{Binding OnClickBtnCancel}"
+                VerticalAlignment="Center" HorizontalAlignment="Left"/>
+    </Grid>
+</UserControl>

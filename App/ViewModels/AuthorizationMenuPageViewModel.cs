@@ -1,6 +1,6 @@
-using System.Linq;
 using System.Windows.Input;
 using App.Models;
+using App.Models.FromDatabase;
 using ReactiveUI;
 using Splat;
 
@@ -17,16 +17,19 @@ public class AuthorizationMenuPageViewModel : ViewModelBase, IRoutableViewModel
 
     private string Email { get; set; } = "A.Ivanova@gmail.com";
     private string Password { get; set; } = "%pO53f";
-    
-    private User? User { get; set; }
+
+    private User? User { get; set; } = new();
 
     public AuthorizationMenuPageViewModel(IPageNavigation container, IScreen? screen = null)
     {
         HostScreen = screen ?? Locator.Current.GetService<IScreen>();
         Db = Singleton.GetInstance();
 
-        OnClickBtnCancel = ReactiveCommand.Create(() => container.Back());
-        OnClickBtnLogin = ReactiveCommand.Create(() => UserLogin(Email, Password, Db, container, User));
+        OnClickBtnCancel = ReactiveCommand.Create(container.Back);
+        OnClickBtnLogin = ReactiveCommand.Create(() =>
+        {
+            if (User != null) UserLogin(Email, Password, Db, container, User);
+        });
     }
 
     private void UserLogin(string email, string password, ApplicationContext db, IPageNavigation container, User user)

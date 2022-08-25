@@ -2,14 +2,16 @@ using System.Linq;
 using System.Reactive;
 using System.Threading.Tasks;
 using App.ViewModels;
-using App.Views.Pages;
-using App.Views.Pages.Information;
-using App.Views.Pages.Racer;
+using App.ViewModels.InformationMenu;
+using App.ViewModels.RacerMenu;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using Avalonia.ReactiveUI;
 using PropertyChanged;
 using ReactiveUI;
+using InformationAboutCharityWindow = App.Views.Pages.RacerMenu.InformationAboutCharityWindow;
+using InformationAboutContactsWindow = App.Views.Pages.RacerMenu.InformationAboutContactsWindow;
+using RacerCardWindow = App.Views.Pages.InformationMenu.RacerCardWindow;
 
 namespace App.Views;
 
@@ -43,9 +45,9 @@ public partial class MainWindow : ReactiveWindow<MainWindowViewModel>
     private async Task ShowOpenFileDialog(InteractionContext<Unit, string?> interaction)
     {
         var dialog = new OpenFileDialog();
-        dialog.Filters.Add(new FileDialogFilter() { Name = "All files", Extensions = {"*"} });
+        dialog.Filters?.Add(new FileDialogFilter() { Name = "All files", Extensions = {"*"} });
         var fileNameStrings = await dialog.ShowAsync(this);
-        interaction.SetOutput(fileNameStrings.FirstOrDefault());
+        if (fileNameStrings != null) interaction.SetOutput(fileNameStrings.FirstOrDefault());
     }
     
     private async Task ShowInformationAboutCharityWindow(InteractionContext<InformationAboutCharityWindowViewModel,

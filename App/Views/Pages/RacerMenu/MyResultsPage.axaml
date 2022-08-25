@@ -1,0 +1,98 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" x:Class="App.Views.Pages.RacerMenu.MyResultsPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.7*"/>
+            <RowDefinition/>
+            <RowDefinition Height="2.2*"/>
+            <RowDefinition Height="0.7*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="Мои результаты" Classes="h2"
+                   VerticalAlignment="Top" HorizontalAlignment="Center"/>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="0.1*"/>
+                <ColumnDefinition Width="0.6*"/>
+                <ColumnDefinition Width="0.1*"/>
+                <ColumnDefinition Width="2.2*"/>
+                <ColumnDefinition Width="0.1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="1" Classes="h3" Text="Пол:" FontWeight="Bold"
+                       VerticalAlignment="Center" HorizontalAlignment="Right"/>
+            <TextBlock Grid.Column="3" Classes="h3" Text="{Binding ViewGender}"
+                       VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBlock Grid.Column="5" Classes="h3" Text="Возврастная категория:" FontWeight="Bold"
+                       VerticalAlignment="Center" HorizontalAlignment="Right"/>
+            <TextBlock Grid.Column="7" Classes="h3" Text="{Binding AgeCategory}"
+                       VerticalAlignment="Center" HorizontalAlignment="Left"/>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.3*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="0.3*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="2.2*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="1" FontSize="20" Text="Событие"
+                       VerticalAlignment="Top" HorizontalAlignment="Stretch"/>
+            <TextBlock Grid.Row="0" Grid.Column="2" FontSize="20" Text="Вид гонки"
+                       VerticalAlignment="Top" HorizontalAlignment="Stretch"/>
+            <TextBlock Grid.Row="0" Grid.Column="3" FontSize="20" Text="Время"
+                       VerticalAlignment="Top" HorizontalAlignment="Stretch"/>
+            <TextBlock Grid.Row="0" Grid.Column="4" FontSize="20" Text="Общее место"
+                       VerticalAlignment="Top" HorizontalAlignment="Stretch"/>
+            <Button Grid.Row="0" Grid.Column="5" FontSize="20" Background="{StaticResource White}"
+                    VerticalAlignment="Top" HorizontalAlignment="Stretch" 
+                    Command="{Binding OnClickBtnChangeCurrentCategory}">
+                <TextBlock Text="{Binding CategoryName}" TextWrapping="WrapWithOverflow" /> 
+            </Button>
+            <ScrollViewer Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5"
+                          VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <ListBox Items="{Binding RequiredResults}" Background="{StaticResource White}"
+                         VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" FontSize="20" Text="{Binding EventName}"
+                                           VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                <TextBlock Grid.Column="1" FontSize="20" Text="{Binding RaceType}"
+                                           VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                <TextBlock Grid.Column="2" FontSize="20" Text="{Binding Time}"
+                                           VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                <TextBlock Grid.Column="3" FontSize="20" Text="{Binding CommonPlace}"
+                                           VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                <TextBlock Grid.Column="4" FontSize="20" Text="{Binding SelectedCategoryPlace}"
+                                           VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </ScrollViewer>
+        </Grid>
+        <Button Grid.Row="3" Content="Показать все результаты" FontSize="25"
+                Command="{Binding OnClickBtnShowAllResults}"
+                VerticalAlignment="Center" HorizontalAlignment="Center"
+                VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+    </Grid>
+</UserControl>

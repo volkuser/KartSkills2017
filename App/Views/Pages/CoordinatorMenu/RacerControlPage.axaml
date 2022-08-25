@@ -1,0 +1,82 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" x:Class="App.Views.Pages.CoordinatorMenu.RacerControlPage">
+    <UserControl.Styles>
+        <Style Selector="TextBlock, Button">
+            <Setter Property="TextBlock.FontSize" Value="20"/>
+        </Style>
+    </UserControl.Styles>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1.2*"/>
+            <RowDefinition Height="1.2*"/>
+            <RowDefinition/>
+            <RowDefinition Height="6*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Classes="h2" Text="Управление гонщиками"
+                   VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        
+        <TextBlock Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Text="Фильтрация" Classes="h3"
+                   VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Статус: "
+                   VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        <ComboBox Grid.Row="2" Grid.Column="1" Items="{Binding RegistrationStatuses}"
+                  SelectedItem="{Binding SelectedRegistrationStatus}"
+                  VerticalAlignment="Center" HorizontalAlignment="Stretch">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Statu_Name}" TextAlignment="Left"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="Вид гонки: "
+                   VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        <ComboBox Grid.Row="3" Grid.Column="1" Items="{Binding EventTypes}"
+                  SelectedItem="{Binding SelectedEventType}"
+                  VerticalAlignment="Center" HorizontalAlignment="Stretch">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Event_Type_Name}" TextAlignment="Left"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Button Grid.Row="3" Grid.Column="3" Content="Обновить"
+                Command="{Binding BtnOnClickUpdate}"
+                VerticalAlignment="Center" HorizontalAlignment="Left"/>
+        
+        <StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" Orientation="Horizontal"
+                    VerticalAlignment="Bottom" HorizontalAlignment="Center">
+            <TextBlock FontWeight="Bold" Text="Количество пилотов: "/>
+            <TextBlock Text="{Binding RacersCount}"/>
+        </StackPanel>
+        
+        <DataGrid Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="4" Items="{Binding ViewRacers}"
+                  AutoGenerateColumns="False" IsReadOnly="True"
+                  VerticalAlignment="Stretch" HorizontalAlignment="Center">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}"/>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}"/>
+                <DataGridTextColumn Header="Статус" Binding="{Binding StatusName}"/>
+                <DataGridTemplateColumn Header="Edit">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Background="{StaticResource White}" Content="Edit"
+                                    Command="{Binding CmdEdit}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

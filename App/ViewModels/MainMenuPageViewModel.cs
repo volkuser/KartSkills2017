@@ -18,10 +18,10 @@ public class MainMenuPageViewModel : ViewModelBase, IRoutableViewModel
     {
         HostScreen = screen ?? Locator.Current.GetService<IScreen>();
 
-        OnClickBtnVerificationOfPreviouslyEnteredRacersPage = ReactiveCommand.Create(()
-            => container.OpnVerificationOfPreviouslyRacersPage());
-        OnClickBtnSponsorOfRacersPage = ReactiveCommand.Create(() => container.OpnSponsorOfRacersPage());
-        OnClickBtnDetailedInformationPage = ReactiveCommand.Create(() => container.OpnDetailedInformationPage());
-        OnClickBtnOpnAuthorizationMenuPage = ReactiveCommand.Create(() => container.OpnAuthorizationMenuPage());
+        OnClickBtnVerificationOfPreviouslyEnteredRacersPage 
+            = ReactiveCommand.Create(container.OpnVerificationOfPreviouslyRacersPage);
+        OnClickBtnSponsorOfRacersPage = ReactiveCommand.Create(container.OpnSponsorOfRacersPage);
+        OnClickBtnDetailedInformationPage = ReactiveCommand.Create(container.OpnDetailedInformationPage);
+        OnClickBtnOpnAuthorizationMenuPage = ReactiveCommand.Create(container.OpnAuthorizationMenuPage);
     }
 }
