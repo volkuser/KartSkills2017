@@ -78,7 +78,7 @@ public class SponsorOfRacersPageViewModel : ViewModelBase, IRoutableViewModel
         HostScreen = screen ?? Locator.Current.GetService<IScreen>();
         Db = Singleton.GetInstance();
 
-        if (Db.Racers != null) Racers = new(Db.Racers!);
+        if (Db.Racers != null) Racers = new ObservableCollection<Racer>(Db.Racers!);
 
         OnClickAmountPlus = ReactiveCommand.Create(() => { AmountInInt += 10; });
         OnClickAmountMinus = ReactiveCommand.Create(() => { if (AmountInInt > 10) AmountInInt -= 10; });
@@ -99,7 +99,7 @@ public class SponsorOfRacersPageViewModel : ViewModelBase, IRoutableViewModel
     }
 
     private void Pay(string? cardOwner, string? cardNumber, string expireDateMonth, string expireDateYear, string? cvc, 
-        ApplicationContext db, string? sponsorName, int amount, IPageNavigation container, string amointInDollars,
+        ApplicationContext db, string? sponsorName, int amount, IPageNavigation container, string amountInDollars,
         Racer? racer, string nameOfFund)
     {
         bool add = false;
@@ -124,13 +124,19 @@ public class SponsorOfRacersPageViewModel : ViewModelBase, IRoutableViewModel
         } catch (Exception) { /*ignored*/ }
 
         if (!add) return;
-        var sponsorship = new Sponsorship
+        if (racer != null)
         {
-            SponsorName = sponsorName,
-            Amount = amount
-        };
-        db.Sponsorships?.Add(sponsorship);
+            var sponsorship = new Sponsorship
+            {
+                SponsorName = sponsorName,
+                Amount = amount,
+                ID_Racer = racer.ID_Racer,
+                Racer = racer
+            };
+            db.Sponsorships?.Add(sponsorship);
+        }
+
         db.SaveChanges();
-        container.OpnConfirmationOfSponsorshipPage(amointInDollars, racer, nameOfFund);
+        container.OpnConfirmationOfSponsorshipPage(amountInDollars, racer, nameOfFund);
     }
 }    
