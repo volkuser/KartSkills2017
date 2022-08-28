@@ -8,7 +8,7 @@ namespace App.Models;
 
 public sealed class ApplicationContext : DbContext
 {
-    public DbSet<Gender>? Genders { get; set; }
+    public DbSet<Gender?>? Genders { get; set; }
     public DbSet<Country>? Countries { get; set; }
     public DbSet<Sponsorship>? Sponsorships { get; set; }
     public DbSet<Racer?>? Racers { get; set; }

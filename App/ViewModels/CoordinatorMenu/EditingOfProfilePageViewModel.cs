@@ -11,14 +11,14 @@ using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Formats.Png;
 using Splat;
 
-namespace App.ViewModels.RacerMenu;
+namespace App.ViewModels.CoordinatorMenu;
 
-public class ProfileEditingPageViewModel : ViewModelBase, IRoutableViewModel
+public class EditingOfProfilePageViewModel : ViewModelBase, IRoutableViewModel
 {
-    public string UrlPathSegment => "profileEditingPage";
+    public string UrlPathSegment => "editingOfProfile";
     public IScreen HostScreen { get; }
     private ApplicationContext Db { get; set; }
-    
+
     private ICommand? OnClickBtnView { get; set; }
     private ICommand? OnClickBtnSave { get; set; }
     private ICommand OnClickBtnCancel { get; set; }
@@ -46,11 +46,19 @@ public class ProfileEditingPageViewModel : ViewModelBase, IRoutableViewModel
     private ObservableCollection<DbFile?>? DbFiles { get; set; }
     private ObservableCollection<User?>? Users { get; set; }
     private ObservableCollection<Racer?>? Racers { get; set; }
-
-    public ProfileEditingPageViewModel(User? currentUser, IPageNavigation container, IScreen? screen = null)
+    
+    private ObservableCollection<RegistrationStatus> RegistrationStatuses { get; set; }
+    private RegistrationStatus? RegistrationStatus { get; set; }
+    
+    public EditingOfProfilePageViewModel(User currentUser, Registration currentRegistration, 
+        IPageNavigation container, IScreen? screen = null)
     {
         HostScreen = screen ?? Locator.Current.GetService<IScreen>();
         Db = Singleton.GetInstance();
+
+        RegistrationStatuses = new ObservableCollection<RegistrationStatus>(Db.RegistrationStatuses!);
+        RegistrationStatus = Db.RegistrationStatuses!.FirstOrDefault(x
+            => x.ID_Registration_Status.Equals(currentRegistration.ID_Registration_Status));
 
         if (Db.Genders != null) Genders = new ObservableCollection<Gender?>(Db.Genders);
         if (Db.Countries != null) Countries = new ObservableCollection<Country>(Db.Countries);
@@ -84,8 +92,9 @@ public class ProfileEditingPageViewModel : ViewModelBase, IRoutableViewModel
                 Country = currentRacer.Country;
 
                 OnClickBtnView = ReactiveCommand.CreateFromTask(() => Task.FromResult(ViewImage(container)));
-                OnClickBtnSave = ReactiveCommand.Create(() => Saving(Db, dbFile, PathToImage, DbFiles, FirstName,
-                    LastName, currentUser, Password, RepeatPassword, currentRacer, Gender, DateOfBirth, Country));
+                OnClickBtnSave = ReactiveCommand.Create(() => Saving(Db, dbFile, PathToImage, FirstName,
+                    LastName, currentUser, Password, RepeatPassword, currentRacer, Gender, DateOfBirth, Country,
+                    RegistrationStatus!, currentRegistration));
             }
         }
 
@@ -98,9 +107,9 @@ public class ProfileEditingPageViewModel : ViewModelBase, IRoutableViewModel
         PathToImage = container.GetPathToImage();
     }
     
-    private void Saving(ApplicationContext db, DbFile? dbFile, string? pathToImage, 
-        ObservableCollection<DbFile?>? dbFiles, string? firstName, string? lastName, User? user, string? password, 
-        string? repeatPassword, Racer? racer, Gender? gender, DateTimeOffset dateOfBirth, Country? country)
+    private void Saving(ApplicationContext db, DbFile? dbFile, string? pathToImage, string? firstName, string? lastName, 
+        User? user, string? password, string? repeatPassword, Racer? racer, Gender? gender, DateTimeOffset dateOfBirth, 
+        Country? country, RegistrationStatus registrationStatus, Registration registration)
     {
         if (pathToImage != null)
         {
@@ -152,11 +161,17 @@ public class ProfileEditingPageViewModel : ViewModelBase, IRoutableViewModel
 
             db.SaveChanges();
         }
+        
+        registration.ID_Registration_Status = registrationStatus.ID_Registration_Status;
+        registration.RegistrationStatus = registrationStatus;
 
         db.Users?.Update(user);
         db.SaveChanges();
 
         db.Racers?.Update(racer);
+        db.SaveChanges();
+        
+        db.Registrations?.Update(registration);
         db.SaveChanges();
     }
 }

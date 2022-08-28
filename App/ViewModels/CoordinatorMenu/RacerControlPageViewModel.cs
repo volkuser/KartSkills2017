@@ -60,8 +60,8 @@ public class RacerControlPageViewModel : ViewModelBase, IRoutableViewModel
         {
             var additionRacer = new ViewRacer
             {
-                FirstName = racer?.First_Name,
-                LastName = racer?.Last_Name
+                FirstName = racer?.First_Name, // first name
+                LastName = racer?.Last_Name // last name
             };
 
             if (db.Users == null) continue;
@@ -69,7 +69,7 @@ public class RacerControlPageViewModel : ViewModelBase, IRoutableViewModel
                                                     && x.Last_Name != null 
                                                     && x.First_Name.Equals(racer.First_Name) 
                                                     && x.Last_Name.Equals(racer.Last_Name));
-            additionRacer.Email = user?.Email;
+            additionRacer.Email = user?.Email; // email
             if (db.Registrations == null) continue;
             {
                 var registration = db.Registrations.FirstOrDefault(x 
@@ -79,27 +79,30 @@ public class RacerControlPageViewModel : ViewModelBase, IRoutableViewModel
                     var registrationStatus = db.RegistrationStatuses.FirstOrDefault(x
                         => registration != null 
                            && x.ID_Registration_Status.Equals(registration.ID_Registration_Status));
+                    // status name
                     if (registrationStatus != null) additionRacer.StatusName = registrationStatus.Statu_Name;
-                    additionRacer.CmdEdit = ReactiveCommand.Create(() => container.OpnProfileEditingPage(user));
-            
+
                     viewRacers.Add(additionRacer);
             
                     if (registrationStatus != null)
-                        additionRacer.Status = registrationStatus;
+                        additionRacer.Status = registrationStatus; // status
                 }
 
                 var result = db.Results?.FirstOrDefault(x 
                     => registration != null && x.ID_Registration.Equals(registration.ID_Registration));
                 if (result == null) continue;
                 {
-                    if (db.Events == null) continue;
-                    var currentEvent = db.Events.FirstOrDefault(x => x.ID_Event.Equals(result.ID_Event));
+                    var currentEvent = db.Events?.FirstOrDefault(x => x!.ID_Event.Equals(result.ID_Event));
                     if (currentEvent == null) continue;
                     {
+                        // command edit
+                        additionRacer.CmdEdit = ReactiveCommand.Create(() 
+                            => container.OpnControlOfRacerPage(user!, registration!, currentEvent));
+                        
                         if (db.EventTypes == null) continue;
                         var eventType = db.EventTypes.FirstOrDefault(x
                             => x != null && x.ID_Event_type.Equals(currentEvent.ID_EventType));
-                        additionRacer.EventType = eventType;
+                        additionRacer.EventType = eventType; // event type
                     }
                 }
             }

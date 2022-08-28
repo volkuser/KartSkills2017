@@ -35,8 +35,8 @@ public class AuthorizationMenuPageViewModel : ViewModelBase, IRoutableViewModel
     private void UserLogin(string email, string password, ApplicationContext db, IPageNavigation container, User user)
     {
         // for testing
-        container.OpnAdministratorMenuPage();
-        //container.OpnCoordinatorMenuPage();
+        //container.OpnAdministratorMenuPage();
+        container.OpnCoordinatorMenuPage();
         /*user = db.Users.FirstOrDefault(x => x.Email.Equals(email));
         if (user != null)
         {

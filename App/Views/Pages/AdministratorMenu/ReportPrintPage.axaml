@@ -30,7 +30,7 @@
                 Command="{Binding OnClickBtnPrint}"
                 VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="50" Height="50"/>
         
-        <TextBox Grid.Row="2" Grid.Column="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+        <TextBox Grid.Row="2" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
         
         <Button Grid.Row="3" Grid.Column="1" Content="Отмена"
                 Command="{Binding OnClickBtnCancel}"

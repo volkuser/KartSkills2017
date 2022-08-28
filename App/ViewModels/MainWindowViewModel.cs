@@ -314,7 +314,22 @@ namespace App.ViewModels
             Router.Navigate.Execute(viewModel);
             AdditionForHistory(false);
         }
+
+        public void OpnControlOfRacerPage(User currentUser, Registration currentRegistration, Event currentEvent)
+        {
+            var viewModel = new ControlOfUserPageViewModel(currentUser, currentRegistration, currentEvent, 
+                this);
+            Router.Navigate.Execute(viewModel);
+            AdditionForHistory(true, true);
+        }
         
+        public void OpnEditingOfProfilePage(User currentUser, Registration currentRegistration)
+        {
+            var viewModel = new EditingOfProfilePageViewModel(currentUser, currentRegistration, this);
+            Router.Navigate.Execute(viewModel);
+            AdditionForHistory(false);
+        }
+
         public void Back()
         {
             Router.NavigateBack.Execute();

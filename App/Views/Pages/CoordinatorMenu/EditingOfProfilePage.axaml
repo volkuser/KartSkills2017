@@ -1,0 +1,130 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:converters="clr-namespace:App.Views.Converters"
+             mc:Ignorable="d" x:Class="App.Views.Pages.CoordinatorMenu.EditingOfProfilePage">
+    <UserControl.Resources>
+        <converters:BitmapValueConverter x:Key="VariableImage"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.8*"/>
+            <ColumnDefinition Width="0.01*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Classes="h3" 
+                   VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Text="Редактирование профиля"/>
+        
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="0.01*"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"
+                       Text="Email:" FontSize="22"/>
+            <TextBlock Grid.Row="0" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" 
+                     Text="{Binding Email}" Foreground="{StaticResource Gray}" FontSize="22"/>
+            <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"
+                       Text="Пароль:" FontSize="22"/>
+            <TextBox Grid.Row="1" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" 
+                     Text="{Binding Password}" PasswordChar="*" FontSize="22"/>
+            <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"
+                       Text="Повторите пароль:" FontSize="22"/>
+            <TextBox Grid.Row="2" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" 
+                     Text="{Binding RepeatPassword}" PasswordChar="*" FontSize="22"/>
+            <TextBlock Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"
+                       Text="Имя:" FontSize="22"/>
+            <TextBox Grid.Row="3" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" 
+                     Text="{Binding FirstName}" Watermark="Имя" FontSize="22"/>
+            <TextBlock Grid.Row="4" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"
+                       Text="Фамилия:" FontSize="22"/>
+            <TextBox Grid.Row="4" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" 
+                     Text="{Binding LastName}" Watermark="Фамилия" FontSize="22"/>
+            <TextBlock Grid.Row="5" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"
+                       Text="Пол:" FontSize="22"/>
+            <ComboBox Grid.Row="5" Grid.Column="2" 
+                      HorizontalAlignment="Stretch" VerticalAlignment="Center" 
+                      Items="{Binding Genders}" SelectedItem="{Binding Gender}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Gender_Name}" FontSize="22"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </Grid>
+        
+        <Grid Grid.Row="1" Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="0.01*"/>
+                <ColumnDefinition Width="1.4*"/>
+                <ColumnDefinition Width="0.01*"/>
+            </Grid.ColumnDefinitions>
+            <Image Grid.Row="0" Grid.Column="2" Source="{Binding PathToImage,
+                Converter={StaticResource VariableImage}}"
+                   VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Фото файл:" FontSize="22"
+                       VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+            <TextBox Grid.Row="1" Grid.Column="0" Text="{Binding PathToImage}" FontSize="22"
+                     VerticalAlignment="Center" HorizontalAlignment="Stretch" IsReadOnly="True"/>
+            <Button Grid.Row="1" Grid.Column="2" Content="Просмотр" FontSize="22" 
+                    Command="{Binding OnClickBtnView}" 
+                    VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBlock Grid.Row="2" Grid.Column="0" FontSize="22" Text="Дата рождения:"
+                       VerticalAlignment="Center" HorizontalAlignment="Right"/>
+            <DatePicker Grid.Row="2" Grid.Column="2" FontSize="22" SelectedDate="{Binding DateOfBirth}"
+                        VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBlock Grid.Row="3" Grid.Column="0" FontSize="22" Text="Страна:"
+                       VerticalAlignment="Center" HorizontalAlignment="Right"/>
+            <ComboBox Grid.Row="3" Grid.Column="2" FontSize="22"
+                      Items="{Binding Countries}" SelectedItem="{Binding Country}"
+                      VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Country_Name}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </Grid>
+        
+        <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal">
+            <TextBlock Text=" Регистрационный статус " TextWrapping="Wrap" FontSize="18"/>
+            <ComboBox Items="{Binding RegistrationStatuses}" Width="180"
+                      SelectedItem="{Binding RegistrationStatus}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Statu_Name}" FontSize="18"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Horizontal">
+            <Button Content="Сохранить" FontSize="22" Command="{Binding OnClickBtnSave}"/>
+            <TextBlock Text=" "/>
+            <Button Content="Отмена" FontSize="22" Command="{Binding OnClickBtnCancel}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

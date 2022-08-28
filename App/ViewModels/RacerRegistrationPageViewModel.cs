@@ -52,7 +52,7 @@ public class RacerRegistrationPageViewModel : ViewModelBase, IRoutableViewModel
         HostScreen = screen ?? Locator.Current.GetService<IScreen>();
         Db = Singleton.GetInstance();
 
-        if (Db.Genders != null) Genders = new ObservableCollection<Gender>(Db.Genders);
+        if (Db.Genders != null) Genders = new ObservableCollection<Gender?>(Db.Genders);
         if (Db.Countries != null) Countries = new ObservableCollection<Country>(Db.Countries);
 
         if (Db.DbFiles != null) DbFiles = new ObservableCollection<DbFile?>(Db.DbFiles);

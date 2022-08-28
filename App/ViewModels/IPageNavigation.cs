@@ -1,8 +1,5 @@
-using System;
 using System.Threading.Tasks;
-using App.Models;
 using App.Models.FromDatabase;
-using Avalonia.Controls;
 
 namespace App.ViewModels;
 
@@ -41,6 +38,8 @@ public interface IPageNavigation
     public void OpnRacerControlPage();
     public void OpnSponsorViewPage();
     public void OpnReportPrintPage();
+    public void OpnControlOfRacerPage(User user, Registration currentRegistration, Event currentEvent);
+    public void OpnEditingOfProfilePage(User currentUser, Registration currentRegistration);
 
     public void Back();
 }

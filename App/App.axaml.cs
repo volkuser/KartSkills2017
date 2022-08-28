@@ -75,6 +75,9 @@ public class App : Application
         Locator.CurrentMutable.Register<IViewFor<RacerControlPageViewModel>>(() => new RacerControlPage());
         Locator.CurrentMutable.Register<IViewFor<SponsorViewPageViewModel>>(() => new SponsorViewPage());
         Locator.CurrentMutable.Register<IViewFor<ReportPrintPageViewModel>>(() => new ReportPrintPage());
+        Locator.CurrentMutable.Register<IViewFor<ControlOfUserPageViewModel>>(() => new ControlOfUserPage());
+        Locator.CurrentMutable.Register<IViewFor<EditingOfProfilePageViewModel>>(() 
+            => new EditingOfProfilePage());
 
         new MainWindow { DataContext = Locator.Current.GetService<IScreen>() }.Show();
         

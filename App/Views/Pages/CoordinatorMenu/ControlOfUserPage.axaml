@@ -1,0 +1,105 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:converters="clr-namespace:App.Views.Converters"
+             mc:Ignorable="d" x:Class="App.Views.Pages.CoordinatorMenu.ControlOfUserPage">
+    <UserControl.Resources>
+        <converters:BitmapValueConverter x:Key="VariableImage"/>
+    </UserControl.Resources>
+    <UserControl.Styles>
+        <Style Selector="TextBlock">
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+    </UserControl.Styles>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition Width="0.7*"/>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition Width="1.3*"/>
+            <ColumnDefinition Width="0.1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="6" Classes="h2" Text="Управление гонщиком"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        
+        <TextBlock Grid.Row="2" Grid.Column="1" Text="Email: "
+                   VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        <TextBlock Grid.Row="2" Grid.Column="2" Text="{Binding Email}" 
+                   Foreground="{StaticResource Gray}"
+                   VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+        <TextBlock Grid.Row="3" Grid.Column="1" Text="Имя: "
+                   VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        <TextBlock Grid.Row="3" Grid.Column="2" Text="{Binding FirstName}" 
+                   Foreground="{StaticResource Gray}"
+                   VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+        <TextBlock Grid.Row="4" Grid.Column="1" Text="Фамилия: "
+                   VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        <TextBlock Grid.Row="4" Grid.Column="2" Text="{Binding LastName}" 
+                   Foreground="{StaticResource Gray}"
+                   VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+        <TextBlock Grid.Row="5" Grid.Column="1" Text="Пол: "
+                   VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        <TextBlock Grid.Row="5" Grid.Column="2" Text="{Binding Gender}" 
+                   Foreground="{StaticResource Gray}"
+                   VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+        <TextBlock Grid.Row="6" Grid.Column="1" Text="Дата рождения: "
+                   VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        <TextBlock Grid.Row="6" Grid.Column="2" Text="{Binding DateOfBirth}" 
+                   Foreground="{StaticResource Gray}"
+                   VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+        <TextBlock Grid.Row="7" Grid.Column="1" Text="Страна: "
+                   VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        <TextBlock Grid.Row="7" Grid.Column="2" Text="{Binding Country}" 
+                   Foreground="{StaticResource Gray}"
+                   VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+        <!--<TextBlock Grid.Row="8" Grid.Column="1" Text="Благотворительность: "
+                   VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        <TextBlock Grid.Row="8" Grid.Column="2" Text="{Binding Charity}" 
+                   Foreground="{StaticResource Gray}"
+                   VerticalAlignment="Center" HorizontalAlignment="Stretch"/>-->
+        <TextBlock Grid.Row="9" Grid.Column="1" Text="Пожертвовано: "
+                   VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        <TextBlock Grid.Row="9" Grid.Column="2" Text="{Binding GlobalAmount}" 
+                   Foreground="{StaticResource Gray}"
+                   VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+        <TextBlock Grid.Row="10" Grid.Column="1" Text="Тип гонки: "
+                   VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        <TextBlock Grid.Row="10" Grid.Column="2" Text="{Binding EventType}" 
+                   Foreground="{StaticResource Gray}"
+                   VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+        
+        <Image Grid.Row="1" Grid.RowSpan="7" Grid.Column="4" Source="{Binding PathToImage, 
+            Converter={StaticResource VariableImage}}" Stretch="Uniform"
+               VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+        
+        <TextBlock Grid.Row="1" Grid.RowSpan="2" Grid.Column="6" Text="Регистрационный статус"
+                   VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
+        <TextBlock Grid.Row="3" Grid.Column="6" Text="{Binding StatusName}"
+                   VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="WrapWithOverflow"/>
+        
+        <Button Grid.Row="10" Grid.RowSpan="2" Grid.Column="5" Grid.ColumnSpan="2"
+                Command="{Binding OnClickBtnProfileEdit}"
+                VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="Редактирование профиля" TextWrapping="Wrap" TextAlignment="Center"/>
+        </Button>
+    </Grid>
+</UserControl>
