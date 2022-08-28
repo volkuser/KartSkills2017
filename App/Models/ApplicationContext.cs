@@ -27,7 +27,8 @@ public sealed class ApplicationContext : DbContext
     public DbSet<Volunteer>? Volunteers { get; set; }
     public DbSet<InventoryType>? InventoryTypes { get; set; }
     public DbSet<IncomingInventory>? IncomingInventories { get; set; }
-    
+    public DbSet<Role>? Roles { get; set; }
+
     public ApplicationContext() { }
     
     public ApplicationContext(DbContextOptions<ApplicationContext> options)

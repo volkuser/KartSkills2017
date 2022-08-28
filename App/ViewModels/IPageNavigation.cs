@@ -40,6 +40,9 @@ public interface IPageNavigation
     public void OpnReportPrintPage();
     public void OpnControlOfRacerPage(User user, Registration currentRegistration, Event currentEvent);
     public void OpnEditingOfProfilePage(User currentUser, Registration currentRegistration);
+    public void OpnUserControlPage();
+    public void OpnUserAddingPage();
+    public void OpnUserEditingPage(User currentUser);
 
     public void Back();
 }

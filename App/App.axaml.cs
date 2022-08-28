@@ -78,6 +78,9 @@ public class App : Application
         Locator.CurrentMutable.Register<IViewFor<ControlOfUserPageViewModel>>(() => new ControlOfUserPage());
         Locator.CurrentMutable.Register<IViewFor<EditingOfProfilePageViewModel>>(() 
             => new EditingOfProfilePage());
+        Locator.CurrentMutable.Register<IViewFor<UserControlPageViewModel>>(() => new UserControlPage());
+        Locator.CurrentMutable.Register<IViewFor<UserAddingPageViewModel>>(() => new UserAddingPage());
+        Locator.CurrentMutable.Register<IViewFor<UserEditingPageViewModel>>(() => new UserEditingPage());
 
         new MainWindow { DataContext = Locator.Current.GetService<IScreen>() }.Show();
         

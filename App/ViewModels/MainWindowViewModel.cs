@@ -329,6 +329,27 @@ namespace App.ViewModels
             Router.Navigate.Execute(viewModel);
             AdditionForHistory(false);
         }
+        
+        public void OpnUserControlPage()
+        {
+            var viewModel = new UserControlPageViewModel(this);
+            Router.Navigate.Execute(viewModel);
+            AdditionForHistory(true, true);
+        }
+        
+        public void OpnUserEditingPage(User currentUser)
+        {
+            var viewModel = new UserEditingPageViewModel(currentUser, this);
+            Router.Navigate.Execute(viewModel);
+            AdditionForHistory(false);
+        }
+        
+        public void OpnUserAddingPage()
+        {
+            var viewModel = new UserAddingPageViewModel(this);
+            Router.Navigate.Execute(viewModel);
+            AdditionForHistory(true);
+        }
 
         public void Back()
         {
