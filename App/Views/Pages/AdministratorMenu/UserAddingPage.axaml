@@ -28,7 +28,7 @@
         </Grid.ColumnDefinitions>
         
         <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6"
-                   Classes="h2" Text="Редактирование пользователя"
+                   Classes="h2" Text="Добавления пользователя"
                    VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
         
         <TextBlock Grid.Row="1" Grid.Column="0" Text="Email: "
