@@ -3,5 +3,71 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" x:Class="App.Views.Pages.AdministratorMenu.UserAddingPage">
-    Welcome to Avalonia!
+    <UserControl.Styles>
+        <Style Selector="TextBlock, TextBox">
+            <Setter Property="TextBlock.FontSize" Value="20"/>
+        </Style>
+    </UserControl.Styles>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="3.5*"/>
+            <RowDefinition Height="1.5*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.1*"/>
+        </Grid.ColumnDefinitions>
+        
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6"
+                   Classes="h2" Text="Редактирование пользователя"
+                   VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Email: "
+                   VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Email}"
+                 VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Имя: "
+                   VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding FirstName}"
+                 VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="Фамилия: "
+                   VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding LastName}"
+                 VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+        <TextBlock Grid.Row="4" Grid.Column="0" Text="Роль: "
+                   VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        <ComboBox Grid.Row="4" Grid.Column="1" 
+                  Items="{Binding Roles}" SelectedItem="{Binding Role}"
+                  VerticalAlignment="Center" HorizontalAlignment="Stretch">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Role_Name}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <TextBlock Grid.Row="2" Grid.Column="3" Text="Пароль: "
+                   VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        <TextBox Grid.Row="2" Grid.Column="4" Text="{Binding Password}" PasswordChar="*"
+                 VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+        <TextBlock Grid.Row="3" Grid.Column="3" Text="Повторите пароль: "
+                   VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        <TextBox Grid.Row="3" Grid.Column="4" Text="{Binding RepeatPassword}" PasswordChar="*"
+                 VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+        
+        <Button Grid.Row="6" Grid.Column="1" Content="Сохранить"
+                Command="{Binding OnClickBtnSave}"
+                VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        <Button Grid.Row="6" Grid.Column="3" Content="Отмена"
+                Command="{Binding OnClickBtnCancel}"
+                VerticalAlignment="Center" HorizontalAlignment="Left"/>
+    </Grid>
 </UserControl>
