@@ -73,3 +73,5 @@ for file_name, row_count, weight in files:
     table.addElement(row)
 ods_doc.spreadsheet.addElement(table)
 ods_doc.save('table.ods')
+
+print('uploaded information in table for ' + str(len(files)) + ' files')
