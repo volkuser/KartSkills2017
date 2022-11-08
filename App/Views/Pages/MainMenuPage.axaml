@@ -22,27 +22,23 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button Grid.Row="0" Grid.Column="0" x:Name="BtnRiderRegistration"
-                Command="{Binding OnClickBtnVerificationOfPreviouslyEnteredRacersPage}"
+        <Button Grid.Row="0" Grid.Column="0" Command="{Binding OnClickBtnVerificationOfPreviouslyEnteredRacersPage}"
                 HorizontalAlignment="Center" VerticalAlignment="Bottom"
                 Height="150" Width="150" Background="{DynamicResource ImgHelmet}"/>
         <TextBlock Grid.Row="1" Grid.Column="0" Text="Регистрация гонщика"
                    TextAlignment="Center" VerticalAlignment="Top"/>
-        <Button Grid.Row="0" Grid.Column="1" x:Name="BtnSponsorRegistration"
-                Command="{Binding OnClickBtnSponsorOfRacersPage}"
+        <Button Grid.Row="0" Grid.Column="1" Command="{Binding OnClickBtnSponsorOfRacersPage}"
                 HorizontalAlignment="Center" VerticalAlignment="Bottom"
                 Height="150" Width="150" Background="{DynamicResource ImgMoney}">
         </Button>
             <TextBlock Grid.Row="1" Grid.Column="1" Text="Регистрация спонсора"
                        TextAlignment="Center" VerticalAlignment="Top"/>
-        <Button Grid.Row="0" Grid.Column="2" x:Name="BtnAboutEvent"
-                Command="{Binding OnClickBtnDetailedInformationPage}"
+        <Button Grid.Row="0" Grid.Column="2" Command="{Binding OnClickBtnDetailedInformationPage}"
                 HorizontalAlignment="Center" VerticalAlignment="Bottom"
                 Height="150" Width="150" Background="{DynamicResource ImgInformation}"/>
         <TextBlock Grid.Row="1" Grid.Column="2" Text="О событии"
                    TextAlignment="Center" VerticalAlignment="Top"/>
-        <Button Grid.Row="0" Grid.Column="3" x:Name="BtnLogin"
-                Command="{Binding OnClickBtnOpnAuthorizationMenuPage}"
+        <Button Grid.Row="0" Grid.Column="3" Command="{Binding OnClickBtnOpnAuthorizationMenuPage}"
                 HorizontalAlignment="Center" VerticalAlignment="Bottom"
                 Height="150" Width="150" Background="{DynamicResource ImgKey}"/>
         <TextBlock Grid.Row="1" Grid.Column="3" Text="Вход в систему"

@@ -2,7 +2,7 @@
 -- Структура таблицы `InventoryType`
 --
 CREATE TABLE `InventoryType`(
-    `InventoryTypeId` integer NOT NULL,
+    `InventoryTypeId` INT NOT NULL,
     `TypeName` varchar(10) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 --
@@ -10,11 +10,11 @@ CREATE TABLE `InventoryType`(
 -- Структура таблицы `IncomingInventory`
 --
 CREATE TABLE `IncomingInventory`(
-    `IncomingInventoryId` integer NOT NULL,
-    -- `ID_Racer` integer NOT NULL,
-    `Bracelet` integer DEFAULT 0,
-    `Helmet` integer DEFAULT 0,
-    `Equipment` integer DEFAULT 0
+    `IncomingInventoryId` INT NOT NULL,
+    -- `ID_Racer` INT NOT NULL,
+    `Bracelet` INT DEFAULT 0,
+    `Helmet` INT DEFAULT 0,
+    `Equipment` INT DEFAULT 0
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -41,9 +41,9 @@ ALTER TABLE `IncomingInventory`
 -- AUTO_INCREMENT для таблицы `InventoryType`
 --
 ALTER TABLE `InventoryType`
-  MODIFY `InventoryTypeId` integer NOT NULL AUTO_INCREMENT;
+  MODIFY `InventoryTypeId` INT NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT для таблицы `InventoryType`
 --
 ALTER TABLE `IncomingInventory`
-  MODIFY `IncomingInventoryId` integer NOT NULL AUTO_INCREMENT;
+  MODIFY `IncomingInventoryId` INT NOT NULL AUTO_INCREMENT;

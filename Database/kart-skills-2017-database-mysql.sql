@@ -262,8 +262,8 @@ INSERT INTO `race` (`ID_Race`, `Race_Name`, `Sity`, `ID_Country`, `Year_Held`) V
 
 CREATE TABLE `racer` (
   `ID_Racer` int(11) NOT NULL,
-  `First_Name` varchar(50) NOT NULL,
-  `Last_Name` varchar(50) NOT NULL,
+  `First_Name` nvarchar(50) NOT NULL,
+  `Last_Name` nvarchar(50) NOT NULL,
   `Gender` char(1) NOT NULL,
   `DateOfBirth` date NOT NULL,
   `ID_Country` char(3) NOT NULL,
@@ -340,7 +340,7 @@ CREATE TABLE `registration` (
   `Cost` decimal(10,0) NOT NULL,
   `ID_Charity` int(11) NOT NULL,
   `SponsorshipTarget` decimal(10,0) NOT NULL,
-  `InventoryTypeId` integer NOT NULL
+  `InventoryTypeId` INT NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -547,8 +547,8 @@ INSERT INTO `sponsorship` (`ID_Sponsorship`, `SponsorName`, `Amount`, `ID_Racer`
 CREATE TABLE `user` (
   `Email` varchar(100) NOT NULL,
   `Password` varchar(100) NOT NULL,
-  `First_Name` varchar(30) NOT NULL,
-  `Last_Name` varchar(30) NOT NULL,
+  `First_Name` nvarchar(30) NOT NULL,
+  `Last_Name` nvarchar(30) NOT NULL,
   `ID_Role` char(1) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 

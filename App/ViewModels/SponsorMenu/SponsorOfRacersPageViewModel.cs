@@ -94,7 +94,7 @@ public class SponsorOfRacersPageViewModel : ViewModelBase, IRoutableViewModel
 
     private void NameOfFundGetting()
     {
-        if (_nameOfFund == null) NameOfFund = "Фонд собак";
+        if (_nameOfFund == null) NameOfFund = "-";
         // logic of getting name of fund
     }
 

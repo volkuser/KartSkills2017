@@ -4,7 +4,7 @@
 -- Структура таблицы `Position`
 --
 CREATE TABLE `Position` (
-  `Positionid` integer NOT NULL,
+  `Positionid` INT NOT NULL,
   `PositionName` varchar(100) NOT NULL,
   `PositionDescription` varchar(200),
   `PayPeriod` varchar(10) NOT NULL,
@@ -17,7 +17,7 @@ CREATE TABLE `Position` (
 -- Структура таблицы `Staff`
 --
 CREATE TABLE `Staff` (
-    `Staffid` integer NOT NULL,
+    `Staffid` INT NOT NULL,
     `First_name` varchar(80) NOT NULL,
     `LastName` varchar(80) NOT NULL,
     `DateOfBirth` datetime NOT NULL,
@@ -33,8 +33,8 @@ CREATE TABLE `Staff` (
 -- Структура таблицы `Timesheet`
 --
 CREATE TABLE `Timesheet`(
-    `Timesheetid` integer NOT NULL,
-    `Staffid` integer NOT NULL,
+    `Timesheetid` INT NOT NULL,
+    `Staffid` INT NOT NULL,
     `StartDateTime` datetime,
     `EndDateTime` datetime,
     `PayAmount` decimal(10,2)
@@ -46,7 +46,7 @@ CREATE TABLE `Timesheet`(
 -- Структура таблицы `Timesheet`
 --
 create TABLE `File`(
-    `FileId` integer NOT NULL,
+    `FileId` INT NOT NULL,
     `FileName` varchar(250) NOT NULL,
     `File` longblob NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -89,19 +89,19 @@ ALTER TABLE `File`
 -- AUTO_INCREMENT для таблицы `Position`
 --
 ALTER TABLE `Position`
-  MODIFY `PositionId` integer NOT NULL AUTO_INCREMENT;
+  MODIFY `PositionId` INT NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT для таблицы `Staff`
 --
 ALTER TABLE `Staff`
-  MODIFY `Staffid` integer NOT NULL AUTO_INCREMENT;
+  MODIFY `Staffid` INT NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT для таблицы `Timesheet`
 --
 ALTER TABLE `Timesheet`
-  MODIFY `Timesheetid` integer NOT NULL AUTO_INCREMENT;
+  MODIFY `Timesheetid` INT NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT для таблицы `File`
 --
 ALTER TABLE `File`
-  MODIFY `FileId` integer NOT NULL AUTO_INCREMENT;
+  MODIFY `FileId` INT NOT NULL AUTO_INCREMENT;

@@ -2,12 +2,14 @@
 <project version="4">
   <component name="SqlDialectMappings">
     <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/631ff441-0c19-4d11-835b-e74e23312c2c/console.sql" dialect="MariaDB" />
+    <file url="file://$PROJECT_DIR$/../../EmploymentService/Database/Control.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/../../EmploymentService/Database/Tables.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/addition.sql" dialect="MariaDB" />
     <file url="file://$PROJECT_DIR$/creating.sql" dialect="MariaDB" />
     <file url="file://$PROJECT_DIR$/data-import/staff-import.sql" dialect="MariaDB" />
     <file url="file://$PROJECT_DIR$/data-import/timesheet-import.sql" dialect="MariaDB" />
     <file url="file://$PROJECT_DIR$/inventory.sql" dialect="MariaDB" />
     <file url="file://$PROJECT_DIR$/kart-skills-2017-database-mysql.sql" dialect="MariaDB" />
-    <file url="PROJECT" dialect="MariaDB" />
+    <file url="PROJECT" dialect="PostgreSQL" />
   </component>
 </project>

@@ -1,8 +1,8 @@
 import pathlib
 from odf.opendocument import OpenDocumentText
-from odf.style import Style, TextProperties, ParagraphProperties, ListLevelProperties, TabStop, TabStops
+from odf.style import Style, TextProperties, ParagraphProperties
 from odf import teletype
-from odf.text import P, H
+from odf.text import H
 
 print('enter the path to project:', end=' ')
 main_path = input()
@@ -33,12 +33,12 @@ doc = OpenDocumentText()
 styles = doc.styles
 code_style = Style(name="Code Style", family="paragraph")
 code_style.addElement(ParagraphProperties(attributes={"textalign": "left"}))
-code_style.addElement(TextProperties(attributes={"fontsize": "12pt"}))
+code_style.addElement(TextProperties(attributes={"fontsize": "12pt", "fontfamily": "Liberation Serif"}))
 styles.addElement(code_style)
 
 for file_name, file_path in files:
     header_element = H(outlinelevel=1, stylename='Default Paragraph Style')
-    header_text = file_name + '\n'
+    header_text = file_name
     teletype.addTextToElement(header_element, header_text)
     doc.text.addElement(header_element)
     content_element = H(outlinelevel=1, stylename='Code Style')
